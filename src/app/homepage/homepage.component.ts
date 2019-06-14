@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ShodownService } from '../shodownservice.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'homepage',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomepageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private shodown: ShodownService, private router: Router) { }
 
   ngOnInit() {
+  }
+
+  submitName(name: string): void {
+    console.log(name);
+    this.shodown.setUsername(name);
+    this.router.navigate(["hero-select"]);
   }
 
 }

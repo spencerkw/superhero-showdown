@@ -5,5 +5,11 @@ import { Injectable } from '@angular/core';
 })
 export class ShodownService {
 
+  username: string;
+
   constructor() { }
+
+  setUsername(name: string): void {
+    this.username = name;
+  }
 }
