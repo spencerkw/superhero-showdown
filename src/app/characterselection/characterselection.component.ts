@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
+import { Hero } from '../hero';
+import { ShodownService } from '../shodownservice.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'characterselection',
@@ -7,20 +10,45 @@ import { ApiService } from '../api.service';
   styleUrls: ['./characterselection.component.css']
 })
 export class CharacterSelectionComponent implements OnInit {
-  heroes: any;
-  selectedHeroes: any[] = [];
+  heroes: Hero[];
+  selectedHeroes: Hero[] = [];
 
-  constructor(private apiService: ApiService) { }
+  maxHeroCount: number = 5;
+
+  constructor(private apiService: ApiService, private shodown: ShodownService, private router: Router) { }
 
   ngOnInit() {
-    this.apiService.getHeroes().subscribe(response => {
-      this.heroes=response;
+    this.apiService.getHeroes().subscribe((response: Hero[]) => {
+      this.heroes = response;
     });
   }
 
   selectHero(index: number) {
-    this.selectedHeroes.push(this.heroes[index]);
-    this.heroes.splice(index, 1);
+    this.moveHero(index, this.heroes, this.selectedHeroes);
+  }
+
+  submitSelection(): void {
+    this.shodown.setPlayerHeroes(this.selectedHeroes);
+
+    let computerHeroes: Hero[] = [];
+    for (let i = 0; i < this.maxHeroCount; i++) {
+      this.moveHero(this.random(0, this.heroes.length - 1), this.heroes, computerHeroes);
+    }
+    this.shodown.setComputerHeroes(computerHeroes);
+
+    console.log(this.shodown.getPlayerHeroes());
+    console.log(this.shodown.getComputerHeroes());
+
+    this.router.navigate(["shodown"]);
+  }
+
+  private random(min: number, max: number): number {
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
+
+  private moveHero(index: number, fromArray: Hero[], toArray: Hero[]) {
+    toArray.push(fromArray[index]);
+    fromArray.splice(index, 1);
   }
 
 }
