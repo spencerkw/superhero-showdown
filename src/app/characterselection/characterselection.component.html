@@ -1,3 +1,14 @@
-<p>
-  characterselection works!
-</p>
+<main>
+  <div>Logo</div>
+  <div class="selected-heroes">
+    <div *ngFor="let hero of selectedHeroes">
+      <p>{{ hero.hero }}</p>
+    </div>
+  </div>
+  <div class="hero-list">
+    <div *ngFor="let hero of heroes; index as i" (click)="selectHero(i)">
+      <p>{{ hero.hero }}</p>
+      <p>{{ hero.type }}</p>
+    </div>
+  </div>
+</main>
