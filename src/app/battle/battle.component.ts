@@ -27,11 +27,24 @@ export class BattleComponent implements OnInit {
     this.pickComputerHero();
     this.pickPlayerHero();
 
-    while(this.currentPlayerHero.currentHealth > 0 && this.currentComputerHero.currentHealth > 0) {
+    // while(this.currentPlayerHero.currentHealth > 0 && this.currentComputerHero.currentHealth > 0) {
+    //   this.battle();
+    // }
+
+    while((this.playerHeroes.length > 0 || this.currentPlayerHero.currentHealth > 0) && (this.computerHeroes.length > 0 || this.currentComputerHero.currentHealth > 0)) {
+      if (this.currentPlayerHero.currentHealth <= 0) {
+        let loser = this.currentPlayerHero;
+        console.log(`${loser.hero} was defeated`);
+        this.pickPlayerHero();
+      }
+      if (this.currentComputerHero.currentHealth <= 0) {
+        let loser = this.currentComputerHero;
+        console.log(`${loser.hero} was defeated`);
+        this.pickComputerHero();
+      }
       this.battle();
+      this.nextTurn();
     }
-    let loser = this.currentPlayerHero.currentHealth > 0 ? this.currentComputerHero : this.currentPlayerHero;
-    console.log(`${loser.hero} was defeated`);
   }
 
   pickFirstPlayer() {
