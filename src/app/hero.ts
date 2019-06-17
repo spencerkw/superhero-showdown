@@ -4,4 +4,5 @@ export interface Hero {
   min_damage: number;
   max_damage: number;
   type: string;
+  currentHealth?: number;
 }
