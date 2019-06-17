@@ -32,18 +32,14 @@ export class CharacterSelectionComponent implements OnInit {
 
     let computerHeroes: Hero[] = [];
     for (let i = 0; i < this.maxHeroCount; i++) {
-      this.moveHero(this.random(0, this.heroes.length - 1), this.heroes, computerHeroes);
+      this.moveHero(this.shodown.random(0, this.heroes.length - 1), this.heroes, computerHeroes);
     }
     this.shodown.setComputerHeroes(computerHeroes);
 
-    console.log(this.shodown.getPlayerHeroes());
-    console.log(this.shodown.getComputerHeroes());
+    // console.log(this.shodown.getPlayerHeroes());
+    // console.log(this.shodown.getComputerHeroes());
 
     this.router.navigate(["shodown"]);
-  }
-
-  private random(min: number, max: number): number {
-    return Math.floor(Math.random() * (max - min)) + min;
   }
 
   private moveHero(index: number, fromArray: Hero[], toArray: Hero[]) {
