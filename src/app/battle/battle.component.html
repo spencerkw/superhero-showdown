@@ -1,4 +1,4 @@
-<div class="battle"> Battle Table
+<!-- <div class="battle"> Battle Table
   <div class="card one">CPU Card One</div>
   <div class="card two1">User Card 1</div>
   <div class="card two2">User Card 2</div>
@@ -7,4 +7,17 @@
   <div class="card two5">User Card 5</div>
   <div class="card three">CPU Battle Card Three</div>
   <div class="card four">User Battle Card Four</div>
+</div> -->
+
+<main>
+<div class="table">
+  <div class="computer-deck">CPU DECK</div>
+  <card class="computer-card" *ngIf="currentComputerHero()" [hero]="currentComputerHero()" [cardSize]="'large'"></card>
+  <card class="user-card" *ngIf="currentPlayerHero()" [hero]="currentPlayerHero()" [cardSize]="'large'"></card>
+  <div class="user-deck">
+    <card *ngFor="let hero of playerHeroes" [hero]="hero" [cardSize]="'small'"></card>
+  </div>
+
+
 </div>
+</main>

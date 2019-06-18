@@ -1,24 +1,21 @@
-.battle, .card {
+.table {
     border: 1px solid black;
     margin: 10px;
     padding: 10px;
-  }
-  
-  .battle {
-    width: 700px;
-    height: 1000px;
+    width: 95vw;
+    height: 100vh;
     text-align: center;
     position: relative;
   }
-  
-  .card {
-    width: 100px;
-    height: 200px;
-    margin: 40px;
-    position:absolute;
+
+  card {
+    width: 400px;
+    height: 400px;
   }
+
   
-  .one, .two {
+  
+  /* .one, .two {
     transform: translateX(50%);
     right: 45%;
   }
@@ -59,5 +56,5 @@
   
   .four {
     left: 5%;
-  }
+  } */
   

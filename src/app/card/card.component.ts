@@ -9,6 +9,7 @@ import { Hero } from '../hero';
 export class CardComponent implements OnInit {
 
   @Input() hero: Hero;
+  @Input() cardSize: string;
 
   constructor() { }
 
