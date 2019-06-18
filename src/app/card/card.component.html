@@ -1,3 +1,7 @@
-<p>
-  card works!
-</p>
+<div class="card" [ngClass]="cardSize">
+  <p class="title">{{hero.hero}}</p>
+  <div class="hero-image"></div>
+  <p class="attack-type">{{hero.type}}</p>
+  <p class="attack-range" *ngIf="cardSize !== 'small'">{{hero.min_damage}}-{{hero.max_damage}}</p>
+  <p class="health" *ngIf="cardSize !== 'small'">{{hero.currentHealth ? hero.currentHealth : hero.health}}</p>
+</div>

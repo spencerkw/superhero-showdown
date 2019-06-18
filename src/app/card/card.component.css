@@ -1,0 +1,52 @@
+.card {
+  position: relative;
+  border: 1px solid black;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.large {
+  width: 100px;
+  height: 200px;
+}
+
+.small {
+  width: 50px;
+  height: 100px;
+}
+
+p {
+  margin: 0;
+}
+
+.title {
+ text-align: center; 
+}
+
+.hero-image {
+  width:90%;
+  height: 50%;
+  border: 1px solid black;
+}
+
+.attack-type {
+  padding: 5px;
+
+}
+
+.attack-range {
+ position: absolute;
+ bottom: 0%;
+ right: 0%;
+ transform: translate(-25%, -50%);
+
+}
+
+.health {
+ position: absolute;
+ bottom: 0%;
+ left: 0%;
+ transform: translate(50%, -50%);
+}

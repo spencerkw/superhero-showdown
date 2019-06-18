@@ -1,0 +1,107 @@
+.table {
+    border: 1px solid black;
+    margin: 10px;
+    padding: 10px;
+    width: 95vw;
+    height: 100vh;
+    text-align: center;
+    align-items: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .battle-area {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .battle-area >* {
+    margin: 0 40px;
+  }
+
+  .computer-deck {
+    width: 50px;
+    height: 100px;
+    border: 1px solid black;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* .computer-card {
+    width: 100px;
+  height: 200px;
+  } */
+
+  .computer-image {
+    width:90%;
+    height: 50%;
+    border: 1px solid black;
+  }
+
+  .user-deck {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .user-deck >* {
+    margin: 0 10px;
+  }
+
+  /* .computer-card {
+    margin-right: 200px;
+  }
+
+  .user-card {
+    margin-left: 200px;
+  } */
+  
+  /* .one, .two {
+    transform: translateX(50%);
+    right: 45%;
+  }
+  
+  .two1 {
+    bottom: 0px;
+    left: -1%;
+  }
+
+  .two2 {
+    bottom: 0px;
+    left: 18%;
+  }
+
+  .two3 {
+    bottom: 0px;
+    left: 37%;
+  }
+
+  .two4 {
+    bottom: 0px;
+    left: 56%;
+  }
+
+  .two5 {
+    bottom: 0px;
+    left: 75%;
+  }
+  
+  .three, .four {
+    transform: translateY(50%);
+    top: 25%;
+  }
+  
+  .three {
+    right: 5%;
+  }
+  
+  .four {
+    left: 5%;
+  } */
+  
