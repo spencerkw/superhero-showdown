@@ -26,31 +26,31 @@ export class BattleComponent implements OnInit {
     this.shodown.pickComputerHero();
     this.shodown.pickPlayerHero();
 
-    // while (
-    //   (this.playerHeroes.length > 0 ||
-    //     this.shodown.getCurrentPlayerHero().currentHealth > 0) &&
-    //   (this.computerHeroes.length > 0 ||
-    //     this.shodown.getCurrentComputerHero().currentHealth > 0)
-    // ) {
-    //   switch (this.shodown.getBattleState()) {
-    //     case BattleStates.PLAYER_CHOOSE:
-    //       this.shodown.pickPlayerHero();
-    //       break;
-    //     case BattleStates.CPU_CHOOSE:
-    //       this.shodown.pickComputerHero();
-    //       break;
-    //     case BattleStates.PLAYER_ATTACK:
-    //     case BattleStates.CPU_ATTACK:
-    //       this.shodown.battle();
-    //       break;
-    //     default:
-    //       console.log("bad state");
-    //   }
+    while (
+      (this.playerHeroes.length > 0 ||
+        this.shodown.getCurrentPlayerHero().currentHealth > 0) &&
+      (this.computerHeroes.length > 0 ||
+        this.shodown.getCurrentComputerHero().currentHealth > 0)
+    ) {
+      switch (this.shodown.getBattleState()) {
+        case BattleStates.PLAYER_CHOOSE:
+          this.shodown.pickPlayerHero();
+          break;
+        case BattleStates.CPU_CHOOSE:
+          this.shodown.pickComputerHero();
+          break;
+        case BattleStates.PLAYER_ATTACK:
+        case BattleStates.CPU_ATTACK:
+          this.shodown.battle();
+          break;
+        default:
+          console.log("bad state");
+      }
 
-    //   this.shodown.updateBattleState();
-    // }
-    // let winner = this.playerHeroes.length > 0 ? this.shodown.getUsername() : "the computer";
-    // console.log(`The winner is ${winner}`);
+      this.shodown.updateBattleState();
+    }
+    let winner = this.playerHeroes.length > 0 ? this.shodown.getUsername() : "the computer";
+    console.log(`The winner is ${winner}`);
   }
 
   currentComputerHero(): Hero {

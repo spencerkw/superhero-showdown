@@ -3,6 +3,7 @@ import { ApiService } from '../api.service';
 import { Hero } from '../hero';
 import { ShodownService } from '../shodownservice.service';
 import { Router } from '@angular/router';
+import { AttackType } from '../attack-type';
 
 @Component({
   selector: 'characterselection',
@@ -13,14 +14,31 @@ export class CharacterSelectionComponent implements OnInit {
   heroes: Hero[];
   selectedHeroes: Hero[] = [];
 
+  attackTypes: AttackType[];
+
   maxHeroCount: number = 5;
 
   constructor(private apiService: ApiService, private shodown: ShodownService, private router: Router) { }
 
   ngOnInit() {
-    this.apiService.getHeroes().subscribe((response: Hero[]) => {
-      this.heroes = response;
-    });
+    this.apiService.getTypes().subscribe((response: AttackType[]) => {
+      this.attackTypes = response;
+
+      this.apiService.getHeroes().subscribe((response: any[]) => {
+        this.heroes = [];
+        for (let hero of response) {
+          let heroToAdd: Hero = {
+            id: hero.id,
+            hero: hero.hero,
+            health: hero.health,
+            min_damage: hero.min_damage,
+            max_damage: hero.max_damage,
+            type: this.attackTypes.find(type => type.id === hero.attack_type_id)
+          };
+          this.heroes.push(heroToAdd);
+        }
+      });
+    })
   }
 
   selectHero(index: number) {

@@ -159,6 +159,11 @@ export class ShodownService {
 
   attack(attacker: Hero, target: Hero) {
     let damage = this.random(attacker.min_damage, attacker.max_damage);
+    if (attacker.type.type === target.type.weak_against) {
+      damage *= 1.5;
+      console.log(`${attacker.hero} has type advantage over ${target.hero}`);
+    }
+    damage = Math.floor(damage);
     target.currentHealth -= damage;
     console.log(`${attacker.hero} dealt ${damage} to ${target.hero}`);
   }
