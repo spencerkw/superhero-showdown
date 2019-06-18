@@ -42,10 +42,20 @@ export class CharacterSelectionComponent implements OnInit {
   }
 
   selectHero(index: number) {
-    this.moveHero(index, this.heroes, this.selectedHeroes);
+    if (this.selectedHeroes.length < 5) {
+      this.moveHero(index, this.heroes, this.selectedHeroes);
+    }
+  }
+
+  deselectHero(index: number) {
+    this.moveHero(index, this.selectedHeroes, this.heroes);
   }
 
   submitSelection(): void {
+    if (this.selectedHeroes.length < 5) {
+      return;
+    }
+
     this.shodown.setPlayerHeroes(this.selectedHeroes);
 
     let computerHeroes: Hero[] = [];
