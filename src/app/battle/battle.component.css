@@ -1,0 +1,63 @@
+.battle, .card {
+    border: 1px solid black;
+    margin: 10px;
+    padding: 10px;
+  }
+  
+  .battle {
+    width: 700px;
+    height: 1000px;
+    text-align: center;
+    position: relative;
+  }
+  
+  .card {
+    width: 100px;
+    height: 200px;
+    margin: 40px;
+    position:absolute;
+  }
+  
+  .one, .two {
+    transform: translateX(50%);
+    right: 45%;
+  }
+  
+  .two1 {
+    bottom: 0px;
+    left: -1%;
+  }
+
+  .two2 {
+    bottom: 0px;
+    left: 18%;
+  }
+
+  .two3 {
+    bottom: 0px;
+    left: 37%;
+  }
+
+  .two4 {
+    bottom: 0px;
+    left: 56%;
+  }
+
+  .two5 {
+    bottom: 0px;
+    left: 75%;
+  }
+  
+  .three, .four {
+    transform: translateY(50%);
+    top: 25%;
+  }
+  
+  .three {
+    right: 5%;
+  }
+  
+  .four {
+    left: 5%;
+  }
+  
