@@ -1,7 +1,7 @@
 <div class="card">
-  <p class="title">Card Name</p>
+  <p class="title">{{hero.hero}}</p>
   <div class="hero-image"></div>
-  <p class="attack-type">Type</p>
-  <p class="attack-range">20-30</p>
-  <p class="health">125</p>
+  <p class="attack-type">{{hero.type}}</p>
+  <p class="attack-range">{{hero.min_damage}}-{{hero.max_damage}}</p>
+  <p class="health">{{hero.currentHealth ? hero.currentHealth : hero.health}}</p>
 </div>
