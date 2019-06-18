@@ -18,6 +18,8 @@ export class ShodownService {
 
   private state: number;
 
+  private victory: boolean;
+
   constructor() { }
 
   getUsername(): string {
@@ -46,6 +48,10 @@ export class ShodownService {
 
   getBattleState(): number {
     return this.state;
+  }
+
+  getVictory(): boolean {
+    return this.victory;
   }
 
   setUsername(name: string): void {
@@ -143,14 +149,11 @@ export class ShodownService {
   }
 
   //TODO make this into an event handler
-  pickPlayerHero(): void {
+  pickPlayerHero(index: number): void {
     if (this.currentPlayerHero) {
       console.log(`${this.currentPlayerHero.hero} was defeated`);
     }
-    this.currentPlayerHero = this.playerHeroes.splice(
-      this.random(0, this.playerHeroes.length - 1),
-      1
-    )[0];
+    this.currentPlayerHero = this.playerHeroes.splice(index, 1)[0];
     this.currentPlayerHero.currentHealth = this.currentPlayerHero.health;
     console.log(
       `${this.username} selected ${this.currentPlayerHero.hero}`
@@ -176,6 +179,30 @@ export class ShodownService {
     this.attack(attacker, target);
     console.log(`${target.hero} has ${target.currentHealth} HP left`);
     this.nextTurn();
+  }
+
+  removeDead(): void {
+    if (this.currentComputerHero && this.currentComputerHero.currentHealth <= 0) {
+      this.currentComputerHero = null;
+    } else if (this.currentPlayerHero && this.currentPlayerHero.currentHealth <= 0) {
+      this.currentPlayerHero = null;
+    }
+
+    if (this.checkWinner()) {
+      // console.log("winner found");
+      this.state = BattleStates.END_GAME;
+    }
+  }
+
+  checkWinner(): boolean {
+    // console.log("checking winner");
+    if (this.computerHeroes.length === 0 && !this.currentComputerHero) {
+      this.victory = true;
+      return true;
+    } else if (this.playerHeroes.length === 0 && !this.currentPlayerHero) {
+      this.victory = false;
+      return true;
+    }
   }
 
   random(min: number, max: number): number {
