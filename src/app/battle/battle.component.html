@@ -10,14 +10,19 @@
 </div> -->
 
 <main>
-<div class="table">
-  <div class="computer-deck">CPU DECK</div>
-  <card class="computer-card" *ngIf="currentComputerHero()" [hero]="currentComputerHero()" [cardSize]="'large'"></card>
-  <card class="user-card" *ngIf="currentPlayerHero()" [hero]="currentPlayerHero()" [cardSize]="'large'"></card>
-  <div class="user-deck">
-    <card *ngFor="let hero of playerHeroes" [hero]="hero" [cardSize]="'small'"></card>
+  <div class="table">
+    <div class="computer-deck">CPU Deck
+      <div class="computer-image"></div>
+    </div>
+    <div class="battle-area">
+      <card class="computer-card" *ngIf="currentComputerHero()" [hero]="currentComputerHero()" [cardSize]="'large'">
+      </card>
+      <card class="user-card" *ngIf="currentPlayerHero()" [hero]="currentPlayerHero()" [cardSize]="'large'"></card>
+    </div>
+    <div class="user-deck">
+      <card *ngFor="let hero of playerHeroes" [hero]="hero" [cardSize]="'small'"></card>
+    </div>
+
+
   </div>
-
-
-</div>
 </main>
