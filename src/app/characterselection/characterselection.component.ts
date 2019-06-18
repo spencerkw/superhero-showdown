@@ -23,22 +23,22 @@ export class CharacterSelectionComponent implements OnInit {
   ngOnInit() {
     this.apiService.getTypes().subscribe((response: AttackType[]) => {
       this.attackTypes = response;
-    })
 
-    this.apiService.getHeroes().subscribe((response: any[]) => {
-      this.heroes = [];
-      for (let hero of response) {
-        let heroToAdd: Hero = {
-          id: hero.id,
-          hero: hero.hero,
-          health: hero.health,
-          min_damage: hero.min_damage,
-          max_damage: hero.max_damage,
-          type: this.attackTypes.find(type => type.id === hero.attack_type_id)
-        };
-        this.heroes.push(heroToAdd);
-      }
-    });
+      this.apiService.getHeroes().subscribe((response: any[]) => {
+        this.heroes = [];
+        for (let hero of response) {
+          let heroToAdd: Hero = {
+            id: hero.id,
+            hero: hero.hero,
+            health: hero.health,
+            min_damage: hero.min_damage,
+            max_damage: hero.max_damage,
+            type: this.attackTypes.find(type => type.id === hero.attack_type_id)
+          };
+          this.heroes.push(heroToAdd);
+        }
+      });
+    })
   }
 
   selectHero(index: number) {
