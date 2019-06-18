@@ -1,7 +1,7 @@
 <main>
   <div class="logo">Logo</div>
   <div class="selected-heroes">
-    <div *ngFor="let hero of selectedHeroes">
+    <div *ngFor="let hero of selectedHeroes; index as i" (click)="deselectHero(i)">
       <p class="selected">{{ hero.hero }}</p>
     </div>
   </div>
@@ -11,5 +11,5 @@
       <p class="hero-info type">{{ hero.type }}</p>
     </div>
   </div>
-  <button (click)="submitSelection()">Fight</button>
+  <button *ngIf="selectedHeroes.length === 5" (click)="submitSelection()">Fight</button>
 </main>
