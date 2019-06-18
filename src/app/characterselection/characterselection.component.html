@@ -8,7 +8,7 @@
   <div class="hero-list">
     <div class="hero" *ngFor="let hero of heroes; index as i" (click)="selectHero(i)">
       <p class="hero-info">{{ hero.hero }}</p>
-      <p class="hero-info type">{{ hero.type }}</p>
+      <p class="hero-info type">{{ hero.type.type }}</p>
     </div>
   </div>
   <button (click)="submitSelection()">Fight</button>
