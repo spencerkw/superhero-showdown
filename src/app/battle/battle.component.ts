@@ -23,8 +23,8 @@ export class BattleComponent implements OnInit {
       ? BattleStates.PLAYER_CHOOSE
       : BattleStates.CPU_CHOOSE);
 
-    this.shodown.pickComputerHero();
-    this.shodown.pickPlayerHero();
+    // this.shodown.pickComputerHero();
+    // this.shodown.pickPlayerHero();
 
     while (
       (this.playerHeroes.length > 0 ||
