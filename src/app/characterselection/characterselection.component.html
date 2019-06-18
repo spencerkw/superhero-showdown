@@ -1,14 +1,14 @@
 <main>
-  <div>Logo</div>
+  <div class="logo">Logo</div>
   <div class="selected-heroes">
     <div *ngFor="let hero of selectedHeroes">
-      <p>{{ hero.hero }}</p>
+      <p class="selected">{{ hero.hero }}</p>
     </div>
   </div>
   <div class="hero-list">
-    <div *ngFor="let hero of heroes; index as i" (click)="selectHero(i)">
-      <p>{{ hero.hero }}</p>
-      <p>{{ hero.type }}</p>
+    <div class="hero" *ngFor="let hero of heroes; index as i" (click)="selectHero(i)">
+      <p class="hero-info">{{ hero.hero }}</p>
+      <p class="hero-info type">{{ hero.type }}</p>
     </div>
   </div>
   <button (click)="submitSelection()">Fight</button>
