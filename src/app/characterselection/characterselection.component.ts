@@ -21,6 +21,11 @@ export class CharacterSelectionComponent implements OnInit {
   constructor(private apiService: ApiService, private shodown: ShodownService, private router: Router) { }
 
   ngOnInit() {
+    //return to homepage if we haven't gotten here normally
+    if (!this.shodown.getUsername()) {
+      this.router.navigate(["home"]);
+    }
+
     this.apiService.getTypes().subscribe((response: AttackType[]) => {
       this.attackTypes = response;
 

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ShodownService } from "../shodownservice.service";
+import { isUndefined } from 'util';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -9,19 +11,22 @@ import { ShodownService } from "../shodownservice.service";
 })
 export class WinLoseComponent implements OnInit {
 
-  constructor(private shodown: ShodownService) { }
+  constructor(private shodown: ShodownService, private router: Router) { }
 
   ngOnInit() {
+    if (isUndefined(this.shodown.getVictory())) {
+      this.router.navigate(["home"]);
+    }
   }
 
-winner() {
-  if (this.shodown.getVictory()) {
-    if (true) {
-      return this.shodown.getUsername()
+  winner() {
+    if (this.shodown.getVictory()) {
+      if (true) {
+        return this.shodown.getUsername()
+      };
+    } else {
+      return "the computer"
     };
-  } else {
-    return "the computer"
-  };
-}
+  }
 
 }
