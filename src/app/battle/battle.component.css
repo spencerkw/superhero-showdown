@@ -1,15 +1,25 @@
+main {
+  background-image: url(../../assets/images/Background-Gotham.jpg);
+  width: 100vw;
+  height: 100vh;
+  margin: 0px;
+  padding: 0px;
+}
+
 .table {
     border: 1px solid black;
     margin: 10px;
     padding: 10px;
     width: 95vw;
-    height: 100vh;
+    height: 95vh;
     text-align: center;
     align-items: center;
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    background-color: rgba(26, 50, 62, 0.8);
+    /* opacity: 0.8; */
   }
 
   .battle-area {

@@ -1,14 +1,26 @@
 <main>
   <div class="logo">Logo</div>
   <div class="selected-heroes">
-    <p class="label">Selected Heroes</p>
+    <div class="selected-heroes-nav">
+      <p class="label">Your Heroes</p>
+      <img class="attack-icon" src="../../assets/images/icon_sword.png" alt="">
+      <img class="life-icon" src="../../assets/images/Icon_life.png" alt="">
+      <img class="element-icon" src="../../assets/images/Icon_mental.png" alt="">
+    </div>
     <div class="hero" *ngFor="let hero of selectedHeroes; index as i" (click)="deselectHero(i)">
       <p class="selected">{{ hero.hero }}</p>
+      <p class="attack-range">{{hero.min_damage}}-{{hero.max_damage}}</p>
+      <p class="health">{{hero.health}}</p>
       <img class="selected-type" src="../../assets/images/Icon_{{ hero.type.type }}.png" alt="">
     </div>
   </div>
   <div class="hero-list">
-    <p class="label">Hero Roster</p>
+    <div class="hero-list-nav">
+      <p class="label">Hero Roster</p>
+      <!-- <img class="attack-icon" src="../../assets/images/icon_sword.png" alt="">
+      <img class="life-icon" src="../../assets/images/Icon_life.png" alt="">
+      <img class="element-icon" src="../../assets/images/Icon_mental.png" alt=""> -->
+    </div>
     <div class="hero" *ngFor="let hero of heroes; index as i" (click)="selectHero(i)">
       <p class="hero-name">{{ hero.hero }}</p>
       <p class="attack-range">{{hero.min_damage}}-{{hero.max_damage}}</p>

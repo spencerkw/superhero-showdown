@@ -6,8 +6,25 @@
   margin: 10px 0;
 }
 
+.selected-heroes-nav {
+  display: flex;
+}
+
+.selected-heroes-nav > * {
+  margin: 7px 10px;
+}
+
+.hero-list-nav {
+  display: flex;
+}
+
+.hero-list-nav > * {
+  margin: 7px 10px;
+}
+
 .label {
   margin: 10px;
+  flex: 1;
 }
 
 .hero {
@@ -32,6 +49,23 @@
 .selected-type {
   width: 20px;
   height: 20px;
+}
+
+.attack-icon {
+  width: 20px;
+  height: 20px;
+  padding-right: 14px;
+}
+
+.life-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.element-icon {
+  width: 20px;
+  height: 20px;
+  padding-right: 10px;
 }
 
 .selected {
