@@ -4,13 +4,17 @@
     <p class="label">Selected Heroes</p>
     <div class="hero" *ngFor="let hero of selectedHeroes; index as i" (click)="deselectHero(i)">
       <p class="selected">{{ hero.hero }}</p>
+      <img class="selected-type" src="../../assets/images/Icon_{{ hero.type.type }}.png" alt="">
     </div>
   </div>
   <div class="hero-list">
     <p class="label">Hero Roster</p>
     <div class="hero" *ngFor="let hero of heroes; index as i" (click)="selectHero(i)">
       <p class="hero-name">{{ hero.hero }}</p>
-      <p class="hero-type">{{ hero.type.type }}</p>
+      <p class="attack-range">{{hero.min_damage}}-{{hero.max_damage}}</p>
+      <p class="health">{{hero.health}}</p>
+      <!-- <p class="hero-type">{{ hero.type.type }}</p> -->
+      <img class="hero-type" src="../../assets/images/Icon_{{ hero.type.type }}.png" alt="">
     </div>
   </div>
   <button *ngIf="selectedHeroes.length === 5" (click)="submitSelection()">Fight</button>

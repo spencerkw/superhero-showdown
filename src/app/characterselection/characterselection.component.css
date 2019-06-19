@@ -24,6 +24,20 @@
   flex: 1;
 }
 
+.hero-type {
+  width: 20px;
+  height: 20px;
+}
+
+.selected-type {
+  width: 20px;
+  height: 20px;
+}
+
+.selected {
+  flex: 1;
+}
+
 .logo {
   margin-bottom: 5%;
   position: relative;
@@ -38,4 +52,5 @@ button {
   border: 1px solid black;
   background-color: red;
   color: aliceblue;
+  font-family: inherit;
 }
