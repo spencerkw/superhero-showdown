@@ -1,31 +1,27 @@
-.selected-heroes {
+.selected-heroes, .hero-list {
   border: 1px solid black;
-  border-bottom: none;
+  /* border-bottom: none; */
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
 }
 
-.hero-list {
-  border: 1px solid black;
-}
-
-.selected {
-  border-bottom: 1px solid black;
+.label {
+  margin: 10px;
 }
 
 .hero {
   display: flex;
-  flex-direction: column;
-  margin-bottom: -15%;
-}
-
-.hero-info {
+  padding: 10px;
   border-bottom: 1px solid black;
 }
 
-.type {
-  display: flex;
-  justify-content: center;
-  position: relative;
-  bottom: 52px;
+.hero > * {
+  margin: 0 10px;
+}
+
+.hero-name {
+  flex: 1;
 }
 
 .logo {
@@ -35,9 +31,9 @@
 }
 
 button {
-  margin-top: 15px;
-    padding: 5px;
-    border: 1px solid black;
-    background-color: red;
-    color: aliceblue;
+  margin: 10px 0;
+  padding: 5px;
+  border: 1px solid black;
+  background-color: red;
+  color: aliceblue;
 }
