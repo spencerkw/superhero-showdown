@@ -20,6 +20,11 @@ export class BattleComponent implements OnInit {
   ngOnInit() {
     this.playerHeroes = this.shodown.getPlayerHeroes();
     this.computerHeroes = this.shodown.getComputerHeroes();
+
+    if (!this.playerHeroes || !this.computerHeroes) {
+      this.router.navigate(["home"]);
+    }
+
     //temp just to test
     this.shodown.pickFirstPlayer();
     this.shodown.setBattleState(this.shodown.getIsPlayerTurn()
