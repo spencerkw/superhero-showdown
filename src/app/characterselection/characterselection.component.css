@@ -6,8 +6,25 @@
   margin: 10px 0;
 }
 
+.selected-heroes-nav {
+  display: flex;
+}
+
+.selected-heroes-nav > * {
+  margin: 7px 10px;
+}
+
+.hero-list-nav {
+  display: flex;
+}
+
+.hero-list-nav > * {
+  margin: 7px 10px;
+}
+
 .label {
   margin: 10px;
+  flex: 1;
 }
 
 .hero {
@@ -21,6 +38,37 @@
 }
 
 .hero-name {
+  flex: 1;
+}
+
+.hero-type {
+  width: 20px;
+  height: 20px;
+}
+
+.selected-type {
+  width: 20px;
+  height: 20px;
+}
+
+.attack-icon {
+  width: 20px;
+  height: 20px;
+  padding-right: 14px;
+}
+
+.life-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.element-icon {
+  width: 20px;
+  height: 20px;
+  padding-right: 10px;
+}
+
+.selected {
   flex: 1;
 }
 
@@ -38,4 +86,5 @@ button {
   border: 1px solid black;
   background-color: red;
   color: aliceblue;
+  font-family: inherit;
 }
