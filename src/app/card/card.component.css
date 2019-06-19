@@ -1,3 +1,5 @@
+
+
 .card {
   position: relative;
   border: 1px solid black;
@@ -6,6 +8,7 @@
   flex-direction: column;
   align-items: center;
   background-color: #3F5678;
+  /* font-family: 'Evil Genius Regular', serif; */
 }
 
 .attack-type {
@@ -18,7 +21,7 @@
 .large {
   width: 100px;
   height: 200px;
-  font-size: 20px;
+  font-size: 15px;
   color: #CCCCCC;
 }
 
