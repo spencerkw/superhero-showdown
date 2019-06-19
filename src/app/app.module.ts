@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ApiService } from './api.service';
 import { ShodownService } from './shodownservice.service';
+import { WinLoseComponent } from './win-lose/win-lose.component';
 
 
 const appRoutes: Routes = [
@@ -18,6 +19,7 @@ const appRoutes: Routes = [
   {path: "home", component: HomepageComponent},
   {path: "hero-select", component: CharacterSelectionComponent},
   {path: "shodown", component: BattleComponent},
+  {path: "endgame", component: WinLoseComponent},
   {path: "**", redirectTo:"/home"}
 ]
 
@@ -28,7 +30,8 @@ const appRoutes: Routes = [
     CharacterSelectionComponent,
     BattleComponent,
     CardComponent,
-    HealthComponent
+    HealthComponent,
+    WinLoseComponent
   ],
   imports: [
     BrowserModule,

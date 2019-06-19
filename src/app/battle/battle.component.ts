@@ -86,7 +86,7 @@ export class BattleComponent implements OnInit {
 
   gameOver(): void {
     console.log(`The winner is ${this.shodown.getVictory() ? this.shodown.getUsername() : "the computer"}`);
-    // this.router.navigate([]);
+    this.router.navigate(["endgame"]);
   }
 
   currentComputerHero(): Hero {
