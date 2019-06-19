@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'Evil Genius';
+  src: url("./assets/fonts/evilgeniusbb_reg.ttf") format("truetype");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Evil Genius';
+  src: url("./assets/fonts/evilgeniusbb_bld.ttf") format("truetype");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Badaboom';
+  src: url("./assets/fonts/BADABB__.ttf") format("truetype");
+  font-weight: bold;
+}
+
+html {
+  font-family: "Evil Genius", serif;
+}
