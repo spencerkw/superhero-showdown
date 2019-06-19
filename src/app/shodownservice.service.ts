@@ -136,7 +136,7 @@ export class ShodownService {
     );
   }
 
-  pickComputerHero(): void {
+  pickComputerHero = (): void => {
     if (this.currentComputerHero) {
       console.log(`${this.currentComputerHero.hero} was defeated`);
     }
@@ -171,7 +171,7 @@ export class ShodownService {
     console.log(`${attacker.hero} dealt ${damage} to ${target.hero}`);
   }
 
-  battle() {
+  battle = (): void => {
     let attacker: Hero, target: Hero;
     if (this.isPlayerTurn) {
       attacker = this.currentPlayerHero;

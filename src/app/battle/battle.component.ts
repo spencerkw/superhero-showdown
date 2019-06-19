@@ -36,41 +36,51 @@ export class BattleComponent implements OnInit {
   }
 
   battleLoop(): void {
-    while (
-      !this.playerInputNeeded && !this.shodown.checkWinner()
-      // (this.playerHeroes.length > 0 ||
-      //   (this.shodown.getCurrentPlayerHero() &&
-      //     this.shodown.getCurrentPlayerHero().currentHealth > 0)) &&
-      // (this.computerHeroes.length > 0 ||
-      //   (this.shodown.getCurrentComputerHero() &&
-      //     this.shodown.getCurrentComputerHero().currentHealth > 0))
-    ) {
+    if (!this.playerInputNeeded && !this.shodown.checkWinner()) {
+
+      let functionToRun = null; //this is what will be run in this step
+
       switch (this.shodown.getBattleState()) {
         case BattleStates.PLAYER_CHOOSE:
           // this.shodown.pickPlayerHero();
-          this.playerInputNeeded = true;
+          functionToRun = (): void => {
+            this.playerInputNeeded = true;
+          }
+          // this.playerInputNeeded = true;
           break;
         case BattleStates.CPU_CHOOSE:
-          this.shodown.pickComputerHero();
+          functionToRun = this.shodown.pickComputerHero;
           break;
         case BattleStates.PLAYER_ATTACK:
         case BattleStates.CPU_ATTACK:
-          this.shodown.battle();
+          functionToRun = this.shodown.battle;
           break;
-        // case BattleStates.END_GAME:
-        //   this.gameOver();
-        //   break;
         default:
           console.log("bad state");
       }
 
-      this.shodown.updateBattleState();
-      this.shodown.removeDead();
+      //run the rest of the steps on a delay
+      setTimeout((): void => {
+        functionToRun();
+        this.shodown.updateBattleState();
+        this.shodown.removeDead();
+
+        if (this.shodown.checkWinner()) {
+          // console.log("winner found");
+          this.shodown.setBattleState(BattleStates.END_GAME);
+        }
+        if (!this.playerInputNeeded) {
+          this.battleLoop();
+        }
+      }, 1000);
+
+      // this.shodown.updateBattleState();
+      // this.shodown.removeDead();
       
-      if (this.shodown.checkWinner()) {
-        // console.log("winner found");
-        this.shodown.setBattleState(BattleStates.END_GAME);
-      }
+      // if (this.shodown.checkWinner()) {
+      //   // console.log("winner found");
+      //   this.shodown.setBattleState(BattleStates.END_GAME);
+      // }
     }
 
     if (this.shodown.getBattleState() === BattleStates.END_GAME) {
