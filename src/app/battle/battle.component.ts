@@ -64,8 +64,13 @@ export class BattleComponent implements OnInit {
           console.log("bad state");
       }
 
-        this.shodown.updateBattleState();
-        this.shodown.removeDead();
+      this.shodown.updateBattleState();
+      this.shodown.removeDead();
+      
+      if (this.shodown.checkWinner()) {
+        // console.log("winner found");
+        this.shodown.setBattleState(BattleStates.END_GAME);
+      }
     }
 
     if (this.shodown.getBattleState() === BattleStates.END_GAME) {

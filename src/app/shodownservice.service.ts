@@ -187,11 +187,6 @@ export class ShodownService {
     } else if (this.currentPlayerHero && this.currentPlayerHero.currentHealth <= 0) {
       this.currentPlayerHero = null;
     }
-
-    if (this.checkWinner()) {
-      // console.log("winner found");
-      this.state = BattleStates.END_GAME;
-    }
   }
 
   checkWinner(): boolean {
@@ -203,6 +198,8 @@ export class ShodownService {
       this.victory = false;
       return true;
     }
+
+    return false;
   }
 
   random(min: number, max: number): number {
