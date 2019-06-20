@@ -32,7 +32,7 @@ import { AnimationDurations } from '../animation-durations';
         transition('* => attacking', [
           animate(`${AnimationDurations.attack}ms`, keyframes([
             style({ transform: '*', offset: 0 }),
-            style({ transform: 'translateX(-50%)', offset: 0.15 }),
+            style({ transform: 'translateX(-40%)', offset: 0.15 }),
             style({ transform: '*', offset: 1 })
           ]))
         ])
@@ -42,7 +42,7 @@ import { AnimationDurations } from '../animation-durations';
         transition('* => attacking', [
           animate(`${AnimationDurations.attack}ms`, keyframes([
             style({ transform: '*', offset: 0 }),
-            style({ transform: 'translateX(50%)', offset: 0.15 }),
+            style({ transform: 'translateX(40%)', offset: 0.15 }),
             style({ transform: '*', offset: 1 })
           ]))
         ])

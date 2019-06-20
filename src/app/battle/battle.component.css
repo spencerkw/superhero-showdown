@@ -70,10 +70,11 @@ height: 200px;
 
 .user-deck {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
+  min-height: 305px;
 }
 
 .user-deck >* {
