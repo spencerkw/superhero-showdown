@@ -14,116 +14,119 @@ main {
 }
 
 .table {
-    border: 1px solid black;
-    /* margin: 10px;
-    padding: 10px; */
-    width: 95vw;
-    height: 90vh;
-    text-align: center;
-    align-items: center;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background-color:rgb(32, 33, 35, 0.73);
-    border-radius: 1%;
-  }
+  border: 1px solid black;
+  /* margin: 10px;
+  padding: 10px; */
+  width: 95vw;
+  height: 90vh;
+  text-align: center;
+  align-items: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color:rgb(32, 33, 35, 0.73);
+  border-radius: 1%;
+}
 
-  .battle-area {
-    width: 80%;
-    display: flex;
-    justify-content: center;
-  }
+.battle-area {
+  width: 320px;
+  display: flex;
+  justify-content: center;
+}
 
-  .battle-area >* {
-    margin: 0 40px;
-  }
+/* .computer-card, .user-card {
+  margin: 0 40px;
+} */
 
-  .computer-deck {
-    width: 50px;
-    height: 100px;
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 15px 0 15px 0;
-    display: flex;
-    flex-direction: column;
-    background-color: #3F5678;
-  }
+.separator {
+  flex: 10;
+}
 
-  /* .computer-card {
-    width: 100px;
-  height: 200px;
-  } */
+.computer-deck {
+  width: 50px;
+  height: 100px;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 15px 0 15px 0;
+  display: flex;
+  flex-direction: column;
+  background-color: #3F5678;
+}
 
-  .computer-image {
-    width:90%;
-    height: 50%;
-    border: 3px solid black;
-    background-color: #1F2932;
-    border-radius: 5%;
-  }
+/* .computer-card {
+  width: 100px;
+height: 200px;
+} */
 
-  .user-deck {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
+.computer-image {
+  width:90%;
+  height: 50%;
+  border: 3px solid black;
+  background-color: #1F2932;
+  border-radius: 5%;
+}
 
-  .user-deck >* {
-    margin: 0 10px;
-  }
+.user-deck {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
 
-  /* .computer-card {
-    margin-right: 200px;
-  }
+.user-deck >* {
+  margin: 0 10px;
+}
 
-  .user-card {
-    margin-left: 200px;
-  } */
-  
-  /* .one, .two {
-    transform: translateX(50%);
-    right: 45%;
-  }
-  
-  .two1 {
-    bottom: 0px;
-    left: -1%;
-  }
+/* .computer-card {
+  margin-right: 200px;
+}
 
-  .two2 {
-    bottom: 0px;
-    left: 18%;
-  }
+.user-card {
+  margin-left: 200px;
+} */
 
-  .two3 {
-    bottom: 0px;
-    left: 37%;
-  }
+/* .one, .two {
+  transform: translateX(50%);
+  right: 45%;
+}
 
-  .two4 {
-    bottom: 0px;
-    left: 56%;
-  }
+.two1 {
+  bottom: 0px;
+  left: -1%;
+}
 
-  .two5 {
-    bottom: 0px;
-    left: 75%;
-  }
-  
-  .three, .four {
-    transform: translateY(50%);
-    top: 25%;
-  }
-  
-  .three {
-    right: 5%;
-  }
-  
-  .four {
-    left: 5%;
-  } */
-  
+.two2 {
+  bottom: 0px;
+  left: 18%;
+}
+
+.two3 {
+  bottom: 0px;
+  left: 37%;
+}
+
+.two4 {
+  bottom: 0px;
+  left: 56%;
+}
+
+.two5 {
+  bottom: 0px;
+  left: 75%;
+}
+
+.three, .four {
+  transform: translateY(50%);
+  top: 25%;
+}
+
+.three {
+  right: 5%;
+}
+
+.four {
+  left: 5%;
+} */

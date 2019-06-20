@@ -11,6 +11,7 @@
       [@ComputerDeath]
       [@ComputerAttack]="(currentAttack() && currentAttack().attacker === currentComputerHero()) ? 'attacking' : null">
       </card>
+      <div class="separator"></div>
       <card class="user-card" *ngIf="currentPlayerHero()" [hero]="currentPlayerHero()" [cardSize]="'large'" 
       [@PlayUserCard]
       [@UserDeath]
