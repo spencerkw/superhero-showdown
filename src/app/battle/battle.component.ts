@@ -93,7 +93,7 @@ export class BattleComponent implements OnInit {
   }
 
   battleLoop(): void {
-    if (!this.playerInputNeeded && !this.shodown.checkWinner()) {
+    if (!this.playerInputNeeded) {
 
       let functionToRun = null; //this is what will be run in this step
       let delay = this.lastActionDelay; //set the delay for this step based on the last action's required delay
@@ -115,6 +115,8 @@ export class BattleComponent implements OnInit {
           functionToRun = this.shodown.battle;
           this.lastActionDelay = AnimationDurations.attack;
           break;
+        // case BattleStates.END_GAME:
+        //   functionToRun = this.gameOver();
         default:
           console.log("bad state");
       }
@@ -128,8 +130,7 @@ export class BattleComponent implements OnInit {
         }
 
         if (this.shodown.checkWinner()) {
-          // console.log("winner found");
-          this.shodown.setBattleState(BattleStates.END_GAME);
+          setTimeout(this.gameOver, delay);
         }
         if (!this.playerInputNeeded) {
           this.battleLoop();
@@ -145,9 +146,9 @@ export class BattleComponent implements OnInit {
       // }
     }
 
-    if (this.shodown.getBattleState() === BattleStates.END_GAME) {
-      this.gameOver();
-    }
+    // if (this.shodown.getBattleState() === BattleStates.END_GAME) {
+    //   this.gameOver();
+    // }
   }
 
   choosePlayerCard(index: number): void {
@@ -156,7 +157,7 @@ export class BattleComponent implements OnInit {
     this.battleLoop();
   }
 
-  gameOver(): void {
+  gameOver = (): void => {
     console.log(`The winner is ${this.shodown.getVictory() ? this.shodown.getUsername() : "the computer"}`);
     this.router.navigate(["endgame"]);
   }
