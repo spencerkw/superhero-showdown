@@ -131,3 +131,9 @@ height: 200px;
 .four {
   left: 5%;
 } */
+
+@media only screen and (min-width: 768px) {
+  .user-deck {
+    min-height: 0;
+  }
+}
