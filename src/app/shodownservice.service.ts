@@ -198,12 +198,16 @@ export class ShodownService {
     this.nextTurn();
   }
 
-  removeDead(): void {
+  removeDead(): boolean {
     if (this.currentComputerHero && this.currentComputerHero.currentHealth <= 0) {
       this.currentComputerHero = null;
+      return true;
     } else if (this.currentPlayerHero && this.currentPlayerHero.currentHealth <= 0) {
       this.currentPlayerHero = null;
+      return true;
     }
+
+    return false;
   }
 
   checkWinner(): boolean {

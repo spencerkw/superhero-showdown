@@ -28,8 +28,7 @@ import { AnimationDurations } from '../animation-durations';
         animate(`${AnimationDurations.playCard}ms ease-out`, style({transform: '*'}))
       ])
     ]),
-    trigger(
-      'UserAttack', [
+    trigger('UserAttack', [
         transition('* => attacking', [
           animate(`${AnimationDurations.attack}ms`, keyframes([
             style({ transform: '*', offset: 0 }),
@@ -39,8 +38,7 @@ import { AnimationDurations } from '../animation-durations';
         ])
       ]
     ),
-    trigger(
-      'ComputerAttack', [
+    trigger('ComputerAttack', [
         transition('* => attacking', [
           animate(`${AnimationDurations.attack}ms`, keyframes([
             style({ transform: '*', offset: 0 }),
@@ -49,7 +47,17 @@ import { AnimationDurations } from '../animation-durations';
           ]))
         ])
       ]
-    )
+    ),
+    trigger('UserDeath', [
+      transition(':leave', [
+        animate(`${AnimationDurations.death}ms ${AnimationDurations.attack * .15}ms`, style({ transform: 'translateX(500%)'}))
+      ])
+    ]),
+    trigger('ComputerDeath', [
+      transition(':leave', [
+        animate(`${AnimationDurations.death}ms ${AnimationDurations.attack * .15}ms`, style({ transform: 'translateX(-500%)' }))
+      ])
+    ])
   ]
 })
 export class BattleComponent implements OnInit {
@@ -88,7 +96,7 @@ export class BattleComponent implements OnInit {
     if (!this.playerInputNeeded && !this.shodown.checkWinner()) {
 
       let functionToRun = null; //this is what will be run in this step
-      let delay = this.lastActionDelay;
+      let delay = this.lastActionDelay; //set the delay for this step based on the last action's required delay
 
       switch (this.shodown.getBattleState()) {
         case BattleStates.PLAYER_CHOOSE:
@@ -115,7 +123,9 @@ export class BattleComponent implements OnInit {
       setTimeout((): void => {
         functionToRun();
         this.shodown.updateBattleState();
-        this.shodown.removeDead();
+        if (this.shodown.removeDead()) {
+          this.lastActionDelay += AnimationDurations.death;
+        }
 
         if (this.shodown.checkWinner()) {
           // console.log("winner found");

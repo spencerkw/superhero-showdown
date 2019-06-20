@@ -6,10 +6,12 @@
     <div class="battle-area">
       <card class="computer-card" *ngIf="currentComputerHero()" [hero]="currentComputerHero()" [cardSize]="'large'" 
       [@PlayComputerCard] 
+      [@ComputerDeath]
       [@ComputerAttack]="(currentAttack() && currentAttack().attacker === currentComputerHero()) ? 'attacking' : null">
       </card>
       <card class="user-card" *ngIf="currentPlayerHero()" [hero]="currentPlayerHero()" [cardSize]="'large'" 
       [@PlayUserCard]
+      [@UserDeath]
       [@UserAttack]="(currentAttack() && currentAttack().attacker === currentPlayerHero()) ? 'attacking' : null"></card>
     </div>
     <div class="user-deck">
