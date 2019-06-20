@@ -40,6 +40,9 @@ export class CharacterSelectionComponent implements OnInit {
             max_damage: hero.max_damage,
             type: this.attackTypes.find(type => type.id === hero.attack_type_id)
           };
+          if (hero.short_name) {
+            heroToAdd.short_name = hero.short_name;
+          }
           this.heroes.push(heroToAdd);
         }
       });
