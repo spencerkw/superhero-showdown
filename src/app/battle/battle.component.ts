@@ -16,7 +16,7 @@ import { AnimationDurations } from '../animation-durations';
       // state('onDeck', style({transform: 'translate(-100%, 175%)'})),
       // state('inPlay', style({transform: '*'})),
       transition(':enter', [
-        style({transform: 'translate(-100%, 100%)'}),
+        style({transform: 'translate(-90%, 90%)'}),
         animate(`${AnimationDurations.playCard}ms ease-out`, style({transform: '*'}))
       ])
     ]),
@@ -24,7 +24,7 @@ import { AnimationDurations } from '../animation-durations';
       // state('onDeck', style({transform: 'translate(-100%, 175%)'})),
       // state('inPlay', style({transform: '*'})),
       transition(':enter', [
-        style({transform: 'translate(100%, -100%)'}),
+        style({transform: 'translate(90%, -90%)'}),
         animate(`${AnimationDurations.playCard}ms ease-out`, style({transform: '*'}))
       ])
     ]),
@@ -32,7 +32,7 @@ import { AnimationDurations } from '../animation-durations';
         transition('* => attacking', [
           animate(`${AnimationDurations.attack}ms`, keyframes([
             style({ transform: '*', offset: 0 }),
-            style({ transform: 'translateX(-50%)', offset: 0.15 }),
+            style({ transform: 'translateX(-40%)', offset: 0.15 }),
             style({ transform: '*', offset: 1 })
           ]))
         ])
@@ -42,7 +42,7 @@ import { AnimationDurations } from '../animation-durations';
         transition('* => attacking', [
           animate(`${AnimationDurations.attack}ms`, keyframes([
             style({ transform: '*', offset: 0 }),
-            style({ transform: 'translateX(50%)', offset: 0.15 }),
+            style({ transform: 'translateX(40%)', offset: 0.15 }),
             style({ transform: '*', offset: 1 })
           ]))
         ])
