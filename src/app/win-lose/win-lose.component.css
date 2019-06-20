@@ -1,0 +1,32 @@
+main {
+    background-image: url(../../assets/images/victory2.jpg);
+    width: 100vw;
+    height: 100vh;
+    margin: 0px;
+    padding: 0px;
+
+  }
+.ending{
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+        width: 40%;
+        position: relative;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, 50%);
+        padding: 75px;
+        background-color: blue;
+        color: aliceblue;
+        align-items: center;
+        border-radius: 10px;
+}
+
+button {
+        border-radius: 5px;
+        width: 10%;
+        padding: 3px;
+        background: red;
+        color: aliceblue;
+        font-family: inherit;
+    }

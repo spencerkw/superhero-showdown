@@ -28,5 +28,8 @@ export class WinLoseComponent implements OnInit {
       return "the computer"
     };
   }
+  playAgain(): void {
+    this.router.navigate(["home"]);
+  }
 
 }
