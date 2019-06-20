@@ -16,7 +16,7 @@ main {
         top: 50%;
         transform: translate(-50%, 50%);
         padding: 75px;
-        background-color: blue;
+        background-color: grey;
         color: aliceblue;
         align-items: center;
         border-radius: 10px;
