@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Hero } from './hero';
-import { BattleStates } from './battle-states';
+import { BattleStates } from './battle-states.enum';
+import { Attack } from './attack';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,7 @@ export class ShodownService {
   private state: number;
 
   private victory: boolean;
+  private currentAttack: Attack;
 
   constructor() { }
 
@@ -52,6 +54,10 @@ export class ShodownService {
 
   getVictory(): boolean {
     return this.victory;
+  }
+
+  getCurrentAttack(): Attack {
+    return this.currentAttack;
   }
 
   setUsername(name: string): void {
@@ -169,6 +175,12 @@ export class ShodownService {
     damage = Math.floor(damage);
     target.currentHealth -= damage;
     console.log(`${attacker.hero} dealt ${damage} to ${target.hero}`);
+    this.currentAttack = {
+      attacker: attacker,
+      target: target,
+      damage: damage,
+      attackType: attacker.type
+    }
   }
 
   battle = (): void => {
@@ -186,12 +198,16 @@ export class ShodownService {
     this.nextTurn();
   }
 
-  removeDead(): void {
+  removeDead(): boolean {
     if (this.currentComputerHero && this.currentComputerHero.currentHealth <= 0) {
       this.currentComputerHero = null;
+      return true;
     } else if (this.currentPlayerHero && this.currentPlayerHero.currentHealth <= 0) {
       this.currentPlayerHero = null;
+      return true;
     }
+
+    return false;
   }
 
   checkWinner(): boolean {
