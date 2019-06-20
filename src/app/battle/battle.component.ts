@@ -3,11 +3,51 @@ import { Hero } from "../hero";
 import { ShodownService } from "../shodownservice.service";
 import { BattleStates } from "../battle-states";
 import { Router } from '@angular/router';
+import { trigger, state, style, animate, transition, keyframes } from '@angular/animations';
+import { Attack } from '../attack';
 
 @Component({
   selector: "battle",
   templateUrl: "./battle.component.html",
-  styleUrls: ["./battle.component.css"]
+  styleUrls: ["./battle.component.css"],
+  animations: [
+    trigger('PlayUserCard', [
+      // state('onDeck', style({transform: 'translate(-100%, 175%)'})),
+      // state('inPlay', style({transform: '*'})),
+      transition(':enter', [
+        style({transform: 'translate(-100%, 100%)'}),
+        animate('1.5s ease-in-out', style({transform: '*'}))
+      ])
+    ]),
+    trigger('PlayComputerCard', [
+      // state('onDeck', style({transform: 'translate(-100%, 175%)'})),
+      // state('inPlay', style({transform: '*'})),
+      transition(':enter', [
+        style({transform: 'translate(100%, -100%)'}),
+        animate('1.5s ease-in-out', style({transform: '*'}))
+      ])
+    ]),
+    trigger(
+      'UserAttack', [
+        transition('* => attacking', [
+          animate('1s', keyframes([
+            style({ transform: 'translateX(-50%)'}),
+            style({ transform: '*'})
+          ]))
+        ])
+      ]
+    ),
+    trigger(
+      'ComputerAttack', [
+        transition('* => attacking', [
+          animate('1s', keyframes([
+            style({ transform: 'translateX(50%)'}),
+            style({ transform: '*'})
+          ]))
+        ])
+      ]
+    )
+  ]
 })
 export class BattleComponent implements OnInit {
   playerHeroes: Hero[];
@@ -110,5 +150,9 @@ export class BattleComponent implements OnInit {
 
   currentPlayerHero(): Hero {
     return this.shodown.getCurrentPlayerHero();
+  }
+
+  currentAttack(): Attack {
+    return this.shodown.getCurrentAttack();
   }
 }

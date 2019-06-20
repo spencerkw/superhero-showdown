@@ -4,9 +4,13 @@
       <div class="computer-image"></div>
     </div>
     <div class="battle-area">
-      <card class="computer-card" *ngIf="currentComputerHero()" [hero]="currentComputerHero()" [cardSize]="'large'">
+      <card class="computer-card" *ngIf="currentComputerHero()" [hero]="currentComputerHero()" [cardSize]="'large'" 
+      [@PlayComputerCard] 
+      [@ComputerAttack]="(currentAttack() && currentAttack().attacker === currentComputerHero()) ? 'attacking' : null">
       </card>
-      <card class="user-card" *ngIf="currentPlayerHero()" [hero]="currentPlayerHero()" [cardSize]="'large'"></card>
+      <card class="user-card" *ngIf="currentPlayerHero()" [hero]="currentPlayerHero()" [cardSize]="'large'" 
+      [@PlayUserCard]
+      [@UserAttack]="(currentAttack() && currentAttack().attacker === currentPlayerHero()) ? 'attacking' : null"></card>
     </div>
     <div class="user-deck">
       <card *ngFor="let hero of playerHeroes; index as i"

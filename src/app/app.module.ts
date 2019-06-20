@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { ApiService } from './api.service';
 import { ShodownService } from './shodownservice.service';
 import { WinLoseComponent } from './win-lose/win-lose.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 const appRoutes: Routes = [
@@ -37,7 +38,8 @@ const appRoutes: Routes = [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    BrowserAnimationsModule
   ],
   providers: [ApiService, ShodownService],
   bootstrap: [AppComponent]
