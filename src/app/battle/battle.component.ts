@@ -1,10 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { Hero } from "../hero";
 import { ShodownService } from "../shodownservice.service";
-import { BattleStates } from "../battle-states";
+import { BattleStates } from "../battle-states.enum";
 import { Router } from '@angular/router';
 import { trigger, state, style, animate, transition, keyframes } from '@angular/animations';
 import { Attack } from '../attack';
+import { AnimationDurations } from '../animation-durations';
 
 @Component({
   selector: "battle",
@@ -16,7 +17,7 @@ import { Attack } from '../attack';
       // state('inPlay', style({transform: '*'})),
       transition(':enter', [
         style({transform: 'translate(-100%, 100%)'}),
-        animate('1.5s ease-in-out', style({transform: '*'}))
+        animate(`${AnimationDurations.playCard}ms ease-out`, style({transform: '*'}))
       ])
     ]),
     trigger('PlayComputerCard', [
@@ -24,15 +25,16 @@ import { Attack } from '../attack';
       // state('inPlay', style({transform: '*'})),
       transition(':enter', [
         style({transform: 'translate(100%, -100%)'}),
-        animate('1.5s ease-in-out', style({transform: '*'}))
+        animate(`${AnimationDurations.playCard}ms ease-out`, style({transform: '*'}))
       ])
     ]),
     trigger(
       'UserAttack', [
         transition('* => attacking', [
-          animate('1s', keyframes([
-            style({ transform: 'translateX(-50%)'}),
-            style({ transform: '*'})
+          animate(`${AnimationDurations.attack}ms`, keyframes([
+            style({ transform: '*', offset: 0 }),
+            style({ transform: 'translateX(-50%)', offset: 0.15 }),
+            style({ transform: '*', offset: 1 })
           ]))
         ])
       ]
@@ -40,9 +42,10 @@ import { Attack } from '../attack';
     trigger(
       'ComputerAttack', [
         transition('* => attacking', [
-          animate('1s', keyframes([
-            style({ transform: 'translateX(50%)'}),
-            style({ transform: '*'})
+          animate(`${AnimationDurations.attack}ms`, keyframes([
+            style({ transform: '*', offset: 0 }),
+            style({ transform: 'translateX(50%)', offset: 0.15 }),
+            style({ transform: '*', offset: 1 })
           ]))
         ])
       ]
@@ -54,6 +57,7 @@ export class BattleComponent implements OnInit {
   computerHeroes: Hero[];
 
   playerInputNeeded: boolean = false;
+  lastActionDelay: number = 0;
 
   constructor(private shodown: ShodownService, private router: Router) {}
 
@@ -84,6 +88,7 @@ export class BattleComponent implements OnInit {
     if (!this.playerInputNeeded && !this.shodown.checkWinner()) {
 
       let functionToRun = null; //this is what will be run in this step
+      let delay = this.lastActionDelay;
 
       switch (this.shodown.getBattleState()) {
         case BattleStates.PLAYER_CHOOSE:
@@ -91,14 +96,16 @@ export class BattleComponent implements OnInit {
           functionToRun = (): void => {
             this.playerInputNeeded = true;
           }
-          // this.playerInputNeeded = true;
+          this.lastActionDelay = AnimationDurations.playCard;
           break;
         case BattleStates.CPU_CHOOSE:
           functionToRun = this.shodown.pickComputerHero;
+          this.lastActionDelay = AnimationDurations.playCard;
           break;
         case BattleStates.PLAYER_ATTACK:
         case BattleStates.CPU_ATTACK:
           functionToRun = this.shodown.battle;
+          this.lastActionDelay = AnimationDurations.attack;
           break;
         default:
           console.log("bad state");
@@ -117,7 +124,7 @@ export class BattleComponent implements OnInit {
         if (!this.playerInputNeeded) {
           this.battleLoop();
         }
-      }, 1000);
+      }, delay);
 
       // this.shodown.updateBattleState();
       // this.shodown.removeDead();

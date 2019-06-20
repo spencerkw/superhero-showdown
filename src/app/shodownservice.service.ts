@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Hero } from './hero';
-import { BattleStates } from './battle-states';
+import { BattleStates } from './battle-states.enum';
 import { Attack } from './attack';
 
 @Injectable({
