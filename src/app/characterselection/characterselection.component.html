@@ -7,7 +7,7 @@
       <img class="life-icon" src="../../assets/images/Icon_life.png" alt="">
       <img class="element-icon" src="../../assets/images/Icon_mental.png" alt="">
     </div>
-    <div class="hero" *ngFor="let hero of selectedHeroes; index as i" (click)="deselectHero(i)">
+    <div class="hero" [ngClass]="hero.type.type" *ngFor="let hero of selectedHeroes; index as i" (click)="deselectHero(i)">
       <p class="selected">{{ hero.hero }}</p>
       <p class="attack-range">{{hero.min_damage}}-{{hero.max_damage}}</p>
       <p class="health">{{hero.health}}</p>
@@ -21,7 +21,7 @@
       <img class="life-icon" src="../../assets/images/Icon_life.png" alt="">
       <img class="element-icon" src="../../assets/images/Icon_mental.png" alt=""> -->
     </div>
-    <div class="hero" *ngFor="let hero of heroes; index as i" (click)="selectHero(i)">
+    <div class="hero" [ngClass]="hero.type.type" *ngFor="let hero of heroes; index as i" (click)="selectHero(i)">
       <p class="hero-name">{{ hero.hero }}</p>
       <p class="attack-range">{{hero.min_damage}}-{{hero.max_damage}}</p>
       <p class="health">{{hero.health}}</p>

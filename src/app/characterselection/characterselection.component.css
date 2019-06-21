@@ -31,6 +31,8 @@
   display: flex;
   padding: 10px;
   border-bottom: 1px solid black;
+
+  transition: background-color 0.5s, color 0.5s;
 }
 
 .hero > * {
@@ -87,4 +89,28 @@ button {
   background-color: red;
   color: aliceblue;
   font-family: inherit;
+}
+
+.strength:hover, .agility:hover, .mental:hover, .mechanical:hover, .elemental:hover {
+  color: white;
+}
+
+.strength:hover {
+  background-color: #d01822;
+}
+
+.agility:hover {
+  background-color: #3d7662;
+}
+
+.mental:hover {
+  background-color: #fba1a3;
+}
+
+.mechanical:hover {
+  background-color: #6d6966;
+}
+
+.elemental:hover {
+  background-color: #c75724;
 }
