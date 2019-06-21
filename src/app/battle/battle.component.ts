@@ -29,20 +29,48 @@ import { AnimationDurations } from '../animation-durations';
       ])
     ]),
     trigger('UserAttack', [
-      transition('* => attacking', [
+      transition('none => bump', [
         animate(`${AnimationDurations.attack}ms`, keyframes([
           style({ transform: '*', offset: 0 }),
           style({ transform: 'translateX(-40%)', offset: 0.15 }),
+          style({ transform: '*', offset: 1 })
+        ]))
+      ]),
+      transition('none => punch', [
+        animate(`${AnimationDurations.attack}ms`, keyframes([
+          style({ transform: '*', offset: 0 }),
+          style({ transform: 'translateX(-40%) rotate(-15deg)', offset: 0.15 }),
+          style({ transform: '*', offset: 1 })
+        ]))
+      ]),
+      transition('none => kick', [
+        animate(`${AnimationDurations.attack}ms`, keyframes([
+          style({ transform: '*', offset: 0 }),
+          style({ transform: 'translateX(-40%) rotate(15deg)', offset: 0.15 }),
           style({ transform: '*', offset: 1 })
         ]))
       ])
     ]
     ),
     trigger('ComputerAttack', [
-      transition('* => attacking', [
+      transition('none => bump', [
         animate(`${AnimationDurations.attack}ms`, keyframes([
           style({ transform: '*', offset: 0 }),
           style({ transform: 'translateX(40%)', offset: 0.15 }),
+          style({ transform: '*', offset: 1 })
+        ]))
+      ]),
+      transition('none => punch', [
+        animate(`${AnimationDurations.attack}ms`, keyframes([
+          style({ transform: '*', offset: 0 }),
+          style({ transform: 'translateX(40%) rotate(15deg)', offset: 0.15 }),
+          style({ transform: '*', offset: 1 })
+        ]))
+      ]),
+      transition('none => kick', [
+        animate(`${AnimationDurations.attack}ms`, keyframes([
+          style({ transform: '*', offset: 0 }),
+          style({ transform: 'translateX(40%) rotate(-15deg)', offset: 0.15 }),
           style({ transform: '*', offset: 1 })
         ]))
       ])
@@ -186,5 +214,9 @@ export class BattleComponent implements OnInit {
 
   currentAttack(): Attack {
     return this.shodown.getCurrentAttack();
+  }
+
+  currentAttackAnimation(): string {
+    return this.shodown.getCurrentAttackAnimation();
   }
 }

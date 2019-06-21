@@ -22,6 +22,9 @@ export class ShodownService {
   private victory: boolean;
   private currentAttack: Attack;
 
+  private attackAnimations: string[] = ["bump", "kick", "punch"];
+  private currentAttackAnimation: string = "";
+
   constructor() { }
 
   getUsername(): string {
@@ -58,6 +61,10 @@ export class ShodownService {
 
   getCurrentAttack(): Attack {
     return this.currentAttack;
+  }
+
+  getCurrentAttackAnimation(): string {
+    return this.currentAttackAnimation;
   }
 
   setUsername(name: string): void {
@@ -168,19 +175,24 @@ export class ShodownService {
 
   attack(attacker: Hero, target: Hero) {
     let damage = this.random(attacker.min_damage, attacker.max_damage);
+
     if (attacker.type.type === target.type.weak_against) {
       damage *= 1.5;
       console.log(`${attacker.hero} has type advantage over ${target.hero}`);
     }
+
     damage = Math.floor(damage);
     target.currentHealth -= damage;
+
     console.log(`${attacker.hero} dealt ${damage} to ${target.hero}`);
+
+    this.pickAttackAnimation();
     this.currentAttack = {
       attacker: attacker,
       target: target,
       damage: damage,
       attackType: attacker.type
-    }
+    };
   }
 
   battle = (): void => {
@@ -221,6 +233,10 @@ export class ShodownService {
     }
 
     return false;
+  }
+
+  pickAttackAnimation(): void {
+    this.currentAttackAnimation = this.attackAnimations[this.random(0, 2)];
   }
 
   random(min: number, max: number): number {
