@@ -24,6 +24,7 @@ export class CharacterSelectionComponent implements OnInit {
     //return to homepage if we haven't gotten here normally
     if (!this.shodown.getUsername()) {
       this.router.navigate(["home"]);
+      return;
     }
 
     this.apiService.getTypes().subscribe((response: AttackType[]) => {

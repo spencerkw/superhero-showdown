@@ -75,6 +75,7 @@ export class BattleComponent implements OnInit {
 
     if (!this.playerHeroes || !this.computerHeroes) {
       this.router.navigate(["home"]);
+      return;
     }
 
     //temp just to test
