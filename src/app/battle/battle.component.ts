@@ -50,7 +50,19 @@ import { AnimationDurations } from '../animation-durations';
     ),
     trigger('UserDeath', [
       transition(':leave', [
-        animate(`${AnimationDurations.death}ms ${AnimationDurations.attack * .15}ms`, style({ transform: 'translateX(500%)'}))
+        animate(`${AnimationDurations.death}ms ${AnimationDurations.attack * .15}ms`, keyframes ([
+          style({transform: 'translateX(0)    rotateY(0)',        offset: 0}),
+          style({transform: 'translateX(150%) translateY(-45%)  rotateY(90deg) rotateZ(90deg)',    offset: 0.25}),
+          style({transform: 'translateX(325%) translateY(-75%) rotateY(180deg) rotateZ(180deg)',   offset: 0.50}),
+          style({transform: 'translateX(450%) translateY(-125%) rotateY(90deg) rotateZ(90deg)', opacity: 0.5,  offset: .75}),
+          style({transform: 'translateX(500%) translateY(-135%) rotateY(180deg) rotateZ(180deg)', opacity: 0,  offset: 1.0}),
+          // style({transform: 'translateX(50%)  rotateY(90deg)',    offset: 0.45}),
+          // style({transform: 'translateX(-125%)  rotateY(180deg)',    offset: 0.55}),
+          // style({transform: 'translateY(-175%) rotateY(90deg)',   offset: 0.67}),
+          // style({transform: 'translateX(-275%) rotateY(180deg)',   offset: 0.77}),
+          // style({transform: 'translateX(-375%) rotateY(90deg)',   offset: 0.88}),
+          // style({transform: 'translateX(-500%) rotateY(180deg)', offset: 1.0})
+        ]))
       ])
     ]),
     trigger('ComputerDeath', [
@@ -60,6 +72,17 @@ import { AnimationDurations } from '../animation-durations';
     ])
   ]
 })
+
+// transition('* => move',
+//   animate('2000ms', keyframes([
+//     style({transform: 'translateX(0)    rotateY(0)',        offset: 0}),
+//     style({transform: 'translateX(50%)  rotateY(90deg)',    offset: 0.33}),
+//     style({transform: 'translateY(-75%) rotateY(180deg)',   offset: 0.66}),
+//     style({transform: 'translateX(-100%)',                  offset: 1.0})
+//   ])
+// ))
+
+
 export class BattleComponent implements OnInit {
   playerHeroes: Hero[];
   computerHeroes: Hero[];
