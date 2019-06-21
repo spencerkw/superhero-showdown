@@ -33,6 +33,7 @@
   border-bottom: 1px solid black;
 
   transition: background-color 0.5s, color 0.5s;
+  cursor: pointer;
 }
 
 .hero > * {
@@ -89,6 +90,7 @@ button {
   background-color: red;
   color: aliceblue;
   font-family: inherit;
+  cursor: pointer;
 }
 
 .strength:hover, .agility:hover, .mental:hover, .mechanical:hover, .elemental:hover {

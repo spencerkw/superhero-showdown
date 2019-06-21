@@ -79,6 +79,10 @@ export class CharacterSelectionComponent implements OnInit {
     this.router.navigate(["shodown"]);
   }
 
+  allHeroesPicked(): boolean {
+    return this.selectedHeroes.length === this.maxHeroCount;
+  }
+
   private moveHero(index: number, fromArray: Hero[], toArray: Hero[]) {
     toArray.push(fromArray[index]);
     fromArray.splice(index, 1);
