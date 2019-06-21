@@ -16,41 +16,69 @@ import { AnimationDurations } from '../animation-durations';
       // state('onDeck', style({transform: 'translate(-100%, 175%)'})),
       // state('inPlay', style({transform: '*'})),
       transition(':enter', [
-        style({transform: 'translate(-90%, 90%)'}),
-        animate(`${AnimationDurations.playCard}ms ease-out`, style({transform: '*'}))
+        style({ transform: 'translate(-90%, 90%)' }),
+        animate(`${AnimationDurations.playCard}ms ease-out`, style({ transform: '*' }))
       ])
     ]),
     trigger('PlayComputerCard', [
       // state('onDeck', style({transform: 'translate(-100%, 175%)'})),
       // state('inPlay', style({transform: '*'})),
       transition(':enter', [
-        style({transform: 'translate(90%, -90%)'}),
-        animate(`${AnimationDurations.playCard}ms ease-out`, style({transform: '*'}))
+        style({ transform: 'translate(90%, -90%)' }),
+        animate(`${AnimationDurations.playCard}ms ease-out`, style({ transform: '*' }))
       ])
     ]),
     trigger('UserAttack', [
-        transition('* => attacking', [
-          animate(`${AnimationDurations.attack}ms`, keyframes([
-            style({ transform: '*', offset: 0 }),
-            style({ transform: 'translateX(-40%)', offset: 0.15 }),
-            style({ transform: '*', offset: 1 })
-          ]))
-        ])
-      ]
+      transition('none => bump', [
+        animate(`${AnimationDurations.attack}ms`, keyframes([
+          style({ transform: '*', offset: 0 }),
+          style({ transform: 'translateX(-40%)', offset: 0.15 }),
+          style({ transform: '*', offset: 1 })
+        ]))
+      ]),
+      transition('none => punch', [
+        animate(`${AnimationDurations.attack}ms`, keyframes([
+          style({ transform: '*', offset: 0 }),
+          style({ transform: 'translateX(-40%) rotate(-15deg)', offset: 0.15 }),
+          style({ transform: '*', offset: 1 })
+        ]))
+      ]),
+      transition('none => kick', [
+        animate(`${AnimationDurations.attack}ms`, keyframes([
+          style({ transform: '*', offset: 0 }),
+          style({ transform: 'translateX(-40%) rotate(15deg)', offset: 0.15 }),
+          style({ transform: '*', offset: 1 })
+        ]))
+      ])
+    ]
     ),
     trigger('ComputerAttack', [
-        transition('* => attacking', [
-          animate(`${AnimationDurations.attack}ms`, keyframes([
-            style({ transform: '*', offset: 0 }),
-            style({ transform: 'translateX(40%)', offset: 0.15 }),
-            style({ transform: '*', offset: 1 })
-          ]))
-        ])
-      ]
+      transition('none => bump', [
+        animate(`${AnimationDurations.attack}ms`, keyframes([
+          style({ transform: '*', offset: 0 }),
+          style({ transform: 'translateX(40%)', offset: 0.15 }),
+          style({ transform: '*', offset: 1 })
+        ]))
+      ]),
+      transition('none => punch', [
+        animate(`${AnimationDurations.attack}ms`, keyframes([
+          style({ transform: '*', offset: 0 }),
+          style({ transform: 'translateX(40%) rotate(15deg)', offset: 0.15 }),
+          style({ transform: '*', offset: 1 })
+        ]))
+      ]),
+      transition('none => kick', [
+        animate(`${AnimationDurations.attack}ms`, keyframes([
+          style({ transform: '*', offset: 0 }),
+          style({ transform: 'translateX(40%) rotate(-15deg)', offset: 0.15 }),
+          style({ transform: '*', offset: 1 })
+        ]))
+      ])
+    ]
     ),
     trigger('UserDeath', [
       transition(':leave', [
-        animate(`${AnimationDurations.death}ms ${AnimationDurations.attack * .15}ms`, style({ transform: 'translateX(500%)'}))
+        animate(`${AnimationDurations.death}ms ${AnimationDurations.attack * .15}ms`, style({ transform: 'translateX(500%)' }))
       ])
     ]),
     trigger('ComputerDeath', [
@@ -67,7 +95,7 @@ export class BattleComponent implements OnInit {
   playerInputNeeded: boolean = false;
   lastActionDelay: number = 0;
 
-  constructor(private shodown: ShodownService, private router: Router) {}
+  constructor(private shodown: ShodownService, private router: Router) { }
 
   ngOnInit() {
     this.playerHeroes = this.shodown.getPlayerHeroes();
@@ -140,7 +168,7 @@ export class BattleComponent implements OnInit {
 
       // this.shodown.updateBattleState();
       // this.shodown.removeDead();
-      
+
       // if (this.shodown.checkWinner()) {
       //   // console.log("winner found");
       //   this.shodown.setBattleState(BattleStates.END_GAME);
@@ -173,5 +201,9 @@ export class BattleComponent implements OnInit {
 
   currentAttack(): Attack {
     return this.shodown.getCurrentAttack();
+  }
+
+  currentAttackAnimation(): string {
+    return this.shodown.getCurrentAttackAnimation();
   }
 }
