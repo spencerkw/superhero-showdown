@@ -98,6 +98,9 @@ button {
   color: aliceblue;
   font-family: inherit;
   cursor: pointer;
+  position: fixed;
+  top: 90%;
+  left: 50%;
 }
 
 .strength:hover, .agility:hover, .mental:hover, .mechanical:hover, .elemental:hover {
