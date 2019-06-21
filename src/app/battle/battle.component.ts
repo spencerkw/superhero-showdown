@@ -16,58 +16,58 @@ import { AnimationDurations } from '../animation-durations';
       // state('onDeck', style({transform: 'translate(-100%, 175%)'})),
       // state('inPlay', style({transform: '*'})),
       transition(':enter', [
-        style({transform: 'translate(-90%, 90%)'}),
-        animate(`${AnimationDurations.playCard}ms ease-out`, style({transform: '*'}))
+        style({ transform: 'translate(-90%, 90%)' }),
+        animate(`${AnimationDurations.playCard}ms ease-out`, style({ transform: '*' }))
       ])
     ]),
     trigger('PlayComputerCard', [
       // state('onDeck', style({transform: 'translate(-100%, 175%)'})),
       // state('inPlay', style({transform: '*'})),
       transition(':enter', [
-        style({transform: 'translate(90%, -90%)'}),
-        animate(`${AnimationDurations.playCard}ms ease-out`, style({transform: '*'}))
+        style({ transform: 'translate(90%, -90%)' }),
+        animate(`${AnimationDurations.playCard}ms ease-out`, style({ transform: '*' }))
       ])
     ]),
     trigger('UserAttack', [
-        transition('* => attacking', [
-          animate(`${AnimationDurations.attack}ms`, keyframes([
-            style({ transform: '*', offset: 0 }),
-            style({ transform: 'translateX(-40%)', offset: 0.15 }),
-            style({ transform: '*', offset: 1 })
-          ]))
-        ])
-      ]
+      transition('* => attacking', [
+        animate(`${AnimationDurations.attack}ms`, keyframes([
+          style({ transform: '*', offset: 0 }),
+          style({ transform: 'translateX(-40%)', offset: 0.15 }),
+          style({ transform: '*', offset: 1 })
+        ]))
+      ])
+    ]
     ),
     trigger('ComputerAttack', [
-        transition('* => attacking', [
-          animate(`${AnimationDurations.attack}ms`, keyframes([
-            style({ transform: '*', offset: 0 }),
-            style({ transform: 'translateX(40%)', offset: 0.15 }),
-            style({ transform: '*', offset: 1 })
-          ]))
-        ])
-      ]
+      transition('* => attacking', [
+        animate(`${AnimationDurations.attack}ms`, keyframes([
+          style({ transform: '*', offset: 0 }),
+          style({ transform: 'translateX(40%)', offset: 0.15 }),
+          style({ transform: '*', offset: 1 })
+        ]))
+      ])
+    ]
     ),
     trigger('UserDeath', [
       transition(':leave', [
-        animate(`${AnimationDurations.death}ms ${AnimationDurations.attack * .15}ms`, keyframes ([
-          style({transform: 'translateX(0)    rotateY(0)',        offset: 0}),
-          style({transform: 'translateX(150%) translateY(-45%)  rotateY(90deg) rotateZ(90deg)',    offset: 0.25}),
-          style({transform: 'translateX(325%) translateY(-75%) rotateY(180deg) rotateZ(180deg)',   offset: 0.50}),
-          style({transform: 'translateX(450%) translateY(-125%) rotateY(90deg) rotateZ(90deg)', opacity: 0.5,  offset: .75}),
-          style({transform: 'translateX(500%) translateY(-135%) rotateY(180deg) rotateZ(180deg)', opacity: 0,  offset: 1.0}),
-          // style({transform: 'translateX(50%)  rotateY(90deg)',    offset: 0.45}),
-          // style({transform: 'translateX(-125%)  rotateY(180deg)',    offset: 0.55}),
-          // style({transform: 'translateY(-175%) rotateY(90deg)',   offset: 0.67}),
-          // style({transform: 'translateX(-275%) rotateY(180deg)',   offset: 0.77}),
-          // style({transform: 'translateX(-375%) rotateY(90deg)',   offset: 0.88}),
-          // style({transform: 'translateX(-500%) rotateY(180deg)', offset: 1.0})
+        animate(`${AnimationDurations.death}ms ${AnimationDurations.attack * .15}ms`, keyframes([
+          style({ transform: 'translateX(0)    rotateY(0)', offset: 0 }),
+          style({ transform: 'translateX(150%) translateY(-45%)  rotateY(90deg) rotateZ(90deg)', offset: 0.25 }),
+          style({ transform: 'translateX(325%) translateY(-75%) rotateY(180deg) rotateZ(180deg)', offset: 0.50 }),
+          style({ transform: 'translateX(450%) translateY(-125%) rotateY(90deg) rotateZ(90deg)', opacity: 0.5, offset: .75 }),
+          style({ transform: 'translateX(500%) translateY(-135%) rotateY(180deg) rotateZ(180deg)', opacity: 0, offset: 1.0 })
         ]))
       ])
     ]),
     trigger('ComputerDeath', [
       transition(':leave', [
-        animate(`${AnimationDurations.death}ms ${AnimationDurations.attack * .15}ms`, style({ transform: 'translateX(-500%)' }))
+        animate(`${AnimationDurations.death}ms ${AnimationDurations.attack * .15}ms`, keyframes([
+          style({ transform: 'translateX(0)    rotateY(0)', offset: 0 }),
+          style({ transform: 'translateX(-150%) translateY(-45%)  rotateY(-90deg) rotateZ(-90deg)', offset: 0.25 }),
+          style({ transform: 'translateX(-325%) translateY(-75%) rotateY(-180deg) rotateZ(-180deg)', offset: 0.50 }),
+          style({ transform: 'translateX(-450%) translateY(-125%) rotateY(-90deg) rotateZ(-90deg)', opacity: 0.5, offset: .75 }),
+          style({ transform: 'translateX(-500%) translateY(-135%) rotateY(-180deg) rotateZ(-180deg)', opacity: 0, offset: 1.0 })
+        ]))
       ])
     ])
   ]
@@ -90,7 +90,7 @@ export class BattleComponent implements OnInit {
   playerInputNeeded: boolean = false;
   lastActionDelay: number = 0;
 
-  constructor(private shodown: ShodownService, private router: Router) {}
+  constructor(private shodown: ShodownService, private router: Router) { }
 
   ngOnInit() {
     this.playerHeroes = this.shodown.getPlayerHeroes();
@@ -163,7 +163,7 @@ export class BattleComponent implements OnInit {
 
       // this.shodown.updateBattleState();
       // this.shodown.removeDead();
-      
+
       // if (this.shodown.checkWinner()) {
       //   // console.log("winner found");
       //   this.shodown.setBattleState(BattleStates.END_GAME);
