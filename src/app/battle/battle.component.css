@@ -33,6 +33,7 @@ main {
   width: 320px;
   display: flex;
   justify-content: center;
+  position: relative;
 }
 
 .computer-card, .user-card {
@@ -41,6 +42,16 @@ main {
 
 .separator {
   flex: 10;
+}
+
+.hit-animation {
+  z-index: 2;
+  position: absolute;
+  
+}
+
+.pow {
+  width: 90px;
 }
 
 .computer-deck {
