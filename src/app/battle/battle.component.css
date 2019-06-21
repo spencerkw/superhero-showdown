@@ -47,7 +47,7 @@ main {
 .hit-animation {
   z-index: 2;
   position: absolute;
-  
+  display: none;
 }
 
 .pow {

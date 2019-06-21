@@ -97,6 +97,20 @@ import { AnimationDurations } from '../animation-durations';
           style({ transform: 'translateX(-500%) translateY(-135%) rotateY(-180deg) rotateZ(-180deg)', opacity: 0, offset: 1.0 })
         ]))
       ])
+    ]),
+    trigger('Pow', [
+      transition('* => computer', [
+        style({ display: 'block', left: '10%' }),
+        animate(`0.5s`, keyframes([
+          style({ transform: 'translateY(-10%) scale(1.25)', opacity: 0 })
+        ]))
+      ]),
+      transition('* => player', [
+        style({ display: 'block', right: '10%' }),
+        animate(`0.5s`, keyframes([
+          style({ transform: 'translateY(-10%) scale(1.25)', opacity: 0 })
+        ]))
+      ])
     ])
   ]
 })
@@ -219,5 +233,17 @@ export class BattleComponent implements OnInit {
 
   currentAttackAnimation(): string {
     return this.shodown.getCurrentAttackAnimation();
+  }
+
+  currentAttackTarget(): string {
+    if (this.shodown.getCurrentAttack()) {
+      if (this.shodown.getCurrentAttack().target === this.shodown.getCurrentComputerHero()) {
+        return 'computer';
+      } else if (this.shodown.getCurrentAttack().target === this.shodown.getCurrentPlayerHero()) {
+        return 'player';
+      }
+    }
+    
+    return 'none';
   }
 }
