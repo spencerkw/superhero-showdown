@@ -10,7 +10,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./win-lose.component.css']
 })
 export class WinLoseComponent implements OnInit {
-
+  show: boolean = true
+  
   constructor(private shodown: ShodownService, private router: Router) { }
 
   ngOnInit() {
