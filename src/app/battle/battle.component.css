@@ -75,10 +75,17 @@ height: 200px;
   justify-content: center;
   flex-wrap: wrap;
   min-height: 305px;
+  padding-bottom: 15px;
 }
 
-.user-deck >* {
+.user-hand-card {
   margin: 0 10px;
+  border-radius: 5px;
+  transition: box-shadow 0.25s;
+}
+
+.selectable:hover {
+  box-shadow: 0 0 15px 5px gold;
 }
 
 /* .computer-card {
