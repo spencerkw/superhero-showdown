@@ -249,6 +249,10 @@ export class BattleComponent implements OnInit {
     return this.shodown.getCurrentAttackAnimation();
   }
 
+  currentHitEffect(): string {
+    return this.shodown.getCurrentHitEffect();
+  }
+
   currentAttackTarget(): string {
     if (this.shodown.getCurrentAttack()) {
       if (this.shodown.getCurrentAttack().target === this.shodown.getCurrentComputerHero()) {
