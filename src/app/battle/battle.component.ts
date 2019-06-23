@@ -101,14 +101,28 @@ import { AnimationDurations } from '../animation-durations';
     trigger('Pow', [
       transition('* => computer', [
         style({ display: 'block', left: '7.5%' }),
-        animate(`${AnimationDurations.pow}ms`, keyframes([
+        animate(`${AnimationDurations.hitEffect}ms ${AnimationDurations.attack * .15}ms`, keyframes([
           style({ transform: 'translateY(-25%) scale(1.5)', opacity: 0 })
         ]))
       ]),
       transition('* => player', [
         style({ display: 'block', right: '7.5%' }),
-        animate(`${AnimationDurations.pow}ms`, keyframes([
+        animate(`${AnimationDurations.hitEffect}ms ${AnimationDurations.attack * .15}ms`, keyframes([
           style({ transform: 'translateY(-25%) scale(1.5)', opacity: 0 })
+        ]))
+      ])
+    ]),
+    trigger('DamageDealt', [
+      transition('* => computer', [
+        style({ display: 'block' }),
+        animate(`${AnimationDurations.hitEffect}ms`, keyframes([
+          style({ transform: 'translateY(-25%)', opacity: 0 })
+        ]))
+      ]),
+      transition('* => player', [
+        style({ display: 'block' }),
+        animate(`${AnimationDurations.hitEffect}ms`, keyframes([
+          style({ transform: 'translateY(-25%)', opacity: 0 })
         ]))
       ])
     ])
