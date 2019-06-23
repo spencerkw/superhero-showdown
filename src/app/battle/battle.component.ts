@@ -100,15 +100,15 @@ import { AnimationDurations } from '../animation-durations';
     ]),
     trigger('Pow', [
       transition('* => computer', [
-        style({ display: 'block', left: '10%' }),
-        animate(`0.5s`, keyframes([
-          style({ transform: 'translateY(-10%) scale(1.25)', opacity: 0 })
+        style({ display: 'block', left: '7.5%' }),
+        animate(`${AnimationDurations.pow}ms`, keyframes([
+          style({ transform: 'translateY(-25%) scale(1.5)', opacity: 0 })
         ]))
       ]),
       transition('* => player', [
-        style({ display: 'block', right: '10%' }),
-        animate(`0.5s`, keyframes([
-          style({ transform: 'translateY(-10%) scale(1.25)', opacity: 0 })
+        style({ display: 'block', right: '7.5%' }),
+        animate(`${AnimationDurations.pow}ms`, keyframes([
+          style({ transform: 'translateY(-25%) scale(1.5)', opacity: 0 })
         ]))
       ])
     ])

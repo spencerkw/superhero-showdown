@@ -44,14 +44,12 @@ main {
   flex: 10;
 }
 
-.hit-animation {
+.pow {
+  width: 90px;
+
   z-index: 2;
   position: absolute;
   display: none;
-}
-
-.pow {
-  width: 90px;
 }
 
 .computer-deck {

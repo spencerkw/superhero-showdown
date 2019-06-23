@@ -16,9 +16,7 @@
       [@PlayUserCard]
       [@UserDeath]
       [@UserAttack]="(currentAttack() && currentAttack().attacker === currentPlayerHero()) ? currentAttackAnimation() : 'none'"></card>
-      <div class="hit-animation" [@Pow]="currentAttackTarget()">
-        <img class="pow" src="../../assets/images/pow-640.png" alt="Pow">
-      </div>
+      <img class="pow" src="../../assets/images/pow-640.png" alt="Pow" [@Pow]="currentAttackTarget()">
     </div>
     <div class="user-deck">
       <card *ngFor="let hero of playerHeroes; index as i"
