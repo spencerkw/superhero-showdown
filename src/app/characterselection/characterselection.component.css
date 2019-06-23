@@ -82,12 +82,18 @@ main {
 }
 
 .logo {
-  margin-bottom: 5%;
-  position: relative;
-  /* left: 45%; */
-  font-family: 'Badaboom';
+  /* margin-bottom: 5%; */
+  /* font-family: 'Badaboom';
   font-size: 100px;
-  text-align: center;
+  text-align: center; */
+  position: relative;
+  width: 600px;
+  height: 175px;
+  margin: 20px 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
 
 button {

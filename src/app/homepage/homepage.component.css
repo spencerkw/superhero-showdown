@@ -6,10 +6,37 @@ main {
 }
 
 .logo {
-    position: relative;
+    /* position: relative;
     left: 50%;
     transform: translateX(-50%);
-    text-align: center;
+    text-align: center; */
+    
+    position: relative;
+    width: 600px;
+    height: 175px;
+    /* margin: 20px 0; */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.logic {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    position: relative;
+    left: 50%;
+    /* top: 10%; */
+    /* transform: translate(-50%, 50%); */
+    transform: translate(-50%);
+    padding: 15px;
+    background-color: rgba(10, 10, 10, 0.5);
+    color: aliceblue;
+    align-items: center;
+    border-radius: 10px;
+    max-width: inherit;
+    margin: 5px;
 }
 
 form {
@@ -18,8 +45,9 @@ form {
     width: 40%;
     position: relative;
     left: 50%;
-    top: 10%;
-    transform: translate(-50%, 50%);
+    /* top: 10%; */
+    /* transform: translate(-50%, 50%); */
+    transform: translate(-50%);
     padding: 75px;
     background-color: rgba(10, 10, 10, 0.5);
     color: aliceblue;
