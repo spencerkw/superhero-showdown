@@ -25,9 +25,17 @@ export class WinLoseComponent implements OnInit {
       if (true) {
         return this.shodown.getUsername()
       };
-    } else {
-      return "the computer"
+    // } else {
+    //   return "the computer"
     };
+  }
+
+  loser() {
+    if (this.shodown.getDefeat()) {
+      if (true) {
+        return "the computer"
+      };
+    }
   }
   playAgain(): void {
     this.router.navigate(["home"]);

@@ -20,6 +20,8 @@ export class ShodownService {
 
   private victory: boolean;
 
+  private defeat: boolean;
+
   constructor() { }
 
   getUsername(): string {
@@ -52,6 +54,10 @@ export class ShodownService {
 
   getVictory(): boolean {
     return this.victory;
+  }
+
+  getDefeat(): boolean {
+    return this.defeat;
   }
 
   setUsername(name: string): void {
