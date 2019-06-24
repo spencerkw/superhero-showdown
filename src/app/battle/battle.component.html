@@ -18,7 +18,9 @@
       [@UserAttack]="(currentAttack() && currentAttack().attacker === currentPlayerHero()) ? currentAttackAnimation() : 'none'"></card>
     </div>
     <div class="user-deck">
-      <card *ngFor="let hero of playerHeroes; index as i"
+      <card class="user-hand-card"
+        *ngFor="let hero of playerHeroes; index as i"
+        [ngClass]="{ 'selectable': playerInputNeeded }"
         [hero]="hero"
         [cardSize]="'small'"
         (click)="playerInputNeeded ? choosePlayerCard(i) : null"></card>
