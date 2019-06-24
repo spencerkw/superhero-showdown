@@ -25,6 +25,9 @@ export class ShodownService {
   private attackAnimations: string[] = ["bump", "kick", "punch"];
   private currentAttackAnimation: string = "";
 
+  private hitEffects: string[] = ["pow", "kapow", "boom", "zap"];
+  private currentHitEffect: string = "";
+
   constructor() { }
 
   getUsername(): string {
@@ -65,6 +68,10 @@ export class ShodownService {
 
   getCurrentAttackAnimation(): string {
     return this.currentAttackAnimation;
+  }
+
+  getCurrentHitEffect(): string {
+    return this.currentHitEffect;
   }
 
   setUsername(name: string): void {
@@ -187,6 +194,7 @@ export class ShodownService {
     console.log(`${attacker.hero} dealt ${damage} to ${target.hero}`);
 
     this.pickAttackAnimation();
+    this.pickHitEffect();
     this.currentAttack = {
       attacker: attacker,
       target: target,
@@ -236,7 +244,11 @@ export class ShodownService {
   }
 
   pickAttackAnimation(): void {
-    this.currentAttackAnimation = this.attackAnimations[this.random(0, 2)];
+    this.currentAttackAnimation = this.attackAnimations[this.random(0, this.attackAnimations.length-1)];
+  }
+
+  pickHitEffect(): void {
+    this.currentHitEffect = this.hitEffects[this.random(0, this.hitEffects.length-1)];
   }
 
   random(min: number, max: number): number {
