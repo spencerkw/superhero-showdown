@@ -16,14 +16,13 @@ export class WinLoseComponent implements OnInit {
   ngOnInit() {
     if (isUndefined(this.shodown.getVictory())) {
       this.router.navigate(["home"]);
+      return;
     }
   }
 
   winner() {
     if (this.shodown.getVictory()) {
-      if (true) {
-        return this.shodown.getUsername()
-      };
+      return this.shodown.getUsername();
     } else {
       return "the computer"
     };

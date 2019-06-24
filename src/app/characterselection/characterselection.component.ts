@@ -4,11 +4,37 @@ import { Hero } from '../hero';
 import { ShodownService } from '../shodownservice.service';
 import { Router } from '@angular/router';
 import { AttackType } from '../attack-type';
+import { trigger, transition, style, animate, query } from '@angular/animations';
+import { AnimationDurations } from '../animation-durations';
 
 @Component({
   selector: 'characterselection',
   templateUrl: './characterselection.component.html',
-  styleUrls: ['./characterselection.component.css']
+  styleUrls: ['./characterselection.component.css'],
+  animations: [
+    trigger('HeroSelect', [
+      transition(":enter", [
+        style({ height: 0 }),
+        animate(`${AnimationDurations.heroSelect}ms`)
+      ]),
+      transition(":leave", [
+        animate(`${AnimationDurations.heroSelect}ms`, style({ height: 0 }))
+      ])
+    ]),
+    trigger('HeroSelectChildren', [
+      transition(":enter", [
+        query('p, img', [
+          style({ opacity: 0 }),
+          animate(`${AnimationDurations.heroSelect}ms`)
+        ])
+      ]),
+      transition(":leave", [
+        query('p, img', [
+          animate(`${AnimationDurations.heroSelect}ms`, style({ opacity: 0 }))
+        ])
+      ])
+    ])
+  ]
 })
 export class CharacterSelectionComponent implements OnInit {
   heroes: Hero[];
@@ -24,6 +50,7 @@ export class CharacterSelectionComponent implements OnInit {
     //return to homepage if we haven't gotten here normally
     if (!this.shodown.getUsername()) {
       this.router.navigate(["home"]);
+      return;
     }
 
     this.apiService.getTypes().subscribe((response: AttackType[]) => {
@@ -40,6 +67,9 @@ export class CharacterSelectionComponent implements OnInit {
             max_damage: hero.max_damage,
             type: this.attackTypes.find(type => type.id === hero.attack_type_id)
           };
+          if (hero.short_name) {
+            heroToAdd.short_name = hero.short_name;
+          }
           this.heroes.push(heroToAdd);
         }
       });
@@ -73,6 +103,10 @@ export class CharacterSelectionComponent implements OnInit {
     // console.log(this.shodown.getComputerHeroes());
 
     this.router.navigate(["shodown"]);
+  }
+
+  allHeroesPicked(): boolean {
+    return this.selectedHeroes.length === this.maxHeroCount;
   }
 
   private moveHero(index: number, fromArray: Hero[], toArray: Hero[]) {

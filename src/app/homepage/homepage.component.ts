@@ -16,8 +16,10 @@ export class HomepageComponent implements OnInit {
 
   submitName(name: string): void {
     console.log(name);
-    this.shodown.setUsername(name);
-    this.router.navigate(["hero-select"]);
+    if (name) {
+      this.shodown.setUsername(name);
+      this.router.navigate(["hero-select"]);
+    }
   }
 
 }
