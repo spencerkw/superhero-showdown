@@ -85,6 +85,24 @@ import { AnimationDurations } from '../animation-durations';
           style({ transform: 'translateX(450%) translateY(-125%) rotateY(90deg) rotateZ(90deg)', opacity: 0.5, offset: .75 }),
           style({ transform: 'translateX(500%) translateY(-135%) rotateY(180deg) rotateZ(180deg)', opacity: 0, offset: 1.0 })
         ]))
+      ]),
+      transition('* => bump', [
+        animate(`${AnimationDurations.death}ms ${AnimationDurations.attack * .15}ms`, keyframes([
+          style({ transform: 'translateX(0)    rotateY(0)', offset: 0 }),
+          style({ transform: 'translateX(150%) rotateY(90deg)', offset: 0.25 }),
+          style({ transform: 'translateX(325%) rotateY(180deg)', offset: 0.50 }),
+          style({ transform: 'translateX(450%) rotateY(90deg)', opacity: 0.5, offset: .75 }),
+          style({ transform: 'translateX(500%) rotateY(180deg)', opacity: 0, offset: 1.0 })
+        ]))
+      ]),
+      transition('* => punch', [
+        animate(`${AnimationDurations.death}ms ${AnimationDurations.attack * .15}ms`, keyframes([
+          style({ transform: 'translateX(0)    rotateY(0)', offset: 0 }),
+          style({ transform: 'translateX(150%) translateY(45%)  rotateY(90deg) rotateZ(-90deg)', offset: 0.25 }),
+          style({ transform: 'translateX(325%) translateY(75%) rotateY(180deg) rotateZ(-180deg)', offset: 0.50 }),
+          style({ transform: 'translateX(450%) translateY(125%) rotateY(90deg) rotateZ(-90deg)', opacity: 0.5, offset: .75 }),
+          style({ transform: 'translateX(500%) translateY(135%) rotateY(180deg) rotateZ(-180deg)', opacity: 0, offset: 1.0 })
+        ]))
       ])
     ]),
     trigger('ComputerDeath', [
@@ -95,6 +113,24 @@ import { AnimationDurations } from '../animation-durations';
           style({ transform: 'translateX(-325%) translateY(-75%) rotateY(-180deg) rotateZ(-180deg)', offset: 0.50 }),
           style({ transform: 'translateX(-450%) translateY(-125%) rotateY(-90deg) rotateZ(-90deg)', opacity: 0.5, offset: .75 }),
           style({ transform: 'translateX(-500%) translateY(-135%) rotateY(-180deg) rotateZ(-180deg)', opacity: 0, offset: 1.0 })
+        ]))
+      ]),
+      transition('* => bump', [
+        animate(`${AnimationDurations.death}ms ${AnimationDurations.attack * .15}ms`, keyframes([
+          style({ transform: 'translateX(0)    rotateY(0)', offset: 0 }),
+          style({ transform: 'translateX(-150%) rotateY(-90deg)', offset: 0.25 }),
+          style({ transform: 'translateX(-325%) rotateY(-180deg)', offset: 0.50 }),
+          style({ transform: 'translateX(-450%) rotateY(-90deg)', opacity: 0.5, offset: .75 }),
+          style({ transform: 'translateX(-500%) rotateY(-180deg)', opacity: 0, offset: 1.0 })
+        ]))
+      ]),
+      transition('* => punch', [
+        animate(`${AnimationDurations.death}ms ${AnimationDurations.attack * .15}ms`, keyframes([
+          style({ transform: 'translateX(0)    rotateY(0)', offset: 0 }),
+          style({ transform: 'translateX(-150%) translateY(45%)  rotateY(-90deg) rotateZ(90deg)', offset: 0.25 }),
+          style({ transform: 'translateX(-325%) translateY(75%) rotateY(-180deg) rotateZ(180deg)', offset: 0.50 }),
+          style({ transform: 'translateX(-450%) translateY(125%) rotateY(-90deg) rotateZ(90deg)', opacity: 0.5, offset: .75 }),
+          style({ transform: 'translateX(-500%) translateY(135%) rotateY(-180deg) rotateZ(180deg)', opacity: 0, offset: 1.0 })
         ]))
       ])
     ]),
