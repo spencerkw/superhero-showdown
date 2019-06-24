@@ -123,3 +123,11 @@ button {
 .elemental:hover {
   background-color: #c75724;
 }
+
+form {
+  position: absolute;
+  z-index: 1;
+  background-color: rgb(208, 24, 34, 0.5);
+  top: 290px;
+
+}
