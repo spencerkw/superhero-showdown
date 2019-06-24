@@ -100,11 +100,23 @@ main {
 }
 
 .logo {
-  margin-bottom: 5%;
-  position: relative;
-  font-family: 'Badaboom';
-  font-size: 100px;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+picture {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.superimg {
+  height: 200px;
+  width: 300px;
+  margin: 10px 0;
 }
 
 button {
@@ -155,14 +167,20 @@ button {
     width: 80%;
   }
 
+  .superimg {
+    height: 150px;
+    width: 600px;
+  }
+
 }
 
 @media only screen and (min-width: 1024px) {
-  main {
-    align-items: center;
-  }
-
   .selected-heroes, .hero-list {
     width: 70%;
+  }
+
+  .superimg {
+    height: 175px;
+    width: 700px;
   }
 }

@@ -1,5 +1,18 @@
 <main>
-  <div class="logo">Logo</div>
+  <div class="logo">
+    <!-- <img class="superimg" src="" alt=""> -->
+    <!-- <div class="superimg"></div> -->
+
+      <!-- <source class="superimg" media="(min-width: 768px)" src="../../assets/images/purple-explosion1-banner.png">
+      <img class="superimg" src="../../assets/images/purple-explosion1-300x200.png" alt=""> -->
+
+      <picture>
+        <source media="(min-width: 1024px)" srcset="../../assets/images/purple-explosion1-banner.png">
+        <source media="(min-width: 768px)" srcset="../../assets/images/purple-explosion1-banner.png">
+        <img class="superimg" src="../../assets/images/purple-explosion1-300x200.png" alt="IfItDoesntMatchAnyMedia">
+      </picture>
+    
+  </div>
   <div class="selected-heroes">
     <div class="selected-heroes-nav">
       <p class="label">Your Heroes</p>
