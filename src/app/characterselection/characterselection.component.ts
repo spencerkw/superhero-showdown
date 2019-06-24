@@ -18,9 +18,17 @@ export class CharacterSelectionComponent implements OnInit {
 
   maxHeroCount: number = 5;
 
+  playAudio(){
+    let audio = new Audio();
+    audio.src = "../../assets/sounds/x-mentheme.mp3";
+    audio.load();
+    audio.play();
+  }
+
   constructor(private apiService: ApiService, private shodown: ShodownService, private router: Router) { }
 
   ngOnInit() {
+    this.playAudio();
     //return to homepage if we haven't gotten here normally
     if (!this.shodown.getUsername()) {
       this.router.navigate(["home"]);
@@ -87,5 +95,7 @@ export class CharacterSelectionComponent implements OnInit {
     toArray.push(fromArray[index]);
     fromArray.splice(index, 1);
   }
+
+  
 
 }

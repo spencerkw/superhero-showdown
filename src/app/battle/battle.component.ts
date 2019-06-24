@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { Hero } from "../hero";
 import { ShodownService } from "../shodownservice.service";
 import { BattleStates } from "../battle-states.enum";
@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { trigger, state, style, animate, transition, keyframes } from '@angular/animations';
 import { Attack } from '../attack';
 import { AnimationDurations } from '../animation-durations';
+import { HealthComponent } from '../health/health.component';
 
 @Component({
   selector: "battle",
@@ -107,6 +108,8 @@ export class BattleComponent implements OnInit {
 
   playerInputNeeded: boolean = false;
   lastActionDelay: number = 0;
+
+  @Input() health: HealthComponent;
 
   constructor(private shodown: ShodownService, private router: Router) { }
 
