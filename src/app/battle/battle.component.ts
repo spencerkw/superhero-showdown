@@ -108,9 +108,16 @@ export class BattleComponent implements OnInit {
   playerInputNeeded: boolean = false;
   lastActionDelay: number = 0;
 
+  images: any = ["gotham", "metropolis",
+    "futuristic", "wakanda", "atlantis", "fortress", "triskelion", "tower", "asgard"
+  ];
+
+  currentBackground: string = "";
+
   constructor(private shodown: ShodownService, private router: Router) { }
 
   ngOnInit() {
+    this.currentBackground = this.randomBackground();
     this.playerHeroes = this.shodown.getPlayerHeroes();
     this.computerHeroes = this.shodown.getComputerHeroes();
 
@@ -220,4 +227,10 @@ export class BattleComponent implements OnInit {
   currentAttackAnimation(): string {
     return this.shodown.getCurrentAttackAnimation();
   }
+
+  randomBackground() {
+    // return "Hello";
+     return this.images[Math.floor(Math.random() * this.images.length)];
+  }
+
 }
