@@ -1,29 +1,20 @@
 <main>
   <div class="logo">
-    <!-- <img class="superimg" src="" alt=""> -->
-    <!-- <div class="superimg"></div> -->
-
-      <!-- <source class="superimg" media="(min-width: 768px)" src="../../assets/images/purple-explosion1-banner.png">
-      <img class="superimg" src="../../assets/images/purple-explosion1-300x200.png" alt=""> -->
-
-      <picture>
-        <source media="(min-width: 1024px)" srcset="../../assets/images/purple-explosion1-banner.png">
-        <source media="(min-width: 768px)" srcset="../../assets/images/purple-explosion1-banner.png">
-        <img class="superimg" src="../../assets/images/purple-explosion1-300x200.png" alt="IfItDoesntMatchAnyMedia">
-      </picture>
-    
+    <picture>
+      <source media="(min-width: 1024px)" srcset="../../assets/images/purple-explosion1-banner.png">
+      <source media="(min-width: 768px)" srcset="../../assets/images/purple-explosion1-banner.png">
+      <img class="superimg" src="../../assets/images/purple-explosion1-300x200.png" alt="IfItDoesntMatchAnyMedia">
+    </picture>
   </div>
   <div class="selected-heroes">
     <div class="selected-heroes-nav">
-      <p class="label">Your Heroes</p>
+      <p class="label-heroes">Your Heroes</p>
       <img class="attack-icon" src="../../assets/images/icon_sword.png" alt="">
       <img class="life-icon" src="../../assets/images/Icon_life.png" alt="">
       <img class="element-icon" src="../../assets/images/star1.png" alt="">
     </div>
-    <div class="hero"
-    [ngClass]="hero.type.type"
-    *ngFor="let hero of selectedHeroes; index as i"
-    (click)="deselectHero(i)">
+    <div class="hero" [ngClass]="hero.type.type" *ngFor="let hero of selectedHeroes; index as i"
+      (click)="deselectHero(i)">
       <p class="selected">{{ hero.hero }}</p>
       <p class="attack-range">{{hero.min_damage}}-{{hero.max_damage}}</p>
       <p class="health">{{hero.health}}</p>
@@ -32,16 +23,13 @@
   </div>
   <div class="hero-list">
     <div class="hero-list-nav">
-      <p class="label">Hero Roster</p>
+      <p class="label-roster">Hero Roster</p>
       <!-- <img class="attack-icon" src="../../assets/images/icon_sword.png" alt="">
       <img class="life-icon" src="../../assets/images/Icon_life.png" alt="">
       <img class="element-icon" src="../../assets/images/Icon_mental.png" alt=""> -->
     </div>
-    <div class="hero"
-    [ngClass]="hero.type.type"
-    [ngStyle]="{'cursor': allHeroesPicked() ? 'not-allowed' : 'pointer'}"
-    *ngFor="let hero of heroes; index as i"
-    (click)="selectHero(i)">
+    <div class="hero" [ngClass]="hero.type.type" [ngStyle]="{'cursor': allHeroesPicked() ? 'not-allowed' : 'pointer'}"
+      *ngFor="let hero of heroes; index as i" (click)="selectHero(i)">
       <p class="hero-name">{{ hero.hero }}</p>
       <p class="attack-range">{{hero.min_damage}}-{{hero.max_damage}}</p>
       <p class="health">{{hero.health}}</p>
