@@ -1,7 +1,9 @@
 <main>
 <div class="ending">
-<h2>Victory</h2>
-<p *ngIf="show; else !show">{{ winner() }}, You are victorious </p>
+<h2 *ngIf="show">Victory</h2>
+<p *ngIf="show">{{ winner() }}, You are victorious </p>
+
+<!-- <img [src]="getImage(url(../../assets/images/heaven.jpg))"/> -->
 <button (click)= "playAgain()">Play Again </button>
 </div>
 </main>

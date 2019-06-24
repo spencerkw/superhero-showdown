@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ShodownService } from "../shodownservice.service";
 import { isUndefined } from 'util';
 import { Router } from '@angular/router';
+import { HttpBackend } from '@angular/common/http';
 
 
 @Component({
@@ -11,7 +12,9 @@ import { Router } from '@angular/router';
 })
 export class WinLoseComponent implements OnInit {
   show: boolean = true
-  
+  heavenImage: string = 'url(../../assets/images/heaven.jpg)';
+  hellImage: string = 'url(../../assets/images/helldefeat.jpg)';
+
   constructor(private shodown: ShodownService, private router: Router) { }
 
   ngOnInit() {
@@ -20,23 +23,27 @@ export class WinLoseComponent implements OnInit {
     }
   }
 
+  getImage() {
+    if (this.shodown.getVictory) {
+      return this.heavenImage;
+
+    } else {return this.hellImage}
+  }
   winner() {
     if (this.shodown.getVictory()) {
-      if (true) {
-        return this.shodown.getUsername()
-      };
-    // } else {
-    //   return "the computer"
+      return this.shodown.getUsername()
+    } else {
+      return "the computer"
     };
   }
 
-  loser() {
-    if (this.shodown.getDefeat()) {
-      if (true) {
-        return "the computer"
-      };
-    }
-  }
+  // loser() {
+  //   if (this.shodown.getDefeat()) {
+  //     if (true) {
+  //       return "the computer"
+  //     };
+  //   }
+  // }
   playAgain(): void {
     this.router.navigate(["home"]);
   }
