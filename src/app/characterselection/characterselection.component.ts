@@ -37,6 +37,7 @@ export class CharacterSelectionComponent implements OnInit {
     //return to homepage if we haven't gotten here normally
     if (!this.shodown.getUsername()) {
       this.router.navigate(["home"]);
+      return;
     }
 
     this.apiService.getTypes().subscribe((response: AttackType[]) => {
@@ -53,6 +54,9 @@ export class CharacterSelectionComponent implements OnInit {
             max_damage: hero.max_damage,
             type: this.attackTypes.find(type => type.id === hero.attack_type_id)
           };
+          if (hero.short_name) {
+            heroToAdd.short_name = hero.short_name;
+          }
           this.heroes.push(heroToAdd);
         }
       });
@@ -86,6 +90,10 @@ export class CharacterSelectionComponent implements OnInit {
     // console.log(this.shodown.getComputerHeroes());
 
     this.router.navigate(["shodown"]);
+  }
+
+  allHeroesPicked(): boolean {
+    return this.selectedHeroes.length === this.maxHeroCount;
   }
 
   private moveHero(index: number, fromArray: Hero[], toArray: Hero[]) {

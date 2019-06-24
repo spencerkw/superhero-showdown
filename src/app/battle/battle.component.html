@@ -9,15 +9,20 @@
       <card class="computer-card" *ngIf="currentComputerHero()" [hero]="currentComputerHero()" [cardSize]="'large'" 
       [@PlayComputerCard] 
       [@ComputerDeath]
-      [@ComputerAttack]="(currentAttack() && currentAttack().attacker === currentComputerHero()) ? 'attacking' : null">
+      [@ComputerAttack]="(currentAttack() && currentAttack().attacker === currentComputerHero()) ? currentAttackAnimation() : 'none'">
       </card>
+      <div class="separator"></div>
       <card class="user-card" *ngIf="currentPlayerHero()" [hero]="currentPlayerHero()" [cardSize]="'large'" 
       [@PlayUserCard]
       [@UserDeath]
-      [@UserAttack]="(currentAttack() && currentAttack().attacker === currentPlayerHero()) ? 'attacking' : null"></card>
+      [@UserAttack]="(currentAttack() && currentAttack().attacker === currentPlayerHero()) ? currentAttackAnimation() : 'none'"></card>
+      <img class="pow" *ngIf="currentHitEffect()" src="../../assets/images/{{currentHitEffect()}}-640.png" alt="Pow" [@Pow]="currentAttackTarget()">
+      <div class="damage-number" *ngIf="currentAttack()" [@DamageDealt]="currentAttackTarget()">-{{currentAttack().damage}}</div>
     </div>
     <div class="user-deck">
-      <card *ngFor="let hero of playerHeroes; index as i"
+      <card class="user-hand-card"
+        *ngFor="let hero of playerHeroes; index as i"
+        [ngClass]="{ 'selectable': playerInputNeeded }"
         [hero]="hero"
         [cardSize]="'small'"
         (click)="playerInputNeeded ? choosePlayerCard(i) : null"></card>

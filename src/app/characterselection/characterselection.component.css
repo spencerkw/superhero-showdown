@@ -1,9 +1,19 @@
+main {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+}
+
 .selected-heroes, .hero-list {
   border: 1px solid black;
   /* border-bottom: none; */
   display: flex;
   flex-direction: column;
   margin: 10px 0;
+}
+
+.hero-list {
+  margin-bottom: 62px;
 }
 
 .selected-heroes-nav {
@@ -31,6 +41,9 @@
   display: flex;
   padding: 10px;
   border-bottom: 1px solid black;
+
+  transition: background-color 0.5s, color 0.5s;
+  cursor: pointer;
 }
 
 .hero > * {
@@ -75,16 +88,47 @@
 .logo {
   margin-bottom: 5%;
   position: relative;
-  left: 45%;
+  /* left: 45%; */
   font-family: 'Badaboom';
   font-size: 100px;
+  text-align: center;
 }
 
 button {
-  margin: 10px 0;
+  /* margin: 10px 0; */
+  font-size: 20px;
   padding: 5px;
   border: 1px solid black;
   background-color: red;
   color: aliceblue;
   font-family: inherit;
+  cursor: pointer;
+  position: fixed;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.strength:hover, .agility:hover, .mental:hover, .mechanical:hover, .elemental:hover {
+  color: white;
+}
+
+.strength:hover {
+  background-color: #d01822;
+}
+
+.agility:hover {
+  background-color: #3d7662;
+}
+
+.mental:hover {
+  background-color: #fba1a3;
+}
+
+.mechanical:hover {
+  background-color: #6d6966;
+}
+
+.elemental:hover {
+  background-color: #c75724;
 }
