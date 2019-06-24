@@ -12,6 +12,10 @@ main {
   margin: 10px 0;
 }
 
+.hero-list {
+  margin-bottom: 62px;
+}
+
 .selected-heroes-nav {
   display: flex;
 }
@@ -91,7 +95,8 @@ main {
 }
 
 button {
-  margin: 10px 0;
+  /* margin: 10px 0; */
+  font-size: 20px;
   padding: 5px;
   border: 1px solid black;
   background-color: red;
@@ -99,8 +104,9 @@ button {
   font-family: inherit;
   cursor: pointer;
   position: fixed;
-  top: 90%;
+  bottom: 15px;
   left: 50%;
+  transform: translateX(-50%);
 }
 
 .strength:hover, .agility:hover, .mental:hover, .mechanical:hover, .elemental:hover {
