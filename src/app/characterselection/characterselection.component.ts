@@ -14,11 +14,24 @@ import { AnimationDurations } from '../animation-durations';
   animations: [
     trigger('HeroSelect', [
       transition(":enter", [
-        style({height: 0}),
+        style({ height: 0 }),
         animate(`${AnimationDurations.heroSelect}ms`)
       ]),
       transition(":leave", [
-        animate(`${AnimationDurations.heroSelect}ms`, style({height: 0}))
+        animate(`${AnimationDurations.heroSelect}ms`, style({ height: 0 }))
+      ])
+    ]),
+    trigger('HeroSelectChildren', [
+      transition(":enter", [
+        query('p, img', [
+          style({ opacity: 0 }),
+          animate(`${AnimationDurations.heroSelect}ms`)
+        ])
+      ]),
+      transition(":leave", [
+        query('p, img', [
+          animate(`${AnimationDurations.heroSelect}ms`, style({ opacity: 0 }))
+        ])
       ])
     ])
   ]
