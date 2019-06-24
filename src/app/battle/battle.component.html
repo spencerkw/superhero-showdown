@@ -8,13 +8,13 @@
     <div class="battle-area">
       <card class="computer-card" *ngIf="currentComputerHero()" [hero]="currentComputerHero()" [cardSize]="'large'" 
       [@PlayComputerCard] 
-      [@ComputerDeath]
+      [@ComputerDeath]="currentComputerHero().currentHealth <= 0 ? 'kick' : null"
       [@ComputerAttack]="(currentAttack() && currentAttack().attacker === currentComputerHero()) ? currentAttackAnimation() : 'none'">
       </card>
       <div class="separator"></div>
       <card class="user-card" *ngIf="currentPlayerHero()" [hero]="currentPlayerHero()" [cardSize]="'large'" 
       [@PlayUserCard]
-      [@UserDeath]
+      [@UserDeath]="currentPlayerHero().currentHealth <= 0 ? 'kick' : null"
       [@UserAttack]="(currentAttack() && currentAttack().attacker === currentPlayerHero()) ? currentAttackAnimation() : 'none'"></card>
       <img class="pow" *ngIf="currentHitEffect()" src="../../assets/images/{{currentHitEffect()}}-640.png" alt="Pow" [@Pow]="currentAttackTarget()">
       <div class="damage-number" *ngIf="currentAttack()" [@DamageDealt]="currentAttackTarget()">-{{currentAttack().damage}}</div>

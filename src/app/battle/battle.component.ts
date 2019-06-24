@@ -77,7 +77,7 @@ import { AnimationDurations } from '../animation-durations';
     ]
     ),
     trigger('UserDeath', [
-      transition(':leave', [
+      transition('* => kick', [
         animate(`${AnimationDurations.death}ms ${AnimationDurations.attack * .15}ms`, keyframes([
           style({ transform: 'translateX(0)    rotateY(0)', offset: 0 }),
           style({ transform: 'translateX(150%) translateY(-45%)  rotateY(90deg) rotateZ(90deg)', offset: 0.25 }),
@@ -88,7 +88,7 @@ import { AnimationDurations } from '../animation-durations';
       ])
     ]),
     trigger('ComputerDeath', [
-      transition(':leave', [
+      transition('* => kick', [
         animate(`${AnimationDurations.death}ms ${AnimationDurations.attack * .15}ms`, keyframes([
           style({ transform: 'translateX(0)    rotateY(0)', offset: 0 }),
           style({ transform: 'translateX(-150%) translateY(-45%)  rotateY(-90deg) rotateZ(-90deg)', offset: 0.25 }),
@@ -175,7 +175,7 @@ export class BattleComponent implements OnInit {
             this.playerInputNeeded = true;
           }
           this.lastActionDelay = AnimationDurations.playCard;
-          delay -= 750; //reduces the lag time for the player to be able to click
+          delay -= 1000; //reduces the lag time for the player to be able to click
           break;
         case BattleStates.CPU_CHOOSE:
           functionToRun = this.shodown.pickComputerHero;
@@ -194,15 +194,17 @@ export class BattleComponent implements OnInit {
 
       //run the rest of the steps on a delay
       setTimeout((): void => {
+        if (this.shodown.checkWinner()) {
+          this.gameOver();
+          // setTimeout(this.gameOver, delay);
+          return;
+        }
         functionToRun();
         this.shodown.updateBattleState();
         if (this.shodown.removeDead()) {
           this.lastActionDelay += AnimationDurations.death;
         }
 
-        if (this.shodown.checkWinner()) {
-          setTimeout(this.gameOver, delay);
-        }
         if (!this.playerInputNeeded) {
           this.battleLoop();
         }
