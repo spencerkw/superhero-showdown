@@ -1,15 +1,10 @@
-<div class="health-bar" data-total="1000" data-value="1000"> 
-  <div class="bar">
-  	  <div class="hit"></div>
+<div class="health-bar"> 
+  <p>{{name}} Health:</p>
+  <div class="heart-container">
+    <img class="heart" src="../../assets/images/Icon_life.png" alt="heart" [@LostHealth]="heartIsShowing(1)">
+    <img class="heart" src="../../assets/images/Icon_life.png" alt="heart" [@LostHealth]="heartIsShowing(2)">
+    <img class="heart" src="../../assets/images/Icon_life.png" alt="heart" [@LostHealth]="heartIsShowing(3)">
+    <img class="heart" src="../../assets/images/Icon_life.png" alt="heart" [@LostHealth]="heartIsShowing(4)">
+    <img class="heart" src="../../assets/images/Icon_life.png" alt="heart" [@LostHealth]="heartIsShowing(5)">
   </div>
 </div>
-
-<br />
-
-<button class="damage random">hit random</button>
-<button class="reset" >reset</button>
-
-<!-- <div class="log">
-  <div>What's going on...</div>
-</div> -->
-

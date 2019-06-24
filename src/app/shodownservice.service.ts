@@ -15,6 +15,8 @@ export class ShodownService {
   private currentPlayerHero: Hero;
   private currentComputerHero: Hero;
 
+  private computerHealth: number = 5;
+
   private isPlayerTurn: boolean;
 
   private state: number;
@@ -48,6 +50,10 @@ export class ShodownService {
 
   getCurrentComputerHero(): Hero {
     return this.currentComputerHero;
+  }
+
+  getComputerHealth(): number {
+    return this.computerHealth;
   }
 
   getIsPlayerTurn(): boolean {
@@ -221,6 +227,7 @@ export class ShodownService {
   removeDead(): boolean {
     if (this.currentComputerHero && this.currentComputerHero.currentHealth <= 0) {
       this.currentComputerHero = null;
+      this.reduceComputerHealth();
       return true;
     } else if (this.currentPlayerHero && this.currentPlayerHero.currentHealth <= 0) {
       this.currentPlayerHero = null;
@@ -249,6 +256,10 @@ export class ShodownService {
 
   pickHitEffect(): void {
     this.currentHitEffect = this.hitEffects[this.random(0, this.hitEffects.length-1)];
+  }
+
+  reduceComputerHealth(): void {
+    this.computerHealth -= 1;
   }
 
   random(min: number, max: number): number {
