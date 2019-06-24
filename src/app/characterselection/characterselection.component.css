@@ -1,7 +1,14 @@
 main {
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   /* align-items: center; */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../assets/images/marvel-vs-dc-wallpaper.jpg");
+  background-repeat: no-repeat, no-repeat;
+  background-size: cover, cover;
+  background-attachment: fixed, fixed;
+  background-position: center, center; 
 }
 
 .selected-heroes, .hero-list {
@@ -10,6 +17,7 @@ main {
   display: flex;
   flex-direction: column;
   margin: 10px 0;
+  background-color: rgba(255, 255, 255, 0.7) 
 }
 
 .hero-list {
@@ -18,6 +26,7 @@ main {
 
 .selected-heroes-nav {
   display: flex;
+  border-bottom: 1px solid black;
 }
 
 .selected-heroes-nav > * {
@@ -26,6 +35,7 @@ main {
 
 .hero-list-nav {
   display: flex;
+  border-bottom: 1px solid black;
 }
 
 .hero-list-nav > * {
