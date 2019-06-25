@@ -3,9 +3,9 @@
   <div class="selected-heroes">
     <div class="selected-heroes-nav">
       <p class="label">Your Heroes</p>
-      <img class="attack-icon" src="../../assets/images/icon_sword.png" alt="">
-      <img class="life-icon" src="../../assets/images/Icon_life.png" alt="">
-      <img class="element-icon" src="../../assets/images/star1.png" alt="">
+      <img class="attack-icon" src="../../assets/images/icons/Icon_sword.png" alt="">
+      <img class="life-icon" src="../../assets/images/icons/Icon_life.png" alt="">
+      <img class="element-icon" src="../../assets/images/icons/star1.png" alt="">
     </div>
     <div class="hero"
     [ngClass]="hero.type.type"
@@ -16,7 +16,7 @@
       <p class="selected">{{ hero.hero }}</p>
       <p class="attack-range">{{hero.min_damage}}-{{hero.max_damage}}</p>
       <p class="health">{{hero.health}}</p>
-      <img class="selected-type" src="../../assets/images/Icon_{{ hero.type.type }}.png" alt="">
+      <img class="selected-type" src="../../assets/images/icons/Icon_{{ hero.type.type }}.png" alt="">
     </div>
   </div>
   <div class="hero-list">
@@ -33,7 +33,7 @@
       <p class="hero-name">{{ hero.hero }}</p>
       <p class="attack-range">{{hero.min_damage}}-{{hero.max_damage}}</p>
       <p class="health">{{hero.health}}</p>
-      <img class="hero-type" src="../../assets/images/Icon_{{ hero.type.type }}.png" alt="">
+      <img class="hero-type" src="../../assets/images/icons/Icon_{{ hero.type.type }}.png" alt="">
     </div>
   </div>
   <button *ngIf="allHeroesPicked()" (click)="submitSelection()">Fight</button>
