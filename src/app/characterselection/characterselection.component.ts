@@ -111,7 +111,14 @@ export class CharacterSelectionComponent implements OnInit {
     this.shodown.setPlayerHeroes(this.selectedHeroes);
 
     let computerHeroes: Hero[] = [];
-    for (let i = 0; i < this.maxHeroCount; i++) {
+
+    if (this.selectedHeroes.includes(AngularMan)) {
+      computerHeroes.push(RitualMan);
+    } else if (this.selectedHeroes.includes(RitualMan)) {
+      computerHeroes.push(AngularMan);
+    }
+
+    for (let i = computerHeroes.length; i < this.maxHeroCount; i++) {
       this.moveHero(this.shodown.random(0, this.heroes.length - 1), this.heroes, computerHeroes);
     }
     this.shodown.setComputerHeroes(computerHeroes);
