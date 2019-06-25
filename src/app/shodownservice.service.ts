@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Hero } from './hero';
 import { BattleStates } from './battle-states.enum';
 import { Attack } from './attack';
+import { AnimationDurations } from './animation-durations';
 
 @Injectable({
   providedIn: 'root'
@@ -226,11 +227,15 @@ export class ShodownService {
 
   removeDead(): boolean {
     if (this.currentComputerHero && this.currentComputerHero.currentHealth <= 0) {
-      this.currentComputerHero = null;
       this.reduceComputerHealth();
+      setTimeout(() => {
+        this.currentComputerHero = null;
+      }, AnimationDurations.death);
       return true;
     } else if (this.currentPlayerHero && this.currentPlayerHero.currentHealth <= 0) {
-      this.currentPlayerHero = null;
+      setTimeout(() => {
+        this.currentPlayerHero = null;
+      }, AnimationDurations.death);
       return true;
     }
 
