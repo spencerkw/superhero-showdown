@@ -173,6 +173,8 @@ export class BattleComponent implements OnInit {
   playerInputNeeded: boolean = false;
   lastActionDelay: number = 0;
 
+  
+
   @Input() health: HealthComponent;
 
   constructor(private shodown: ShodownService, private router: Router) { }
@@ -290,11 +292,11 @@ export class BattleComponent implements OnInit {
   }
 
   currentAttack(): Attack {
-    this.playAudio();
     return this.shodown.getCurrentAttack();
   }
 
   currentAttackAnimation(): string {
+    this.playAudio();
     return this.shodown.getCurrentAttackAnimation();
   }
 

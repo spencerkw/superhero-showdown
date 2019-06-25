@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Hero } from '../hero';
 import { ShodownService } from '../shodownservice.service';
@@ -36,23 +36,32 @@ import { AnimationDurations } from '../animation-durations';
     ])
   ]
 })
-export class CharacterSelectionComponent implements OnInit {
+export class CharacterSelectionComponent implements OnInit, OnDestroy {
   heroes: Hero[];
   selectedHeroes: Hero[] = [];
 
   attackTypes: AttackType[];
 
   maxHeroCount: number = 5;
+  audio = new Audio();
 
-  playAudio(){
-    let audio = new Audio();
-    audio.src = "../../assets/sounds/x-mentheme.mp3";
-    audio.load();
-    audio.play();
-    // audio.pause();
+  playAudio(): any {
+    this.audio.src = "../../assets/sounds/x-mentheme.mp3";
+    this.audio.load();
+    this.audio.play();
+  }
+
+  pauseAudio() {
+    this.audio.pause();
   }
 
   constructor(private apiService: ApiService, private shodown: ShodownService, private router: Router) { }
+
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    this.pauseAudio();
+  }
 
   ngOnInit() {
     this.playAudio();
@@ -107,10 +116,6 @@ export class CharacterSelectionComponent implements OnInit {
       this.moveHero(this.shodown.random(0, this.heroes.length - 1), this.heroes, computerHeroes);
     }
     this.shodown.setComputerHeroes(computerHeroes);
-
-    // console.log(this.shodown.getPlayerHeroes());
-    // console.log(this.shodown.getComputerHeroes());
-
     this.router.navigate(["shodown"]);
   }
 
