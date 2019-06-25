@@ -173,7 +173,7 @@ export class BattleComponent implements OnInit {
   lastActionDelay: number = 0;
 
   images: any = ["gotham", "metropolis",
-    "futuristic", "wakanda", "atlantis", "fortress", "triskelion", "tower", "asgard"
+    "futuristic", "atlantis", "fortress", "triskelion", "tower", "asgard"
   ];
 
   currentBackground: string = "";
@@ -318,7 +318,7 @@ export class BattleComponent implements OnInit {
 
   randomBackground() {
     // return "Hello";
-   return this.images[Math.floor(Math.random() * this.images.length)];
+   return this.images[this.shodown.random(0, this.images.length-1)];
   }
 
 }
