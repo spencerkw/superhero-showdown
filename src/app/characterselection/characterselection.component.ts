@@ -18,6 +18,8 @@ export class CharacterSelectionComponent implements OnInit {
 
   maxHeroCount: number = 5;
 
+  shouldBeShown: boolean = true;
+
   constructor(private apiService: ApiService, private shodown: ShodownService, private router: Router) { }
 
   ngOnInit() {
@@ -86,6 +88,10 @@ export class CharacterSelectionComponent implements OnInit {
   private moveHero(index: number, fromArray: Hero[], toArray: Hero[]) {
     toArray.push(fromArray[index]);
     fromArray.splice(index, 1);
+  }
+
+  toggleForm(): void {
+    this.shouldBeShown = !this.shouldBeShown;
   }
 
 }

@@ -132,6 +132,13 @@ picture {
   margin: 9px 0 7px 0;
 }
 
+form {
+  position: absolute;
+  z-index: 1;
+  background-color: rgb(208, 24, 34, 0.5);
+  top: 290px;
+}
+
 button {
   /* margin: 10px 0; */
   font-size: 20px;
@@ -141,6 +148,9 @@ button {
   color: aliceblue;
   font-family: inherit;
   cursor: pointer;
+}
+
+.fight-btn {
   position: fixed;
   bottom: 15px;
   left: 50%;
