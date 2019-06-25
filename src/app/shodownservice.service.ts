@@ -9,21 +9,21 @@ import { AnimationDurations } from './animation-durations';
 })
 export class ShodownService {
 
-  private username: string;
-  private playerHeroes: Hero[];
-  private computerHeroes: Hero[];
+  private username: string = null;
+  private playerHeroes: Hero[] = null;
+  private computerHeroes: Hero[] = null;
 
-  private currentPlayerHero: Hero;
-  private currentComputerHero: Hero;
+  private currentPlayerHero: Hero = null;
+  private currentComputerHero: Hero = null;
 
   private computerHealth: number = 5;
 
-  private isPlayerTurn: boolean;
+  private isPlayerTurn: boolean = null;
 
-  private state: number;
+  private state: number = null;
 
-  private victory: boolean;
-  private currentAttack: Attack;
+  private victory: boolean = null;
+  private currentAttack: Attack = null;
 
   private attackAnimations: string[] = ["bump", "kick", "punch"];
   private currentAttackAnimation: string = "";
@@ -253,6 +253,29 @@ export class ShodownService {
     }
 
     return false;
+  }
+
+  clearData(): void {
+    this.username = null;
+    this.playerHeroes = null;
+    this.computerHeroes = null;
+
+    this.currentPlayerHero = null;
+    this.currentComputerHero = null;
+
+    this.computerHealth = 5;
+
+    this.isPlayerTurn = null;
+
+    this.state = null;
+
+    this.victory = null;
+
+    this.currentAttack = null;
+
+    this.currentAttackAnimation = "";
+
+    this.currentHitEffect = "";
   }
 
   pickAttackAnimation(): void {

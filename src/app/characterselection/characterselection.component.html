@@ -1,11 +1,36 @@
 <main>
-  <div class="logo">Logo</div>
+  <div class="logo">
+    <picture>
+      <source media="(min-width: 1024px)" srcset="../../assets/images/logo-stretch-explosion.png">
+      <source media="(min-width: 768px)" srcset="../../assets/images/logo-stretch-explosion.png">
+      <img class="superimg" src="../../assets/images/logos/logo-stack-explosion.png" alt="Logo">
+    </picture>
+  </div>
+  <div class="buttons">
+  <button class="info-btn" (click)="toggleForm()">Info</button>
+  <button class="fight-btn" *ngIf="allHeroesPicked()" (click)="submitSelection()">Fight</button>
+  </div>
+  <form (click)="toggleForm()" *ngIf="infoFormShowing">
+    <p class="logic-story">While the heroes are very strong, they do experience weaknesses based on attack-type.
+      When heroes are up against their weakness, the attack's damage is multipled by 1.5. Below is a breakdown of the
+      of attack-type weakness.</p>
+    <div class="form-section">
+      <ul>
+        <li>Strength is weak against Agility</li>
+        <li>Agility is weak against Mental</li>
+        <li>Mental is weak against Mechanical</li>
+        <li>Mechanical is weak against Elemental</li>
+        <li>Elemental is weak against Strength</li>
+      </ul>
+      <img class="logic-img" src="../../assets/images/logic/circle3.png" alt="">
+    </div>
+  </form>
   <div class="selected-heroes">
     <div class="selected-heroes-nav">
-      <p class="label">Your Heroes</p>
-      <img class="attack-icon" src="../../assets/images/icon_sword.png" alt="">
-      <img class="life-icon" src="../../assets/images/Icon_life.png" alt="">
-      <img class="element-icon" src="../../assets/images/star1.png" alt="">
+      <p class="label-heroes">Your Heroes ({{selectedHeroes.length}} of {{maxHeroCount}})</p>
+      <img class="attack-icon" src="../../assets/images/icons/Icon_sword.png" alt="">
+      <img class="life-icon" src="../../assets/images/icons/Icon_life.png" alt="">
+      <img class="element-icon" src="../../assets/images/icons/star1.png" alt="">
     </div>
     <div class="hero"
     [ngClass]="hero.type.type"
@@ -16,12 +41,15 @@
       <p class="selected">{{ hero.hero }}</p>
       <p class="attack-range">{{hero.min_damage}}-{{hero.max_damage}}</p>
       <p class="health">{{hero.health}}</p>
-      <img class="selected-type" src="../../assets/images/Icon_{{ hero.type.type }}.png" alt="">
+      <img class="selected-type" src="../../assets/images/icons/Icon_{{ hero.type.type }}.png" alt="">
     </div>
   </div>
   <div class="hero-list">
     <div class="hero-list-nav">
-      <p class="label">Hero Roster</p>
+      <p class="label-roster">Hero Roster</p>
+      <!-- <img class="attack-icon" src="../../assets/images/icon_sword.png" alt="">
+      <img class="life-icon" src="../../assets/images/Icon_life.png" alt="">
+      <img class="element-icon" src="../../assets/images/Icon_mental.png" alt=""> -->
     </div>
     <div class="hero"
     [ngClass]="hero.type.type"
@@ -33,8 +61,8 @@
       <p class="hero-name">{{ hero.hero }}</p>
       <p class="attack-range">{{hero.min_damage}}-{{hero.max_damage}}</p>
       <p class="health">{{hero.health}}</p>
-      <img class="hero-type" src="../../assets/images/Icon_{{ hero.type.type }}.png" alt="">
+      <img class="hero-type" src="../../assets/images/icons/Icon_{{ hero.type.type }}.png" alt="">
     </div>
   </div>
-  <button *ngIf="allHeroesPicked()" (click)="submitSelection()">Fight</button>
+  
 </main>
