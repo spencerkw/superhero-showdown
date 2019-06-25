@@ -211,7 +211,9 @@ export class BattleComponent implements OnInit {
             this.playerInputNeeded = true;
           }
           this.lastActionDelay = AnimationDurations.playCard;
-          delay -= 1000; //reduces the lag time for the player to be able to click
+          if (this.playerHeroes.length > 0) {
+            delay -= 1000; //reduces the lag time for the player to be able to click
+          }
           break;
         case BattleStates.CPU_CHOOSE:
           functionToRun = this.shodown.pickComputerHero;
