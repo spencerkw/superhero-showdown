@@ -11,7 +11,8 @@ import { AnimationDurations } from '../animation-durations';
       state('false', style({ opacity: 0 })),
       transition("* => false", [
         animate(`${AnimationDurations.healthLost}ms`, keyframes([
-          style({ transform: 'rotate(360deg) scale(0)' })
+          style({ transform: 'rotate(90deg) scale(2.5)', offset: 0.25 }),
+          style({ transform: 'rotate(360deg) scale(0)', offset: 1 })
         ]))
       ])
     ])
