@@ -148,6 +148,7 @@ height: 200px;
 
 .selectable {
   cursor: pointer;
+  box-shadow: 0 0 5px 3px gold;
 }
 
 .selectable:hover {
