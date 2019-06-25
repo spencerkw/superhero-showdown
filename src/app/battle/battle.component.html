@@ -5,16 +5,17 @@
       <!-- <div class="computer-image"></div> -->
       <p>CPU Deck</p>
     </div>
+    <input type="range" class="slider" min="0.5" max="2" step="0.25" value="1" (change)="updateMultiplier($event)">
     <health class="health-bar" [name]="'CPU'" [health]="computerHealth()"></health>
     <div class="battle-area">
       <card class="computer-card" *ngIf="currentComputerHero()" [hero]="currentComputerHero()" [cardSize]="'large'" 
-      [@PlayComputerCard] 
+      [@PlayComputerCard]="computerCardInPlay()" 
       [@ComputerDeath]="currentComputerHero().currentHealth <= 0 ? currentAttackAnimation() : null"
       [@ComputerAttack]="(currentAttack() && currentAttack().attacker === currentComputerHero()) ? currentAttackAnimation() : 'none'">
       </card>
       <div class="separator"></div>
       <card class="user-card" *ngIf="currentPlayerHero()" [hero]="currentPlayerHero()" [cardSize]="'large'" 
-      [@PlayUserCard]
+      [@PlayUserCard]="playerCardInPlay()"
       [@UserDeath]="currentPlayerHero().currentHealth <= 0 ? currentAttackAnimation() : null"
       [@UserAttack]="(currentAttack() && currentAttack().attacker === currentPlayerHero()) ? currentAttackAnimation() : 'none'"></card>
       <img class="pow" *ngIf="currentHitEffect()" src="../../assets/images/hit-effects/{{currentHitEffect()}}-640.png" alt="Pow" [@Pow]="currentAttackTarget()">

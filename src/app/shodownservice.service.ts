@@ -226,17 +226,17 @@ export class ShodownService {
     this.nextTurn();
   }
 
-  removeDead(): boolean {
+  removeDead(multiplier: number): boolean {
     if (this.currentComputerHero && this.currentComputerHero.currentHealth <= 0) {
       this.reduceComputerHealth();
       setTimeout(() => {
         this.currentComputerHero = null;
-      }, AnimationDurations.death);
+      }, AnimationDurations.death / multiplier);
       return true;
     } else if (this.currentPlayerHero && this.currentPlayerHero.currentHealth <= 0) {
       setTimeout(() => {
         this.currentPlayerHero = null;
-      }, AnimationDurations.death);
+      }, AnimationDurations.death / multiplier);
       return true;
     }
 

@@ -7,6 +7,8 @@ import { trigger, state, style, animate, transition, keyframes } from '@angular/
 import { Attack } from '../attack';
 import { AnimationDurations } from '../animation-durations';
 
+let AnimationMultiplier: number = 1;
+
 @Component({
   selector: "battle",
   templateUrl: "./battle.component.html",
@@ -15,36 +17,36 @@ import { AnimationDurations } from '../animation-durations';
     trigger('PlayUserCard', [
       // state('onDeck', style({transform: 'translate(-100%, 175%)'})),
       // state('inPlay', style({transform: '*'})),
-      transition(':enter', [
+      transition('* => true', [
         style({ transform: 'translate(-90%, 90%)' }),
-        animate(`${AnimationDurations.playCard}ms ease-out`, style({ transform: '*' }))
+        animate(`${AnimationDurations.playCard / AnimationMultiplier}ms ease-out`, style({ transform: '*' }))
       ])
     ]),
     trigger('PlayComputerCard', [
       // state('onDeck', style({transform: 'translate(-100%, 175%)'})),
       // state('inPlay', style({transform: '*'})),
-      transition(':enter', [
+      transition('* => true', [
         style({ transform: 'translate(90%, -90%)' }),
-        animate(`${AnimationDurations.playCard}ms ease-out`, style({ transform: '*' }))
+        animate(`${AnimationDurations.playCard / AnimationMultiplier}ms ease-out`, style({ transform: '*' }))
       ])
     ]),
     trigger('UserAttack', [
       transition('none => bump', [
-        animate(`${AnimationDurations.attack}ms`, keyframes([
+        animate(`${AnimationDurations.attack / AnimationMultiplier}ms`, keyframes([
           style({ transform: '*', offset: 0 }),
           style({ transform: 'translateX(-40%)', offset: 0.15 }),
           style({ transform: '*', offset: 1 })
         ]))
       ]),
       transition('none => punch', [
-        animate(`${AnimationDurations.attack}ms`, keyframes([
+        animate(`${AnimationDurations.attack / AnimationMultiplier}ms`, keyframes([
           style({ transform: '*', offset: 0 }),
           style({ transform: 'translateX(-40%) rotate(-15deg)', offset: 0.15 }),
           style({ transform: '*', offset: 1 })
         ]))
       ]),
       transition('none => kick', [
-        animate(`${AnimationDurations.attack}ms`, keyframes([
+        animate(`${AnimationDurations.attack / AnimationMultiplier}ms`, keyframes([
           style({ transform: '*', offset: 0 }),
           style({ transform: 'translateX(-40%) rotate(15deg)', offset: 0.15 }),
           style({ transform: '*', offset: 1 })
@@ -54,21 +56,21 @@ import { AnimationDurations } from '../animation-durations';
     ),
     trigger('ComputerAttack', [
       transition('none => bump', [
-        animate(`${AnimationDurations.attack}ms`, keyframes([
+        animate(`${AnimationDurations.attack / AnimationMultiplier}ms`, keyframes([
           style({ transform: '*', offset: 0 }),
           style({ transform: 'translateX(40%)', offset: 0.15 }),
           style({ transform: '*', offset: 1 })
         ]))
       ]),
       transition('none => punch', [
-        animate(`${AnimationDurations.attack}ms`, keyframes([
+        animate(`${AnimationDurations.attack / AnimationMultiplier}ms`, keyframes([
           style({ transform: '*', offset: 0 }),
           style({ transform: 'translateX(40%) rotate(15deg)', offset: 0.15 }),
           style({ transform: '*', offset: 1 })
         ]))
       ]),
       transition('none => kick', [
-        animate(`${AnimationDurations.attack}ms`, keyframes([
+        animate(`${AnimationDurations.attack / AnimationMultiplier}ms`, keyframes([
           style({ transform: '*', offset: 0 }),
           style({ transform: 'translateX(40%) rotate(-15deg)', offset: 0.15 }),
           style({ transform: '*', offset: 1 })
@@ -78,7 +80,7 @@ import { AnimationDurations } from '../animation-durations';
     ),
     trigger('UserDeath', [
       transition('* => kick', [
-        animate(`${AnimationDurations.death}ms ${AnimationDurations.attack * .15}ms`, keyframes([
+        animate(`${AnimationDurations.death / AnimationMultiplier}ms ${(AnimationDurations.attack / AnimationMultiplier) * .15}ms`, keyframes([
           style({ transform: 'translateX(0)    rotateY(0)', offset: 0 }),
           style({ transform: 'translateX(150%) translateY(-45%)  rotateY(90deg) rotateZ(90deg)', offset: 0.25 }),
           style({ transform: 'translateX(325%) translateY(-75%) rotateY(180deg) rotateZ(180deg)', offset: 0.50 }),
@@ -87,7 +89,7 @@ import { AnimationDurations } from '../animation-durations';
         ]))
       ]),
       transition('* => bump', [
-        animate(`${AnimationDurations.death}ms ${AnimationDurations.attack * .15}ms`, keyframes([
+        animate(`${AnimationDurations.death / AnimationMultiplier}ms ${(AnimationDurations.attack / AnimationMultiplier) * .15}ms`, keyframes([
           style({ transform: 'translateX(0)    rotateY(0)', offset: 0 }),
           style({ transform: 'translateX(150%) rotateY(90deg)', offset: 0.25 }),
           style({ transform: 'translateX(325%) rotateY(180deg)', offset: 0.50 }),
@@ -96,7 +98,7 @@ import { AnimationDurations } from '../animation-durations';
         ]))
       ]),
       transition('* => punch', [
-        animate(`${AnimationDurations.death}ms ${AnimationDurations.attack * .15}ms`, keyframes([
+        animate(`${AnimationDurations.death / AnimationMultiplier}ms ${(AnimationDurations.attack / AnimationMultiplier) * .15}ms`, keyframes([
           style({ transform: 'translateX(0)    rotateY(0)', offset: 0 }),
           style({ transform: 'translateX(150%) translateY(45%)  rotateY(90deg) rotateZ(-90deg)', offset: 0.25 }),
           style({ transform: 'translateX(325%) translateY(75%) rotateY(180deg) rotateZ(-180deg)', offset: 0.50 }),
@@ -107,7 +109,7 @@ import { AnimationDurations } from '../animation-durations';
     ]),
     trigger('ComputerDeath', [
       transition('* => kick', [
-        animate(`${AnimationDurations.death}ms ${AnimationDurations.attack * .15}ms`, keyframes([
+        animate(`${AnimationDurations.death / AnimationMultiplier}ms ${(AnimationDurations.attack / AnimationMultiplier) * .15}ms`, keyframes([
           style({ transform: 'translateX(0)    rotateY(0)', offset: 0 }),
           style({ transform: 'translateX(-150%) translateY(-45%)  rotateY(-90deg) rotateZ(-90deg)', offset: 0.25 }),
           style({ transform: 'translateX(-325%) translateY(-75%) rotateY(-180deg) rotateZ(-180deg)', offset: 0.50 }),
@@ -116,7 +118,7 @@ import { AnimationDurations } from '../animation-durations';
         ]))
       ]),
       transition('* => bump', [
-        animate(`${AnimationDurations.death}ms ${AnimationDurations.attack * .15}ms`, keyframes([
+        animate(`${AnimationDurations.death / AnimationMultiplier}ms ${(AnimationDurations.attack / AnimationMultiplier) * .15}ms`, keyframes([
           style({ transform: 'translateX(0)    rotateY(0)', offset: 0 }),
           style({ transform: 'translateX(-150%) rotateY(-90deg)', offset: 0.25 }),
           style({ transform: 'translateX(-325%) rotateY(-180deg)', offset: 0.50 }),
@@ -125,7 +127,7 @@ import { AnimationDurations } from '../animation-durations';
         ]))
       ]),
       transition('* => punch', [
-        animate(`${AnimationDurations.death}ms ${AnimationDurations.attack * .15}ms`, keyframes([
+        animate(`${AnimationDurations.death / AnimationMultiplier}ms ${(AnimationDurations.attack / AnimationMultiplier) * .15}ms`, keyframes([
           style({ transform: 'translateX(0)    rotateY(0)', offset: 0 }),
           style({ transform: 'translateX(-150%) translateY(45%)  rotateY(-90deg) rotateZ(90deg)', offset: 0.25 }),
           style({ transform: 'translateX(-325%) translateY(75%) rotateY(-180deg) rotateZ(180deg)', offset: 0.50 }),
@@ -137,13 +139,13 @@ import { AnimationDurations } from '../animation-durations';
     trigger('Pow', [
       transition('* => computer', [
         style({ display: 'block', left: '7.5%' }),
-        animate(`${AnimationDurations.hitEffect}ms ${AnimationDurations.attack * .15}ms`, keyframes([
+        animate(`${AnimationDurations.hitEffect / AnimationMultiplier}ms ${(AnimationDurations.attack / AnimationMultiplier) * .15}ms`, keyframes([
           style({ transform: 'translateY(-25%) scale(1.5)', opacity: 0 })
         ]))
       ]),
       transition('* => player', [
         style({ display: 'block', right: '7.5%' }),
-        animate(`${AnimationDurations.hitEffect}ms ${AnimationDurations.attack * .15}ms`, keyframes([
+        animate(`${AnimationDurations.hitEffect / AnimationMultiplier}ms ${(AnimationDurations.attack / AnimationMultiplier) * .15}ms`, keyframes([
           style({ transform: 'translateY(-25%) scale(1.5)', opacity: 0 })
         ]))
       ])
@@ -151,13 +153,13 @@ import { AnimationDurations } from '../animation-durations';
     trigger('DamageDealt', [
       transition('* => computer', [
         style({ display: 'block' }),
-        animate(`${AnimationDurations.hitEffect}ms`, keyframes([
+        animate(`${AnimationDurations.hitEffect / AnimationMultiplier}ms`, keyframes([
           style({ transform: 'translateY(-25%)', opacity: 0 })
         ]))
       ]),
       transition('* => player', [
         style({ display: 'block' }),
-        animate(`${AnimationDurations.hitEffect}ms`, keyframes([
+        animate(`${AnimationDurations.hitEffect / AnimationMultiplier}ms`, keyframes([
           style({ transform: 'translateY(-25%)', opacity: 0 })
         ]))
       ])
@@ -217,19 +219,19 @@ export class BattleComponent implements OnInit {
           functionToRun = (): void => {
             this.playerInputNeeded = true;
           }
-          this.lastActionDelay = AnimationDurations.playCard;
+          this.lastActionDelay = AnimationDurations.playCard / AnimationMultiplier;
           if (this.playerHeroes.length > 0) {
-            delay -= 1000; //reduces the lag time for the player to be able to click
+            delay -= 1000 / AnimationMultiplier; //reduces the lag time for the player to be able to click
           }
           break;
         case BattleStates.CPU_CHOOSE:
           functionToRun = this.shodown.pickComputerHero;
-          this.lastActionDelay = AnimationDurations.playCard;
+          this.lastActionDelay = AnimationDurations.playCard / AnimationMultiplier;
           break;
         case BattleStates.PLAYER_ATTACK:
         case BattleStates.CPU_ATTACK:
           functionToRun = this.shodown.battle;
-          this.lastActionDelay = AnimationDurations.attack;
+          this.lastActionDelay = AnimationDurations.attack / AnimationMultiplier;
           break;
         // case BattleStates.END_GAME:
         //   functionToRun = this.gameOver();
@@ -246,8 +248,8 @@ export class BattleComponent implements OnInit {
         }
         functionToRun();
         this.shodown.updateBattleState();
-        if (this.shodown.removeDead()) {
-          this.lastActionDelay += AnimationDurations.death;
+        if (this.shodown.removeDead(AnimationMultiplier)) {
+          this.lastActionDelay += (AnimationDurations.death / AnimationMultiplier);
         }
 
         if (!this.playerInputNeeded) {
@@ -319,6 +321,27 @@ export class BattleComponent implements OnInit {
   randomBackground() {
     // return "Hello";
    return this.images[this.shodown.random(0, this.images.length-1)];
+  }
+
+  updateMultiplier(event) {
+    // console.log(event);
+    AnimationMultiplier = event.target.value;
+  }
+
+  computerCardInPlay() {
+    if (this.currentComputerHero) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  playerCardInPlay() {
+    if (this.currentPlayerHero) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
 }
