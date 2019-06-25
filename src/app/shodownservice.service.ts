@@ -29,6 +29,9 @@ export class ShodownService {
   private hitEffects: string[] = ["pow", "kapow", "boom", "zap"];
   private currentHitEffect: string = "";
 
+  // private hitSound: string = "punch.mp3";
+  // private currentHitSound: string = "";
+
   constructor() { }
 
   getUsername(): string {
@@ -74,6 +77,14 @@ export class ShodownService {
   getCurrentHitEffect(): string {
     return this.currentHitEffect;
   }
+
+  // getCurrentHitSound(): string {
+  //   return this.currentHitSound;
+  // }
+
+  // setCurrentHitSound(): void {
+  //   this.currentHitSound = this.hitSound
+  // }
 
   setUsername(name: string): void {
     this.username = name;

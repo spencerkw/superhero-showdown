@@ -201,6 +201,13 @@ export class BattleComponent implements OnInit {
     // console.log(`The winner is ${winner}`);
   }
 
+  playAudio(){
+    let audio = new Audio();
+    audio.src = "../../assets/sounds/punch.mp3";
+    audio.load();
+    audio.play();
+  }
+
   battleLoop(): void {
     if (!this.playerInputNeeded) {
 
@@ -283,6 +290,7 @@ export class BattleComponent implements OnInit {
   }
 
   currentAttack(): Attack {
+    this.playAudio();
     return this.shodown.getCurrentAttack();
   }
 
@@ -293,6 +301,10 @@ export class BattleComponent implements OnInit {
   currentHitEffect(): string {
     return this.shodown.getCurrentHitEffect();
   }
+
+  // currentHitSound(): string {
+  //   return this.shodown.getCurrentHitSound();
+  // }
 
   currentAttackTarget(): string {
     if (this.shodown.getCurrentAttack()) {

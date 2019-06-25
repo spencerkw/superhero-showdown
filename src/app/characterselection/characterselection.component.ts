@@ -49,6 +49,7 @@ export class CharacterSelectionComponent implements OnInit {
     audio.src = "../../assets/sounds/x-mentheme.mp3";
     audio.load();
     audio.play();
+    // audio.pause();
   }
 
   constructor(private apiService: ApiService, private shodown: ShodownService, private router: Router) { }
