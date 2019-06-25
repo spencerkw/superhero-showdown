@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { AttackType } from '../attack-type';
 import { trigger, transition, style, animate, query } from '@angular/animations';
 import { AnimationDurations } from '../animation-durations';
+import { AngularMan, RitualMan } from '../easter-eggs';
 
 @Component({
   selector: 'characterselection',
@@ -75,6 +76,19 @@ export class CharacterSelectionComponent implements OnInit {
           }
           this.heroes.push(heroToAdd);
         }
+
+        //easter egg
+        if (this.shodown.getUsername().toLowerCase() === "adam" ||
+        this.shodown.getUsername().toLowerCase() === "snoopy" ||
+        this.shodown.getUsername().toLowerCase() === "taylor swift") {
+          this.heroes.unshift(AngularMan);
+        }
+        
+        if (this.shodown.getUsername().toLowerCase() === "mitch" ||
+        this.shodown.getUsername().toLowerCase() === "ritual" ||
+        this.shodown.getUsername().toLowerCase() === "json") {
+          this.heroes.unshift(RitualMan);
+        }
       });
     })
   }
@@ -97,7 +111,15 @@ export class CharacterSelectionComponent implements OnInit {
     this.shodown.setPlayerHeroes(this.selectedHeroes);
 
     let computerHeroes: Hero[] = [];
-    for (let i = 0; i < this.maxHeroCount; i++) {
+
+    //easter egg insertions
+    if (this.selectedHeroes.includes(AngularMan)) {
+      computerHeroes.push(RitualMan);
+    } else if (this.selectedHeroes.includes(RitualMan)) {
+      computerHeroes.push(AngularMan);
+    }
+
+    for (let i = computerHeroes.length; i < this.maxHeroCount; i++) {
       this.moveHero(this.shodown.random(0, this.heroes.length - 1), this.heroes, computerHeroes);
     }
     this.shodown.setComputerHeroes(computerHeroes);
