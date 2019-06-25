@@ -84,9 +84,9 @@ export class CharacterSelectionComponent implements OnInit {
             id: 0,
             hero: "Angular Man",
             short_name: "A Man",
-            health: 300,
-            min_damage: 30,
-            max_damage: 40,
+            health: 80,
+            min_damage: 45,
+            max_damage: 65,
             type: {
               id: 0,
               type: "all",
