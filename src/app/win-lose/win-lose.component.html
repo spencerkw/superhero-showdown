@@ -1,16 +1,7 @@
-<main>
-<div class="ending">
-<h2 *ngIf="show">Victory</h2>
-<p *ngIf="show">{{ winner() }}, You are victorious </p>
-
-<!-- <img [src]="getImage(url(../../assets/images/heaven.jpg))"/> -->
-<button (click)= "playAgain()">Play Again </button>
-</div>
+<main [ngClass]="victory ? 'victory' : 'defeat'">
+  <h1>{{ victory ? 'Victory' : 'Defeat' }}</h1>
+  <div class="ending">
+    <p class="message">{{ message() }}</p>
+    <button (click)="playAgain()">Play Again</button>
+  </div>
 </main>
-
-<!-- <main>
-        <div class="ending">
-        <p>The winner is: {{ winner() }}. </p>
-        <button (click)= "playAgain()">Play Again </button>
-        </div>
-        </main> -->

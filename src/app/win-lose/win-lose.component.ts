@@ -1,51 +1,45 @@
 import { Component, OnInit } from '@angular/core';
 import { ShodownService } from "../shodownservice.service";
-import { isUndefined } from 'util';
+import { isNull } from 'util';
 import { Router } from '@angular/router';
-import { HttpBackend } from '@angular/common/http';
-
 
 @Component({
-  selector: 'app-win-lose',
+  selector: 'win-lose',
   templateUrl: './win-lose.component.html',
   styleUrls: ['./win-lose.component.css']
 })
 export class WinLoseComponent implements OnInit {
-  show: boolean = true
-  heavenImage: string = 'url(../../assets/images/heaven.jpg)';
-  hellImage: string = 'url(../../assets/images/helldefeat.jpg)';
+  victory: boolean;
 
   constructor(private shodown: ShodownService, private router: Router) { }
 
   ngOnInit() {
-    if (isUndefined(this.shodown.getVictory())) {
+    if (isNull(this.shodown.getVictory())) {
       this.router.navigate(["home"]);
+      return;
+    }
+
+    this.victory = this.shodown.getVictory();
+  }
+
+  message(): string {
+    if (this.victory) {
+      return `${this.shodown.getUsername()} was victorious!`;
+    } else {
+      return `${this.shodown.getUsername()} was defeated.`;
     }
   }
 
-  getImage() {
-    if (this.shodown.getVictory) {
-      return this.heavenImage;
-
-    } else {return this.hellImage}
-  }
-  winner() {
-    if (this.shodown.getVictory()) {
-      return this.shodown.getUsername()
-    } else {
-      return "the computer"
-    };
-  }
-
-  // loser() {
-  //   if (this.shodown.getDefeat()) {
-  //     if (true) {
-  //       return "the computer"
-  //     };
-  //   }
-  // }
   playAgain(): void {
+    this.shodown.clearData();
     this.router.navigate(["home"]);
   }
 
+  // winner() {
+  //   if (this.shodown.getVictory()) {
+  //     return this.shodown.getUsername()
+  //   } else {
+  //     return "the computer"
+  //   };
+  // }
 }

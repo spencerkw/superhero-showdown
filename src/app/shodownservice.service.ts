@@ -7,18 +7,18 @@ import { BattleStates } from './battle-states';
 })
 export class ShodownService {
 
-  private username: string;
-  private playerHeroes: Hero[];
-  private computerHeroes: Hero[];
+  private username: string = null;
+  private playerHeroes: Hero[] = null;
+  private computerHeroes: Hero[] = null;
 
-  private currentPlayerHero: Hero;
-  private currentComputerHero: Hero;
+  private currentPlayerHero: Hero = null;
+  private currentComputerHero: Hero = null;
 
-  private isPlayerTurn: boolean;
+  private isPlayerTurn: boolean = null;
 
-  private state: number;
+  private state: number = null;
 
-  private victory: boolean;
+  private victory: boolean = null;
 
   constructor() { }
 
@@ -205,6 +205,21 @@ export class ShodownService {
     }
 
     return false;
+  }
+
+  clearData(): void {
+    this.username = null;
+    this.playerHeroes = null;
+    this.computerHeroes = null;
+
+    this.currentPlayerHero = null;
+    this.currentComputerHero = null;
+
+    this.isPlayerTurn = null;
+
+    this.state = null;
+
+    this.victory = null;
   }
 
   random(min: number, max: number): number {
