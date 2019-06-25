@@ -112,7 +112,7 @@ export class CharacterSelectionComponent implements OnInit {
 
     let computerHeroes: Hero[] = [];
 
-    //easter egg inserts
+    //easter egg insert
     if (this.selectedHeroes.includes(AngularMan)) {
       computerHeroes.push(RitualMan);
     } else if (this.selectedHeroes.includes(RitualMan)) {
