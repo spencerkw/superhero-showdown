@@ -1,0 +1,45 @@
+.health-bar {
+  padding: 5px;
+  background: #ddd;
+  border-radius: 5px;
+
+  display: flex;
+}
+
+.health-bar > * {
+  margin: 10px 0;
+}
+
+p {
+  display: none;
+}
+
+.heart-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.heart {
+  width: 20px;
+  height: 20px;
+
+  margin: 5px 0;
+}
+
+@media only screen and (min-width: 768px) {
+  .health-bar > * {
+    margin: 0 10px;
+  }
+  
+  p {
+    display: block;
+  }
+
+  .heart-container {
+    flex-direction: row;
+  }
+
+  .heart {
+    margin: 0 5px;
+  }
+}

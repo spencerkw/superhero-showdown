@@ -73,6 +73,12 @@ main {
   background-color: #3F5678;
 }
 
+.health-bar {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 /* .computer-card {
   width: 100px;
 height: 200px;

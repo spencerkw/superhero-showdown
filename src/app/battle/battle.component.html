@@ -5,6 +5,7 @@
       <!-- <div class="computer-image"></div> -->
       <p>CPU Deck</p>
     </div>
+    <health class="health-bar" [name]="'CPU'" [health]="computerHealth()"></health>
     <div class="battle-area">
       <card class="computer-card" *ngIf="currentComputerHero()" [hero]="currentComputerHero()" [cardSize]="'large'" 
       [@PlayComputerCard] 

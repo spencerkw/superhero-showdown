@@ -291,6 +291,10 @@ export class BattleComponent implements OnInit {
     return this.shodown.getCurrentHitEffect();
   }
 
+  computerHealth(): number {
+    return this.shodown.getComputerHealth();
+  }
+
   currentAttackTarget(): string {
     if (this.shodown.getCurrentAttack()) {
       if (this.shodown.getCurrentAttack().target === this.shodown.getCurrentComputerHero()) {

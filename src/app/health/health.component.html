@@ -1,3 +1,10 @@
-<p>
-  health works!
-</p>
+<div class="health-bar"> 
+  <p>{{name}} Health:</p>
+  <div class="heart-container">
+    <img class="heart" src="../../assets/images/Icon_life.png" alt="heart" [@LostHealth]="heartIsShowing(1)">
+    <img class="heart" src="../../assets/images/Icon_life.png" alt="heart" [@LostHealth]="heartIsShowing(2)">
+    <img class="heart" src="../../assets/images/Icon_life.png" alt="heart" [@LostHealth]="heartIsShowing(3)">
+    <img class="heart" src="../../assets/images/Icon_life.png" alt="heart" [@LostHealth]="heartIsShowing(4)">
+    <img class="heart" src="../../assets/images/Icon_life.png" alt="heart" [@LostHealth]="heartIsShowing(5)">
+  </div>
+</div>
