@@ -87,7 +87,7 @@ main {
   width: inherit; */
   height: 110px;
   width: 55px;
-  padding: 10px;
+  
   margin: 15px 0 15px 0;
   background: #3F5678;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
@@ -100,6 +100,18 @@ main {
   transition: -webkit-transform .2s;
   transition: transform .2s;
   transition: transform .2s, -webkit-transform .2s;
+}
+
+.cover {
+  width: 90%;
+  height: 90%;
+  padding: 10px;
+  /* position: relative; */
+  border: 1px solid black;
+}
+
+.setOfCards:hover .cover {
+  display: none;
 }
 
 .setOfCards:hover .card:nth-child(1) {
@@ -152,7 +164,9 @@ main {
           transform: rotate(40deg) translateY(-25px);
 }
 
-
+.empty {
+  opacity: 0;
+}
 
 .health-bar {
   position: absolute;

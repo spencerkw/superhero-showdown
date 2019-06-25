@@ -6,30 +6,35 @@
       <p>CPU Deck</p>
     </div> -->
 
-    <div class="setOfCards">
-      <div class="card computer-deck">
-        <img class="computer-image" src="../../assets/images/cards-200-180-Martian-Manhunter.png" alt="">
-        <!-- <div class="computer-image"></div> -->
-        <p>CPU Deck</p>
-      </div>
-      <div class="card computer-deck">
-        <img class="computer-image" src="../../assets/images/cards-200-180-Hulk.png" alt="">
-        <!-- <div class="computer-image"></div> -->
-        <p>CPU Deck</p>
-      </div>
-      <div class="card computer-deck">
-        <img class="computer-image" src="../../assets/images/cards-200-180-Iron-Man.png" alt="">
-        <!-- <div class="computer-image"></div> -->
-        <p>CPU Deck</p>
-      </div>
-      <div class="card computer-deck">
-        <img class="computer-image" src="../../assets/images/cards-200-180-Spiderman.png" alt="">
-        <!-- <div class="computer-image"></div> -->
-        <p>CPU Deck</p>
-      </div>
-      <div class="card computer-deck">
-        <img class="computer-image" src="../../assets/images/cards-200-180-The-Flash.png" alt="">
-        <!-- <div class="computer-image"></div> -->
+    <div class="setOfCards" [ngClass]="{ 'empty' : computerHeroes.length === 0 }">
+      <card class="card computer-deck" *ngIf="computerHeroes[1]" [hero]="computerHeroes[1]" [cardSize]="'small'">
+        <!-- <img class="computer-image" src="../../assets/images/cards-200-180-Martian-Manhunter.png" alt=""> -->
+        
+        <!-- <p>CPU Deck</p> -->
+      </card>
+      <card class="card computer-deck" *ngIf="computerHeroes[3]" [hero]="computerHeroes[3]" [cardSize]="'small'">
+        <!-- <img class="computer-image" src="../../assets/images/cards-200-180-Hulk.png" alt=""> -->
+        
+        <!-- <p>CPU Deck</p> -->
+      </card>
+      <card class="card computer-deck" *ngIf="computerHeroes[4]" [hero]="computerHeroes[4]" [cardSize]="'small'">
+        <!-- <img class="computer-image" src="../../assets/images/cards-200-180-Iron-Man.png" alt=""> -->
+        
+        <!-- <p>CPU Deck</p> -->
+      </card>
+      <card class="card computer-deck" *ngIf="computerHeroes[2]" [hero]="computerHeroes[2]" [cardSize]="'small'">
+        <!-- <img class="computer-image" src="../../assets/images/cards-200-180-Spiderman.png" alt=""> -->
+        
+        <!-- <p>CPU Deck</p> -->
+      </card>
+      <card class="card computer-deck" *ngIf="computerHeroes[0]" [hero]="computerHeroes[0]" [cardSize]="'small'">
+        <!-- <img class="computer-image" src="../../assets/images/cards-200-180-The-Flash.png" alt=""> -->
+        
+        <!-- <p>CPU Deck</p> -->
+      </card>
+      <div class="card cover">
+        <img class="computer-image" src="../../assets/images/icons/star1.png" alt="">
+        
         <p>CPU Deck</p>
       </div>
     </div>
