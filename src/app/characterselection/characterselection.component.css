@@ -89,12 +89,13 @@ main {
 .attack-icon {
   width: 20px;
   height: 20px;
-  padding-right: 14px;
+  padding-right: 15px;
 }
 
 .life-icon {
   width: 20px;
   height: 20px;
+  padding-right: 1px;
 }
 
 .element-icon {
