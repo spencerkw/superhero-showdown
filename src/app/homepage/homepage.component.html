@@ -1,5 +1,11 @@
 <main>
-  <div class="logo">Logo</div>
+  <div class="logo">
+    <picture>
+      <!-- <source media="(min-width: 1024px)" srcset="../../assets/images/logos/logo-stretch-explosion.png"> -->
+      <source media="(min-width: 768px)" srcset="../../assets/images/logos/logo-stretch-explosion.png">
+      <img class="superimg" src="../../assets/images/logos/logo-stack-explosion.png" alt="Logo">
+    </picture>
+  </div>
 
   <form #nameForm="ngForm" (ngSubmit)="submitName(nameForm.value.name)">
     <label for="">Enter your name:</label>

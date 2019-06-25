@@ -1,8 +1,5 @@
 main {
-  background-image: linear-gradient(rgba(26, 50, 62, 0.8), rgba(26, 50, 62, 0.8)), url("../../assets/images/backgrounds/Background-Gotham.jpg");
-  /* opacity: 0.8; */
-  /* background-color: rgba(26, 50, 62, 0.8); */
-  /* background-blend-mode: saturation; */
+  background-image: linear-gradient(rgba(26, 50, 62, 0.8), rgba(26, 50, 62, 0.8));
   width: 100vw;
   height: 100vh;
   margin: 0px;
@@ -11,6 +8,10 @@ main {
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  background-repeat: no-repeat, no-repeat;
+  background-size: cover, cover;
+  background-attachment: fixed, fixed;
+  background-position: center, center;
 }
 
 .table {
@@ -108,6 +109,42 @@ height: 200px;
   transition: box-shadow 0.25s;
 }
 
+.gotham {
+  background-image: url("../../assets/images/backgrounds/Background-Gotham.jpg");
+}
+
+.futuristic {
+  background-image: url("../../assets/images/backgrounds/futuristic.jpg");
+}
+
+.metropolis {
+  background-image: url("../../assets/images/backgrounds/metropolis.jpg");
+}
+
+.asgard {
+  background-image: url("../../assets/images/backgrounds/Asgard.png");
+}
+
+.triskelion {
+  background-image: url("../../assets/images/backgrounds/Triskelion.png");
+}
+
+.fortress {
+  background-image: url("../../assets/images/backgrounds/The-Fortress-of-Solitude.jpg");
+}
+
+.wakanda {
+  background-image: url("../../assets/images/backgrounds/wakanda.jpg");
+}
+
+.tower {
+  background-image: url("../../assets/images/backgrounds/Avengers_Tower_AoU.png");
+}
+
+.atlantis {
+  background-image: url("../../assets/images/backgrounds/Aquaman-atlantis-movie.jpg");
+}
+
 .selectable {
   cursor: pointer;
 }
@@ -115,14 +152,6 @@ height: 200px;
 .selectable:hover {
   box-shadow: 0 0 15px 5px gold;
 }
-
-/* .computer-card {
-  margin-right: 200px;
-}
-
-.user-card {
-  margin-left: 200px;
-} */
 
 @media only screen and (min-width: 768px) {
   .user-deck {
