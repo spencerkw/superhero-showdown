@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Hero } from './hero';
 import { BattleStates } from './battle-states.enum';
 import { Attack } from './attack';
+import { AnimationDurations } from './animation-durations';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,9 @@ export class ShodownService {
 
   private attackAnimations: string[] = ["bump", "kick", "punch"];
   private currentAttackAnimation: string = "";
+
+  private hitEffects: string[] = ["pow", "kapow", "boom", "zap"];
+  private currentHitEffect: string = "";
 
   constructor() { }
 
@@ -65,6 +69,10 @@ export class ShodownService {
 
   getCurrentAttackAnimation(): string {
     return this.currentAttackAnimation;
+  }
+
+  getCurrentHitEffect(): string {
+    return this.currentHitEffect;
   }
 
   setUsername(name: string): void {
@@ -187,6 +195,7 @@ export class ShodownService {
     console.log(`${attacker.hero} dealt ${damage} to ${target.hero}`);
 
     this.pickAttackAnimation();
+    this.pickHitEffect();
     this.currentAttack = {
       attacker: attacker,
       target: target,
@@ -212,10 +221,14 @@ export class ShodownService {
 
   removeDead(): boolean {
     if (this.currentComputerHero && this.currentComputerHero.currentHealth <= 0) {
-      this.currentComputerHero = null;
+      setTimeout(() => {
+        this.currentComputerHero = null;
+      }, AnimationDurations.death);
       return true;
     } else if (this.currentPlayerHero && this.currentPlayerHero.currentHealth <= 0) {
-      this.currentPlayerHero = null;
+      setTimeout(() => {
+        this.currentPlayerHero = null;
+      }, AnimationDurations.death);
       return true;
     }
 
@@ -236,7 +249,11 @@ export class ShodownService {
   }
 
   pickAttackAnimation(): void {
-    this.currentAttackAnimation = this.attackAnimations[this.random(0, 2)];
+    this.currentAttackAnimation = this.attackAnimations[this.random(0, this.attackAnimations.length-1)];
+  }
+
+  pickHitEffect(): void {
+    this.currentHitEffect = this.hitEffects[this.random(0, this.hitEffects.length-1)];
   }
 
   random(min: number, max: number): number {
