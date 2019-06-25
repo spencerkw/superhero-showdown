@@ -18,6 +18,7 @@ import { AnimationDurations } from '../animation-durations';
         animate(`${AnimationDurations.heroSelect}ms`)
       ]),
       transition(":leave", [
+        style({ backgroundColor: 'transparent', color: 'inherit' }),
         animate(`${AnimationDurations.heroSelect}ms`, style({ height: 0 }))
       ])
     ]),
