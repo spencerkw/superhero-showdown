@@ -193,13 +193,13 @@ button {
  border-radius: 5px;
 } */
 
-.fight-btn {
+/* .fight-btn {
  
 }
 
 .info-btn {
 
-}
+} */
 
 .strength:hover, .agility:hover, .mental:hover, .mechanical:hover, .elemental:hover {
   color: white;
