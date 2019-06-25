@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { AttackType } from '../attack-type';
 import { trigger, transition, style, animate, query } from '@angular/animations';
 import { AnimationDurations } from '../animation-durations';
+import { AngularMan, RitualMan } from '../easter-eggs';
 
 @Component({
   selector: 'characterselection',
@@ -80,22 +81,13 @@ export class CharacterSelectionComponent implements OnInit {
         if (this.shodown.getUsername().toLowerCase() === "adam" ||
         this.shodown.getUsername().toLowerCase() === "snoopy" ||
         this.shodown.getUsername().toLowerCase() === "taylor swift") {
-          let angularMan: Hero = {
-            id: 0,
-            hero: "Angular Man",
-            short_name: "A Man",
-            health: 80,
-            min_damage: 45,
-            max_damage: 65,
-            type: {
-              id: 0,
-              type: "all",
-              strong_against: "all",
-              weak_against: "none"
-            }
-          };
-
-          this.heroes.unshift(angularMan);
+          this.heroes.unshift(AngularMan);
+        }
+        
+        if (this.shodown.getUsername().toLowerCase() === "mitch" ||
+        this.shodown.getUsername().toLowerCase() === "ritual" ||
+        this.shodown.getUsername().toLowerCase() === "json") {
+          this.heroes.unshift(RitualMan);
         }
       });
     })
