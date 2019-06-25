@@ -1,15 +1,38 @@
 main {
-    background: url("../../assets/images/hulkvssuperman.jpg");
-    width: 100%;
-    height: 100vh;
-    background-size: 100% 100%;
+    /* background: url("../../assets/images/hulkvssuperman.jpg"); */
+    width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* align-items: center; */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../assets/images/hulkvssuperman.jpg");
+  background-repeat: no-repeat, no-repeat;
+  background-size: cover, cover;
+  background-attachment: fixed, fixed;
+  background-position: center, center;
 }
 
 .logo {
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+picture {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.superimg {
+  height: 200px;
+  width: 300px;
+  margin: 9px 0;
 }
 
 form {
@@ -17,9 +40,9 @@ form {
     flex-direction: column;
     width: 40%;
     position: relative;
-    left: 50%;
+    /* left: 50%;
     top: 10%;
-    transform: translate(-50%, 50%);
+    transform: translate(-50%, 50%); */
     padding: 75px;
     background-color: rgba(10, 10, 10, 0.5);
     color: aliceblue;
@@ -67,4 +90,31 @@ label {
     height: 100vh;
     background-size: 100% 100%;
     }
+}
+
+@media only screen and (min-width: 768px) {
+  main {
+    align-items: center;
+  }
+
+  .selected-heroes, .hero-list {
+    width: 80%;
+  }
+
+  .superimg {
+    height: 160px;
+    width: 600px;
+  }
+
+}
+
+@media only screen and (min-width: 1024px) {
+  .selected-heroes, .hero-list {
+    width: 70%;
+  }
+
+  .superimg {
+    height: 175px;
+    width: 700px;
+  }
 }
