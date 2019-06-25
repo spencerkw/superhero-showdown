@@ -75,6 +75,28 @@ export class CharacterSelectionComponent implements OnInit {
           }
           this.heroes.push(heroToAdd);
         }
+
+        //easter egg
+        if (this.shodown.getUsername().toLowerCase() === "adam" ||
+        this.shodown.getUsername().toLowerCase() === "snoopy" ||
+        this.shodown.getUsername().toLowerCase() === "taylor swift") {
+          let angularMan: Hero = {
+            id: 0,
+            hero: "Angular Man",
+            short_name: "A Man",
+            health: 300,
+            min_damage: 30,
+            max_damage: 40,
+            type: {
+              id: 0,
+              type: "all",
+              strong_against: "all",
+              weak_against: "none"
+            }
+          };
+
+          this.heroes.unshift(angularMan);
+        }
       });
     })
   }
