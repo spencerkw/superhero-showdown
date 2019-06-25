@@ -1,30 +1,45 @@
 .health-bar {
-    box-sizing: border-box;
-    width: 200px;
-    height: 20px;
-    padding: 5px;
-    background: #ddd;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    position: relative;
-  }
-  .bar {
-    background: #c54;
-    width: 100%;
-    height: 10px;
-    position: relative;
-    
-    transition: width .5s linear;
+  padding: 5px;
+  background: #ddd;
+  border-radius: 5px;
+
+  display: flex;
+}
+
+.health-bar > * {
+  margin: 10px 0;
+}
+
+p {
+  display: none;
+}
+
+.heart-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.heart {
+  width: 20px;
+  height: 20px;
+
+  margin: 5px 0;
+}
+
+@media only screen and (min-width: 768px) {
+  .health-bar > * {
+    margin: 0 10px;
   }
   
-  .hit {
-    background: rgba(255,255,255,0.6);
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 0px;
-    
-    transition: width .5s linear;
+  p {
+    display: block;
   }
+
+  .heart-container {
+    flex-direction: row;
+  }
+
+  .heart {
+    margin: 0 5px;
+  }
+}

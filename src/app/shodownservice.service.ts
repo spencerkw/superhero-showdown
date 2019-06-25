@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Hero } from './hero';
-import { BattleStates } from './battle-states';
+import { BattleStates } from './battle-states.enum';
+import { Attack } from './attack';
+import { AnimationDurations } from './animation-durations';
 
 @Injectable({
   providedIn: 'root'
@@ -14,11 +16,20 @@ export class ShodownService {
   private currentPlayerHero: Hero = null;
   private currentComputerHero: Hero = null;
 
+  private computerHealth: number = 5;
+
   private isPlayerTurn: boolean = null;
 
   private state: number = null;
 
   private victory: boolean = null;
+  private currentAttack: Attack = null;
+
+  private attackAnimations: string[] = ["bump", "kick", "punch"];
+  private currentAttackAnimation: string = "";
+
+  private hitEffects: string[] = ["pow", "kapow", "boom", "zap"];
+  private currentHitEffect: string = "";
 
   constructor() { }
 
@@ -42,6 +53,10 @@ export class ShodownService {
     return this.currentComputerHero;
   }
 
+  getComputerHealth(): number {
+    return this.computerHealth;
+  }
+
   getIsPlayerTurn(): boolean {
     return this.isPlayerTurn;
   }
@@ -53,7 +68,19 @@ export class ShodownService {
   getVictory(): boolean {
     return this.victory;
   }
-  
+
+  getCurrentAttack(): Attack {
+    return this.currentAttack;
+  }
+
+  getCurrentAttackAnimation(): string {
+    return this.currentAttackAnimation;
+  }
+
+  getCurrentHitEffect(): string {
+    return this.currentHitEffect;
+  }
+
   setUsername(name: string): void {
     this.username = name;
   }
@@ -162,13 +189,25 @@ export class ShodownService {
 
   attack(attacker: Hero, target: Hero) {
     let damage = this.random(attacker.min_damage, attacker.max_damage);
+
     if (attacker.type.type === target.type.weak_against) {
       damage *= 1.5;
       console.log(`${attacker.hero} has type advantage over ${target.hero}`);
     }
+
     damage = Math.floor(damage);
     target.currentHealth -= damage;
+
     console.log(`${attacker.hero} dealt ${damage} to ${target.hero}`);
+
+    this.pickAttackAnimation();
+    this.pickHitEffect();
+    this.currentAttack = {
+      attacker: attacker,
+      target: target,
+      damage: damage,
+      attackType: attacker.type
+    };
   }
 
   battle = (): void => {
@@ -186,12 +225,21 @@ export class ShodownService {
     this.nextTurn();
   }
 
-  removeDead(): void {
+  removeDead(): boolean {
     if (this.currentComputerHero && this.currentComputerHero.currentHealth <= 0) {
-      this.currentComputerHero = null;
+      this.reduceComputerHealth();
+      setTimeout(() => {
+        this.currentComputerHero = null;
+      }, AnimationDurations.death);
+      return true;
     } else if (this.currentPlayerHero && this.currentPlayerHero.currentHealth <= 0) {
-      this.currentPlayerHero = null;
+      setTimeout(() => {
+        this.currentPlayerHero = null;
+      }, AnimationDurations.death);
+      return true;
     }
+
+    return false;
   }
 
   checkWinner(): boolean {
@@ -215,11 +263,31 @@ export class ShodownService {
     this.currentPlayerHero = null;
     this.currentComputerHero = null;
 
+    this.computerHealth = 5;
+
     this.isPlayerTurn = null;
 
     this.state = null;
 
     this.victory = null;
+
+    this.currentAttack = null;
+
+    this.currentAttackAnimation = "";
+
+    this.currentHitEffect = "";
+  }
+
+  pickAttackAnimation(): void {
+    this.currentAttackAnimation = this.attackAnimations[this.random(0, this.attackAnimations.length-1)];
+  }
+
+  pickHitEffect(): void {
+    this.currentHitEffect = this.hitEffects[this.random(0, this.hitEffects.length-1)];
+  }
+
+  reduceComputerHealth(): void {
+    this.computerHealth -= 1;
   }
 
   random(min: number, max: number): number {

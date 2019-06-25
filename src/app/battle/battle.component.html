@@ -1,15 +1,29 @@
 <main>
   <div class="table">
-    <div class="computer-deck">CPU Deck
-      <div class="computer-image"></div>
+    <div class="computer-deck">
+      <img class="computer-image" src="../../assets/images/cards-200-180-Martian-Manhunter.png" alt="">
+      <!-- <div class="computer-image"></div> -->
+      <p>CPU Deck</p>
     </div>
+    <health class="health-bar" [name]="'CPU'" [health]="computerHealth()"></health>
     <div class="battle-area">
-      <card class="computer-card" *ngIf="currentComputerHero()" [hero]="currentComputerHero()" [cardSize]="'large'">
+      <card class="computer-card" *ngIf="currentComputerHero()" [hero]="currentComputerHero()" [cardSize]="'large'" 
+      [@PlayComputerCard] 
+      [@ComputerDeath]="currentComputerHero().currentHealth <= 0 ? currentAttackAnimation() : null"
+      [@ComputerAttack]="(currentAttack() && currentAttack().attacker === currentComputerHero()) ? currentAttackAnimation() : 'none'">
       </card>
-      <card class="user-card" *ngIf="currentPlayerHero()" [hero]="currentPlayerHero()" [cardSize]="'large'"></card>
+      <div class="separator"></div>
+      <card class="user-card" *ngIf="currentPlayerHero()" [hero]="currentPlayerHero()" [cardSize]="'large'" 
+      [@PlayUserCard]
+      [@UserDeath]="currentPlayerHero().currentHealth <= 0 ? currentAttackAnimation() : null"
+      [@UserAttack]="(currentAttack() && currentAttack().attacker === currentPlayerHero()) ? currentAttackAnimation() : 'none'"></card>
+      <img class="pow" *ngIf="currentHitEffect()" src="../../assets/images/{{currentHitEffect()}}-640.png" alt="Pow" [@Pow]="currentAttackTarget()">
+      <div class="damage-number" *ngIf="currentAttack()" [@DamageDealt]="currentAttackTarget()">-{{currentAttack().damage}}</div>
     </div>
     <div class="user-deck">
-      <card *ngFor="let hero of playerHeroes; index as i"
+      <card class="user-hand-card"
+        *ngFor="let hero of playerHeroes; index as i"
+        [ngClass]="{ 'selectable': playerInputNeeded }"
         [hero]="hero"
         [cardSize]="'small'"
         (click)="playerInputNeeded ? choosePlayerCard(i) : null"></card>
