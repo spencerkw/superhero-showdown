@@ -1,11 +1,9 @@
 main {
-    /* background: url("../../assets/images/hulkvssuperman.jpg"); */
-    width: 100vw;
+  width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* align-items: center; */
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../assets/images/hulkvssuperman.jpg");
   background-repeat: no-repeat, no-repeat;
   background-size: cover, cover;
@@ -40,9 +38,6 @@ form {
     flex-direction: column;
     width: 40%;
     position: relative;
-    /* left: 50%;
-    top: 10%;
-    transform: translate(-50%, 50%); */
     padding: 75px;
     background-color: rgba(10, 10, 10, 0.5);
     color: aliceblue;
@@ -52,26 +47,41 @@ form {
 }
 
 input {
-    width: 90%;
-    margin-bottom: 4%;
+    width: 97%;
+    margin-bottom: 10px;
     padding: 5px;
     border-radius: 5px;
     font-family: inherit;
     border: 2px solid black;
+    font-size: 20px;
 }
 
 button {
-    border-radius: 5px;
-    width: 96%;
-    padding: 3px;
-    background: rgb(219, 27, 27);
-    color: aliceblue;
-    font-family: inherit;
-    border: 2px solid black;
+  font-size: 20px;
+  padding: 5px;
+  border: 1px solid black;
+  width: 100%;
+  background-color: red;
+  color: #cccccc;
+  font-family: inherit;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
+button:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: black;
+  }
+
 label {
-    margin-bottom: 2%;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+@media only screen and (min-width: 492px) {
+    label {
+        font-size: 20px;
+    }
 }
 
 @media only screen and (min-width: 700px) {

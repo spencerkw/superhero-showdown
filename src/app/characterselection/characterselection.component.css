@@ -309,3 +309,9 @@ button {
     width: 700px;
   }
 }
+
+@media only screen and (min-width: 1400px) {
+  .logic-img {
+    padding: 0 70px 20px 0;
+  }
+}
