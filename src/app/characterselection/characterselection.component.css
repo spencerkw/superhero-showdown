@@ -1,14 +1,15 @@
 main {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   /* align-items: center; */
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../assets/images/marvel-vs-dc-wallpaper.jpg");
   background-repeat: no-repeat, no-repeat;
   background-size: cover, cover;
-  background-attachment: fixed, fixed;
-  background-position: center, center; 
+  background-attachment: scroll, scroll;
+  background-position: center, center;
+  /* background-color: transparent; */
 }
 
 .selected-heroes, .hero-list {
@@ -134,9 +135,38 @@ picture {
 
 form {
   position: absolute;
+  border: 1px solid black;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  width: 90%;
+  top: 35%;
   z-index: 1;
-  background-color: rgb(208, 24, 34, 0.5);
-  top: 290px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: aliceblue;
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.logic-img {
+  width: 280x;
+  height: 280px;
+  align-self: center;
+  padding: 0 35px 20px 0;
+}
+
+p {
+  font-size: 17px;
+  padding: 0 10px 0 15px;
+}
+
+li {
+  font-size: 17px;
 }
 
 button {
@@ -190,6 +220,43 @@ button {
     width: 80%;
   }
 
+  form {
+    position: absolute;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    width: 90%;
+    top: 35%;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: aliceblue;
+  }
+
+  .form-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .logic-img {
+    width: 350px;
+    height: 350px;
+    align-content: space-around;
+    padding: 0 35px 20px 0;
+  }
+
+  p {
+    font-size: 20px;
+    padding: 0 10px 0 15px;
+    text-align: justify;
+  }
+
+  li {
+    font-size: 20px;
+  }
+
   .superimg {
     height: 160px;
     width: 600px;
@@ -200,6 +267,11 @@ button {
 @media only screen and (min-width: 1024px) {
   .selected-heroes, .hero-list {
     width: 70%;
+  }
+
+  form {
+    width: 65%;
+    top: 35%;
   }
 
   .superimg {

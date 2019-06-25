@@ -7,17 +7,20 @@
     </picture>
   </div>
   <button class="info-btn" (click)="toggleForm()">Info</button>
-  <form *ngIf="!shouldBeShown">
+  <form (click)="toggleForm()" *ngIf="infoFormShowing">
     <p>While the heroes are very strong, they do experience weaknesses based on attack-type.
       When heroes are up against their weakness, the attack's damage is multipled by 1.5. Below is a breakdown of the
       of attack-type weakness.</p>
-    <ul>
-      <li>Strength is weak against Agility</li>
-      <li>Agility is weak against Mental</li>
-      <li>Mental is weak against Mechanical</li>
-      <li>Mechanical is weak against Elemental</li>
-      <li>Elemental is weak against Strength</li>
-    </ul>
+    <div class="form-section">
+      <ul>
+        <li>Strength is weak against Agility</li>
+        <li>Agility is weak against Mental</li>
+        <li>Mental is weak against Mechanical</li>
+        <li>Mechanical is weak against Elemental</li>
+        <li>Elemental is weak against Strength</li>
+      </ul>
+      <img class="logic-img" src="../../assets/images/circle3.png" alt="">
+    </div>
   </form>
   <div class="selected-heroes">
     <div class="selected-heroes-nav">

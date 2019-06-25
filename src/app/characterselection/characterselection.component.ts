@@ -18,7 +18,7 @@ export class CharacterSelectionComponent implements OnInit {
 
   maxHeroCount: number = 5;
 
-  shouldBeShown: boolean = true;
+  infoFormShowing: boolean = false;
 
   constructor(private apiService: ApiService, private shodown: ShodownService, private router: Router) { }
 
@@ -91,7 +91,7 @@ export class CharacterSelectionComponent implements OnInit {
   }
 
   toggleForm(): void {
-    this.shouldBeShown = !this.shouldBeShown;
+    this.infoFormShowing = !this.infoFormShowing;
   }
 
 }
