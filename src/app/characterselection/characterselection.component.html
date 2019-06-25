@@ -6,9 +6,12 @@
       <img class="superimg" src="../../assets/images/logo-stack-explosion.png" alt="IfItDoesntMatchAnyMedia">
     </picture>
   </div>
+  <div class="buttons">
   <button class="info-btn" (click)="toggleForm()">Info</button>
+  <button class="fight-btn" *ngIf="allHeroesPicked()" (click)="submitSelection()">Fight</button>
+  </div>
   <form (click)="toggleForm()" *ngIf="infoFormShowing">
-    <p>While the heroes are very strong, they do experience weaknesses based on attack-type.
+    <p class="logic-story">While the heroes are very strong, they do experience weaknesses based on attack-type.
       When heroes are up against their weakness, the attack's damage is multipled by 1.5. Below is a breakdown of the
       of attack-type weakness.</p>
     <div class="form-section">
@@ -53,5 +56,5 @@
       <img class="hero-type" src="../../assets/images/Icon_{{ hero.type.type }}.png" alt="">
     </div>
   </div>
-  <button class="fight-btn" *ngIf="allHeroesPicked()" (click)="submitSelection()">Fight</button>
+  
 </main>
