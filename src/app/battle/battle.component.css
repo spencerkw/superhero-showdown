@@ -72,8 +72,7 @@ main {
   height: 110px;
   width: 55px;
   margin: 15px 0 15px 0;
-  background: #3F5678;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  
   border-radius: 5px;
   position: absolute;
   top: 0;
@@ -90,6 +89,8 @@ main {
   height: 90%;
   padding: 10px;
   border: 1px solid black;
+  background: #3F5678;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
 }
 
 .setOfCards:hover .cover {

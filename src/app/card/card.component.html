@@ -1,10 +1,10 @@
-<div class="card" [ngClass]="cardSize">
+<div class="card" [ngClass]="cardSize" [ngStyle]="{ 'opacity': hero ? 1 : 0 }">
   
-  <img class="hero-image" src="../../assets/images/cards/cards-200-180-{{ hero.hero.split(' ').join('-') }}.png" alt="">
-  <p class="title">{{(cardSize === 'small' && hero.short_name) ? hero.short_name : hero.hero}}</p>
+  <img class="hero-image" *ngIf="hero" src="../../assets/images/cards/cards-200-180-{{ hero.hero.split(' ').join('-') }}.png" alt="">
+  <p class="title" *ngIf="hero">{{(cardSize === 'small' && hero.short_name) ? hero.short_name : hero.hero}}</p>
   <!-- <div class="hero-image"></div> -->
-  <img class="attack-type" src="../../assets/images/icons/Icon_{{ hero.type.type }}.png" alt="">
+  <img class="attack-type" src="../../assets/images/icons/Icon_{{ hero.type.type }}.png" alt="" *ngIf="hero">
   <!-- <p class="attack-type">{{hero.type.type}}</p> -->
-  <p class="attack-range" *ngIf="cardSize !== 'small'">{{hero.min_damage}}-{{hero.max_damage}}</p>
-  <p class="health" *ngIf="cardSize !== 'small'">{{hero.currentHealth ? hero.currentHealth : hero.health}}</p>
+  <p class="attack-range" *ngIf="hero && cardSize !== 'small'">{{hero.min_damage}}-{{hero.max_damage}}</p>
+  <p class="health" *ngIf="hero && cardSize !== 'small'">{{hero.currentHealth ? hero.currentHealth : hero.health}}</p>
 </div>

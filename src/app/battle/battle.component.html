@@ -1,15 +1,15 @@
 <main [ngClass]="currentBackground">
   <div class="table">
     <div class="setOfCards" [ngClass]="{ 'empty' : computerHeroes.length === 0 }">
-      <card class="card computer-deck" *ngIf="computerHeroes[1]" [hero]="computerHeroes[1]" [cardSize]="'small'">
+      <card class="card computer-deck" [hero]="computerHeroes[3]" [cardSize]="'small'">
       </card>
-      <card class="card computer-deck" *ngIf="computerHeroes[3]" [hero]="computerHeroes[3]" [cardSize]="'small'">
+      <card class="card computer-deck" [hero]="computerHeroes[2]" [cardSize]="'small'">
       </card>
-      <card class="card computer-deck" *ngIf="computerHeroes[4]" [hero]="computerHeroes[4]" [cardSize]="'small'">
+      <card class="card computer-deck" [hero]="computerHeroes[0]" [cardSize]="'small'">
       </card>
-      <card class="card computer-deck" *ngIf="computerHeroes[2]" [hero]="computerHeroes[2]" [cardSize]="'small'">
+      <card class="card computer-deck" [hero]="computerHeroes[1]" [cardSize]="'small'">
       </card>
-      <card class="card computer-deck" *ngIf="computerHeroes[0]" [hero]="computerHeroes[0]" [cardSize]="'small'">
+      <card class="card computer-deck" [hero]="computerHeroes[4]" [cardSize]="'small'">
       </card>
       <div class="card cover">
         <img class="computer-image" src="../../assets/images/icons/star1.png" alt="">
