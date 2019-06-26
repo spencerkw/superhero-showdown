@@ -180,7 +180,12 @@ export class BattleComponent implements OnInit {
     audio.play();
   }
 
-
+  fightAudio(){
+    let audio = new Audio();
+    audio.src = "../../assets/sounds/StreetFighter.mp3";
+    audio.load();
+    audio.play();
+  }
 
   
 
@@ -189,6 +194,7 @@ export class BattleComponent implements OnInit {
   constructor(private shodown: ShodownService, private router: Router) { }
 
   ngOnInit() {
+    this.fightAudio();
     this.playerHeroes = this.shodown.getPlayerHeroes();
     this.computerHeroes = this.shodown.getComputerHeroes();
 
