@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input, OnDestroy } from "@angular/core";
 import { Hero } from "../hero";
 import { ShodownService } from "../shodownservice.service";
 import { BattleStates } from "../battle-states.enum";
@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { trigger, state, style, animate, transition, keyframes } from '@angular/animations';
 import { Attack } from '../attack';
 import { AnimationDurations } from '../animation-durations';
+import { HealthComponent } from '../health/health.component';
 
 @Component({
   selector: "battle",
@@ -172,7 +173,7 @@ import { AnimationDurations } from '../animation-durations';
   ]
 })
 
-export class BattleComponent implements OnInit {
+export class BattleComponent implements OnInit, OnDestroy {
   playerHeroes: Hero[];
   computerHeroes: Hero[];
 
@@ -183,12 +184,15 @@ export class BattleComponent implements OnInit {
     "futuristic", "atlantis", "fortress", "triskelion", "tower", "asgard"
   ];
 
+  backgroundMusic: HTMLAudioElement;
+  punchSound: HTMLAudioElement;
+  fightSound: HTMLAudioElement;
+
   currentBackground: string = "";
 
   constructor(private shodown: ShodownService, private router: Router) { }
 
   ngOnInit() {
-    this.currentBackground = this.randomBackground();
     this.playerHeroes = this.shodown.getPlayerHeroes();
     this.computerHeroes = this.shodown.getComputerHeroes();
 
@@ -196,6 +200,12 @@ export class BattleComponent implements OnInit {
       this.router.navigate(["home"]);
       return;
     }
+
+    this.prepareAudio();
+    this.fightAudio();
+    this.playBackgroundMusic();
+
+    this.currentBackground = this.randomBackground();
 
     //temp just to test
     this.shodown.pickFirstPlayer();
@@ -210,6 +220,10 @@ export class BattleComponent implements OnInit {
 
     // let winner = this.playerHeroes.length > 0 ? this.shodown.getUsername() : "the computer";
     // console.log(`The winner is ${winner}`);
+  }
+
+  ngOnDestroy() {
+    this.backgroundMusic.pause();
   }
 
   battleLoop(): void {
@@ -276,6 +290,37 @@ export class BattleComponent implements OnInit {
     // }
   }
 
+  prepareAudio() {
+    this.punchSound = new Audio();
+    this.punchSound.src = "../../assets/sounds/punch.mp3";
+    this.punchSound.load();
+
+    this.fightSound = new Audio();
+    this.fightSound.src = "../../assets/sounds/StreetFighter.mp3";
+    this.fightSound.load();
+
+    this.backgroundMusic = new Audio();
+    this.backgroundMusic.src = "../../assets/sounds/The-Avengers-Theme-Song.mp3";
+    this.backgroundMusic.load();
+  }
+
+  playBackgroundMusic() {
+    this.backgroundMusic.play();
+  }
+  
+  punchAudio() { 
+    if (!this.shodown.getCurrentPlayerHero() || !this.shodown.getCurrentComputerHero()) {
+      return;
+    }
+    this.punchSound.pause();
+    this.punchSound.currentTime = 0;
+    this.punchSound.play();
+  }
+
+  fightAudio(){
+    this.fightSound.play();
+  }
+
   choosePlayerCard(index: number): void {
     this.playerInputNeeded = false;
     this.shodown.pickPlayerHero(index);
@@ -306,7 +351,7 @@ export class BattleComponent implements OnInit {
   currentHitEffect(): string {
     return this.shodown.getCurrentHitEffect();
   }
-
+  
   computerHealth(): number {
     return this.shodown.getComputerHealth();
   }

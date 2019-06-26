@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Hero } from '../hero';
 import { ShodownService } from '../shodownservice.service';
@@ -38,19 +38,38 @@ import { AngularMan, RitualMan } from '../easter-eggs';
     ])
   ]
 })
-export class CharacterSelectionComponent implements OnInit {
+export class CharacterSelectionComponent implements OnInit, OnDestroy {
   heroes: Hero[];
   selectedHeroes: Hero[] = [];
 
   attackTypes: AttackType[];
 
   maxHeroCount: number = 5;
+  audio = new Audio();
+
+  playAudio(): any {
+    this.audio.src = "../../assets/sounds/x-mentheme.mp3";
+    this.audio.load();
+    this.audio.volume = 0.2;
+    this.audio.play();
+  }
+
+  pauseAudio() {
+    this.audio.pause();
+  }
 
   infoFormShowing: boolean = false;
 
   constructor(private apiService: ApiService, private shodown: ShodownService, private router: Router) { }
 
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    this.pauseAudio();
+  }
+
   ngOnInit() {
+    this.playAudio();
     //return to homepage if we haven't gotten here normally
     if (!this.shodown.getUsername()) {
       this.router.navigate(["home"]);
@@ -123,24 +142,20 @@ export class CharacterSelectionComponent implements OnInit {
       this.moveHero(this.shodown.random(0, this.heroes.length - 1), this.heroes, computerHeroes);
     }
     this.shodown.setComputerHeroes(computerHeroes);
-
-    // console.log(this.shodown.getPlayerHeroes());
-    // console.log(this.shodown.getComputerHeroes());
-
     this.router.navigate(["shodown"]);
   }
 
   allHeroesPicked(): boolean {
     return this.selectedHeroes.length === this.maxHeroCount;
   }
+  
+  toggleForm(): void {
+    this.infoFormShowing = !this.infoFormShowing;
+  }
 
   private moveHero(index: number, fromArray: Hero[], toArray: Hero[]) {
     toArray.push(fromArray[index]);
     fromArray.splice(index, 1);
-  }
-
-  toggleForm(): void {
-    this.infoFormShowing = !this.infoFormShowing;
   }
 
 }
