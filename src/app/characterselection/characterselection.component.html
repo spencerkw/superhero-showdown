@@ -1,18 +1,18 @@
 <main>
   <div class="logo">
     <picture>
-      <!-- <source media="(min-width: 1024px)" srcset="../../assets/images/logos/logo-stretch-explosion.png"> -->
       <source media="(min-width: 768px)" srcset="../../assets/images/logos/logo-stretch-explosion.png">
       <img class="superimg" src="../../assets/images/logos/logo-stack-explosion.png" alt="Logo">
     </picture>
   </div>
   <div class="buttons">
-  <button class="info-btn" (click)="toggleForm()">Info</button>
-  <button class="fight-btn" *ngIf="allHeroesPicked()" (click)="submitSelection()">Fight</button>
+    <button class="info-btn" (click)="toggleForm()">Info</button>
+    <button class="fight-btn" *ngIf="allHeroesPicked()" (click)="submitSelection()">Fight</button>
   </div>
   <div class="info-container" (click)="toggleForm()" *ngIf="infoFormShowing">
     <p class="logic-story">While the heroes are very strong, they do experience weaknesses based on attack-type.
-      When heroes are up against their weakness, the attack's damage is multipled by 1.5. Below is a breakdown of the attack-type weaknesses.</p>
+      When heroes are up against their weakness, the attack's damage is multipled by 1.5. Below is a breakdown of the
+      attack-type weaknesses.</p>
     <div class="form-section">
       <ul>
         <li>Strength is weak against Agility</li>
@@ -31,12 +31,8 @@
       <img class="life-icon" src="../../assets/images/icons/Icon_life.png" alt="">
       <img class="element-icon" src="../../assets/images/icons/Icon_all.png" alt="">
     </div>
-    <div class="hero"
-    [ngClass]="hero.type.type"
-    *ngFor="let hero of selectedHeroes; index as i"
-    (click)="deselectHero(i)"
-    [@HeroSelect]
-    [@HeroSelectChildren]>
+    <div class="hero" [ngClass]="hero.type.type" *ngFor="let hero of selectedHeroes; index as i"
+      (click)="deselectHero(i)" [@HeroSelect] [@HeroSelectChildren]>
       <p class="selected">{{ hero.hero }}</p>
       <p class="attack-range">{{hero.min_damage}}-{{hero.max_damage}}</p>
       <p class="health">{{hero.health}}</p>
@@ -46,22 +42,13 @@
   <div class="hero-list">
     <div class="hero-list-nav">
       <p class="label-roster">Hero Roster</p>
-      <!-- <img class="attack-icon" src="../../assets/images/icon_sword.png" alt="">
-      <img class="life-icon" src="../../assets/images/Icon_life.png" alt="">
-      <img class="element-icon" src="../../assets/images/Icon_mental.png" alt=""> -->
     </div>
-    <div class="hero"
-    [ngClass]="hero.type.type"
-    [ngStyle]="{'cursor': allHeroesPicked() ? 'not-allowed' : 'pointer'}"
-    *ngFor="let hero of heroes; index as i"
-    (click)="selectHero(i)"
-    [@HeroSelect]
-    [@HeroSelectChildren]>
+    <div class="hero" [ngClass]="hero.type.type" [ngStyle]="{'cursor': allHeroesPicked() ? 'not-allowed' : 'pointer'}"
+      *ngFor="let hero of heroes; index as i" (click)="selectHero(i)" [@HeroSelect] [@HeroSelectChildren]>
       <p class="hero-name">{{ hero.hero }}</p>
       <p class="attack-range">{{hero.min_damage}}-{{hero.max_damage}}</p>
       <p class="health">{{hero.health}}</p>
       <img class="hero-type" src="../../assets/images/icons/Icon_{{ hero.type.type }}.png" alt="">
     </div>
   </div>
-  
 </main>
