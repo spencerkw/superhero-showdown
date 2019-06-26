@@ -16,7 +16,7 @@
       [@PlayUserCard]
       [@UserDeath]="currentPlayerHero().currentHealth <= 0 ? currentAttackAnimation() : null"
       [@UserAttack]="(currentAttack() && currentAttack().attacker === currentPlayerHero()) ? currentAttackAnimation() : 'none'"></card>
-      <img class="pow" *ngIf="currentHitEffect()" src="../../assets/images/{{currentHitEffect()}}-640.png" alt="Pow" [@Pow]="currentAttackTarget()">
+      <img class="pow" *ngIf="currentHitEffect()" src="../../assets/images/{{currentHitEffect()}}-640.png" alt="Pow" [@Pow]="currentAttackTarget()" (@Pow.start)="playAudio()">
       <div class="damage-number" *ngIf="currentAttack()" [@DamageDealt]="currentAttackTarget()">-{{currentAttack().damage}}</div>
     </div>
     <div class="user-deck">

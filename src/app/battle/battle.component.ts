@@ -173,6 +173,15 @@ export class BattleComponent implements OnInit {
   playerInputNeeded: boolean = false;
   lastActionDelay: number = 0;
 
+  playAudio(){
+    let audio = new Audio();
+    audio.src = "../../assets/sounds/punch.mp3";
+    audio.load();
+    audio.play();
+  }
+
+
+
   
 
   @Input() health: HealthComponent;
@@ -201,13 +210,6 @@ export class BattleComponent implements OnInit {
 
     // let winner = this.playerHeroes.length > 0 ? this.shodown.getUsername() : "the computer";
     // console.log(`The winner is ${winner}`);
-  }
-
-  playAudio(){
-    let audio = new Audio();
-    audio.src = "../../assets/sounds/punch.mp3";
-    audio.load();
-    audio.play();
   }
 
   battleLoop(): void {
@@ -296,7 +298,6 @@ export class BattleComponent implements OnInit {
   }
 
   currentAttackAnimation(): string {
-    this.playAudio();
     return this.shodown.getCurrentAttackAnimation();
   }
 
