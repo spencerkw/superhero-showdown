@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ShodownService } from '../shodownservice.service';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'homepage',
@@ -18,7 +19,10 @@ export class HomepageComponent implements OnInit {
   }
 
   submitName(name: string): void {
-    console.log(name);
+    if (!environment.production) {
+      console.log(name);
+    }
+    
     if (name) {
       this.shodown.setUsername(name);
       this.router.navigate(["hero-select"]);

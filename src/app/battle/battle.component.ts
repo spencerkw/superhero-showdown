@@ -7,6 +7,7 @@ import { trigger, state, style, animate, transition, keyframes } from '@angular/
 import { Attack } from '../attack';
 import { AnimationDurations } from '../animation-durations';
 import { HealthComponent } from '../health/health.component';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: "battle",
@@ -217,9 +218,6 @@ export class BattleComponent implements OnInit, OnDestroy {
     // this.shodown.pickPlayerHero();
 
     this.battleLoop();
-
-    // let winner = this.playerHeroes.length > 0 ? this.shodown.getUsername() : "the computer";
-    // console.log(`The winner is ${winner}`);
   }
 
   ngOnDestroy() {
@@ -257,7 +255,9 @@ export class BattleComponent implements OnInit, OnDestroy {
         // case BattleStates.END_GAME:
         //   functionToRun = this.gameOver();
         default:
-          console.log("bad state");
+          if (!environment.production) {
+            console.log("bad state");
+          }
       }
 
       //run the rest of the steps on a delay
@@ -277,19 +277,7 @@ export class BattleComponent implements OnInit, OnDestroy {
           this.battleLoop();
         }
       }, delay);
-
-      // this.shodown.updateBattleState();
-      // this.shodown.removeDead();
-
-      // if (this.shodown.checkWinner()) {
-      //   // console.log("winner found");
-      //   this.shodown.setBattleState(BattleStates.END_GAME);
-      // }
     }
-
-    // if (this.shodown.getBattleState() === BattleStates.END_GAME) {
-    //   this.gameOver();
-    // }
   }
 
   prepareAudio() {
@@ -330,7 +318,9 @@ export class BattleComponent implements OnInit, OnDestroy {
   }
 
   gameOver = (): void => {
-    console.log(`The winner is ${this.shodown.getVictory() ? this.shodown.getUsername() : "the computer"}`);
+    if (!environment.production) {
+      console.log(`The winner is ${this.shodown.getVictory() ? this.shodown.getUsername() : "the computer"}`);
+    }
     this.router.navigate(["endgame"]);
   }
 

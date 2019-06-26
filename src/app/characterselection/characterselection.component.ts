@@ -47,17 +47,6 @@ export class CharacterSelectionComponent implements OnInit, OnDestroy {
   maxHeroCount: number = 5;
   audio = new Audio();
 
-  playAudio(): any {
-    this.audio.src = "../../assets/sounds/x-mentheme.mp3";
-    this.audio.load();
-    this.audio.volume = 0.2;
-    this.audio.play();
-  }
-
-  pauseAudio() {
-    this.audio.pause();
-  }
-
   infoFormShowing: boolean = false;
 
   constructor(private apiService: ApiService, private shodown: ShodownService, private router: Router) { }
@@ -69,12 +58,13 @@ export class CharacterSelectionComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.playAudio();
     //return to homepage if we haven't gotten here normally
     if (!this.shodown.getUsername()) {
       this.router.navigate(["home"]);
       return;
     }
+    
+    this.playAudio();
 
     this.apiService.getTypes().subscribe((response: AttackType[]) => {
       this.attackTypes = response;
@@ -151,6 +141,17 @@ export class CharacterSelectionComponent implements OnInit, OnDestroy {
   
   toggleForm(): void {
     this.infoFormShowing = !this.infoFormShowing;
+  }
+
+  playAudio(): any {
+    this.audio.src = "../../assets/sounds/x-mentheme.mp3";
+    this.audio.load();
+    this.audio.volume = 0.2;
+    this.audio.play();
+  }
+
+  pauseAudio() {
+    this.audio.pause();
   }
 
   private moveHero(index: number, fromArray: Hero[], toArray: Hero[]) {

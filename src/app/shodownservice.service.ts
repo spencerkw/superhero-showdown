@@ -3,6 +3,7 @@ import { Hero } from './hero';
 import { BattleStates } from './battle-states.enum';
 import { Attack } from './attack';
 import { AnimationDurations } from './animation-durations';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -161,41 +162,47 @@ export class ShodownService {
 
   pickFirstPlayer(): void {
     let random = this.random(0, 1);
-    console.log(random);
+    if (!environment.production) {
+      console.log(random);
+    }
+    
     if (random === 0) {
       this.isPlayerTurn = true;
     } else {
       this.isPlayerTurn = false;
     }
-    console.log(
-      `The first player is ${
-      this.isPlayerTurn ? this.username : "the computer"
-      }`
-    );
+
+    if (!environment.production) {
+      console.log(`The first player is ${this.isPlayerTurn ? this.username : "the computer"}`);
+    }
+    
   }
 
   pickComputerHero = (): void => {
-    if (this.currentComputerHero) {
+    if (this.currentComputerHero && !environment.production) {
       console.log(`${this.currentComputerHero.hero} was defeated`);
     }
-    this.currentComputerHero = this.computerHeroes.splice(
-      this.random(0, this.computerHeroes.length - 1),
-      1
-    )[0];
+    
+    this.currentComputerHero = this.computerHeroes.splice(this.random(0, this.computerHeroes.length - 1), 1)[0];
     this.currentComputerHero.currentHealth = this.currentComputerHero.health;
-    console.log(`The computer selected ${this.currentComputerHero.hero}`);
+
+    if (!environment.production) {
+      console.log(`The computer selected ${this.currentComputerHero.hero}`);
+    }
   }
 
   //TODO make this into an event handler
   pickPlayerHero(index: number): void {
-    if (this.currentPlayerHero) {
+    if (this.currentPlayerHero && !environment.production) {
       console.log(`${this.currentPlayerHero.hero} was defeated`);
     }
+    
     this.currentPlayerHero = this.playerHeroes.splice(index, 1)[0];
     this.currentPlayerHero.currentHealth = this.currentPlayerHero.health;
-    console.log(
-      `${this.username} selected ${this.currentPlayerHero.hero}`
-    );
+
+    if (!environment.production) {
+      console.log(`${this.username} selected ${this.currentPlayerHero.hero}`);
+    }
   }
 
   attack(attacker: Hero, target: Hero) {
@@ -204,13 +211,17 @@ export class ShodownService {
     if (attacker.type.type === target.type.weak_against ||
         attacker.type.type === "all") {
       damage *= 1.5;
-      console.log(`${attacker.hero} has type advantage over ${target.hero}`);
+      if (!environment.production) {
+        console.log(`${attacker.hero} has type advantage over ${target.hero}`);
+      }
     }
 
     damage = Math.floor(damage);
     target.currentHealth -= damage;
 
-    console.log(`${attacker.hero} dealt ${damage} to ${target.hero}`);
+    if (!environment.production) {
+      console.log(`${attacker.hero} dealt ${damage} to ${target.hero}`);
+    }
 
     this.pickAttackAnimation();
     this.pickHitEffect();
@@ -233,7 +244,9 @@ export class ShodownService {
     }
 
     this.attack(attacker, target);
-    console.log(`${target.hero} has ${target.currentHealth} HP left`);
+    if (!environment.production) {
+      console.log(`${target.hero} has ${target.currentHealth} HP left`);
+    }
     this.nextTurn();
   }
 
@@ -255,7 +268,6 @@ export class ShodownService {
   }
 
   checkWinner(): boolean {
-    // console.log("checking winner");
     if (this.computerHeroes.length === 0 && !this.currentComputerHero) {
       this.victory = true;
       return true;
