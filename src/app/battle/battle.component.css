@@ -73,7 +73,6 @@ main {
   height: 110px;
   width: 55px;
   margin: 15px 0 15px 0;
-  
   border-radius: 5px;
   position: absolute;
   top: 0;
@@ -94,6 +93,7 @@ main {
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
   color: #CCCCCC;
 }
+
 .cpu-deck-name {
   margin: 2px 0 0 0;
   font-size: 10px;

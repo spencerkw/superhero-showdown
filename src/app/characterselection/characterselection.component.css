@@ -3,14 +3,11 @@ main {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../assets/images/backgrounds/marvel-vs-dc-wallpaper.jpg");
   background-repeat: no-repeat, no-repeat;
   background-size: cover, cover;
   background-attachment: fixed, fixed;
   background-position: center, center;
-  /* background-color: transparent; */
-  /* margin: 0 0 0 -5px; */
 }
 
 .selected-heroes, .hero-list {
@@ -170,7 +167,6 @@ li {
 }
 
 button {
-  /* margin: 10px 0; */
   font-size: 20px;
   padding: 5px;
   border: 1px solid black;
@@ -189,18 +185,6 @@ button {
   flex-direction: row;
   justify-content: center;
 }
-
-/* .fight-btn .info-btn {
- border-radius: 5px;
-} */
-
-/* .fight-btn {
- 
-}
-
-.info-btn {
-
-} */
 
 .strength:hover, .agility:hover, .mental:hover, .mechanical:hover, .elemental:hover, .all:hover {
   color: white;
@@ -297,7 +281,6 @@ button {
   .label-heroes .label-roster {
     font-size: 20px;
   }
-
 }
 
 @media only screen and (min-width: 1024px) {

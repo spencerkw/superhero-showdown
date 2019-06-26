@@ -18,27 +18,21 @@
     </div>
     <health class="health-bar" [name]="'Brainiac'" [health]="computerHealth()"></health>
     <div class="battle-area">
-      <card class="computer-card"
-      *ngIf="currentComputerHero()"
-      [hero]="currentComputerHero()"
-      [cardSize]="'large'"
-      [hasAdvantage]="computerHasAdvantage()"
-      [@PlayComputerCard] 
-      [@ComputerDeath]="currentComputerHero().currentHealth <= 0 ? currentAttackAnimation() : null"
-      [@ComputerAttack]="(currentAttack() && currentAttack().attacker === currentComputerHero()) ? currentAttackAnimation() : 'none'">
+      <card class="computer-card" *ngIf="currentComputerHero()" [hero]="currentComputerHero()" [cardSize]="'large'"
+        [hasAdvantage]="computerHasAdvantage()" [@PlayComputerCard]
+        [@ComputerDeath]="currentComputerHero().currentHealth <= 0 ? currentAttackAnimation() : null"
+        [@ComputerAttack]="(currentAttack() && currentAttack().attacker === currentComputerHero()) ? currentAttackAnimation() : 'none'">
       </card>
       <div class="separator"></div>
-      <card class="user-card"
-      *ngIf="currentPlayerHero()"
-      [hero]="currentPlayerHero()"
-      [cardSize]="'large'" 
-      [hasAdvantage]="playerHasAdvantage()"
-      [@PlayUserCard]
-      [@UserDeath]="currentPlayerHero().currentHealth <= 0 ? currentAttackAnimation() : null"
-      [@UserAttack]="(currentAttack() && currentAttack().attacker === currentPlayerHero()) ? currentAttackAnimation() : 'none'">
+      <card class="user-card" *ngIf="currentPlayerHero()" [hero]="currentPlayerHero()" [cardSize]="'large'"
+        [hasAdvantage]="playerHasAdvantage()" [@PlayUserCard]
+        [@UserDeath]="currentPlayerHero().currentHealth <= 0 ? currentAttackAnimation() : null"
+        [@UserAttack]="(currentAttack() && currentAttack().attacker === currentPlayerHero()) ? currentAttackAnimation() : 'none'">
       </card>
-      <img class="pow" *ngIf="currentHitEffect()" src="../../assets/images/hit-effects/{{currentHitEffect()}}-640.png" alt="Pow" [@Pow]="currentAttackTarget()" (@Pow.start)="punchAudio()">
-      <div class="damage-number" *ngIf="currentAttack()" [@DamageDealt]="currentAttackTarget()" [@AdvantageDamageDealt]="currentPlayerHasAdvantage()">-{{currentAttack().damage}}</div>
+      <img class="pow" *ngIf="currentHitEffect()" src="../../assets/images/hit-effects/{{currentHitEffect()}}-640.png"
+        alt="Pow" [@Pow]="currentAttackTarget()" (@Pow.start)="punchAudio()">
+      <div class="damage-number" *ngIf="currentAttack()" [@DamageDealt]="currentAttackTarget()"
+        [@AdvantageDamageDealt]="currentPlayerHasAdvantage()">-{{currentAttack().damage}}</div>
     </div>
     <div class="user-deck">
       <card class="user-hand-card" *ngFor="let hero of playerHeroes; index as i"
