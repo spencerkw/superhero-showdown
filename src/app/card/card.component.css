@@ -17,6 +17,8 @@
   object-fit: contain;
   border-radius: 50%;
   border: 2px solid black;
+
+  transition: box-shadow 0.5s;
 }
 
 .large {
@@ -69,4 +71,28 @@ p {
  bottom: 0%;
  left: 0%;
  transform: translate(50%, -50%);
+}
+
+.strength .advantage {
+  box-shadow: 0 0 15px 5px red;
+}
+
+.agility .advantage {
+  box-shadow: 0 0 15px 5px springgreen;
+}
+
+.mental .advantage {
+  box-shadow: 0 0 15px 5px pink;
+}
+
+.mechanical .advantage {
+  box-shadow: 0 0 15px 5px lightgray;
+}
+
+.elemental .advantage {
+  box-shadow: 0 0 15px 5px darkorange;
+}
+
+.all .advantage {
+  box-shadow: 0 0 15px 5px dodgerblue;
 }

@@ -3,5 +3,6 @@ export const AnimationDurations = {
   playCard: 1500,
   death: 1000,
   heroSelect: 200,
-  hitEffect: 750
+  hitEffect: 750,
+  healthLost: 1000
 };

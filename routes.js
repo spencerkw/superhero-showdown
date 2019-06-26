@@ -6,7 +6,7 @@ const pool = require("./connection");
 //endpoints here
 
 router.get("/heroes", (req, res) => {
-  pool.query("select * from heroes order by id").then(result => {
+  pool.query("select * from heroes order by attack_type_id, id").then(result => {
     res.json(result.rows); 
   });
 });

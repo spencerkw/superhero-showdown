@@ -9,19 +9,21 @@ import { AnimationDurations } from './animation-durations';
 })
 export class ShodownService {
 
-  private username: string;
-  private playerHeroes: Hero[];
-  private computerHeroes: Hero[];
+  private username: string = null;
+  private playerHeroes: Hero[] = null;
+  private computerHeroes: Hero[] = null;
 
-  private currentPlayerHero: Hero;
-  private currentComputerHero: Hero;
+  private currentPlayerHero: Hero = null;
+  private currentComputerHero: Hero = null;
 
-  private isPlayerTurn: boolean;
+  private computerHealth: number = 5;
 
-  private state: number;
+  private isPlayerTurn: boolean = null;
 
-  private victory: boolean;
-  private currentAttack: Attack;
+  private state: number = null;
+
+  private victory: boolean = null;
+  private currentAttack: Attack = null;
 
   private attackAnimations: string[] = ["bump", "kick", "punch"];
   private currentAttackAnimation: string = "";
@@ -52,6 +54,10 @@ export class ShodownService {
 
   getCurrentComputerHero(): Hero {
     return this.currentComputerHero;
+  }
+
+  getComputerHealth(): number {
+    return this.computerHealth;
   }
 
   getIsPlayerTurn(): boolean {
@@ -195,7 +201,8 @@ export class ShodownService {
   attack(attacker: Hero, target: Hero) {
     let damage = this.random(attacker.min_damage, attacker.max_damage);
 
-    if (attacker.type.type === target.type.weak_against) {
+    if (attacker.type.type === target.type.weak_against ||
+        attacker.type.type === "all") {
       damage *= 1.5;
       console.log(`${attacker.hero} has type advantage over ${target.hero}`);
     }
@@ -232,6 +239,7 @@ export class ShodownService {
 
   removeDead(): boolean {
     if (this.currentComputerHero && this.currentComputerHero.currentHealth <= 0) {
+      this.reduceComputerHealth();
       setTimeout(() => {
         this.currentComputerHero = null;
       }, AnimationDurations.death);
@@ -259,12 +267,39 @@ export class ShodownService {
     return false;
   }
 
+  clearData(): void {
+    this.username = null;
+    this.playerHeroes = null;
+    this.computerHeroes = null;
+
+    this.currentPlayerHero = null;
+    this.currentComputerHero = null;
+
+    this.computerHealth = 5;
+
+    this.isPlayerTurn = null;
+
+    this.state = null;
+
+    this.victory = null;
+
+    this.currentAttack = null;
+
+    this.currentAttackAnimation = "";
+
+    this.currentHitEffect = "";
+  }
+
   pickAttackAnimation(): void {
     this.currentAttackAnimation = this.attackAnimations[this.random(0, this.attackAnimations.length-1)];
   }
 
   pickHitEffect(): void {
     this.currentHitEffect = this.hitEffects[this.random(0, this.hitEffects.length-1)];
+  }
+
+  reduceComputerHealth(): void {
+    this.computerHealth -= 1;
   }
 
   random(min: number, max: number): number {

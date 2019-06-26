@@ -10,10 +10,19 @@ export class CardComponent implements OnInit {
 
   @Input() hero: Hero;
   @Input() cardSize: string;
+  @Input() hasAdvantage: boolean = false;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  heroType() {
+    if (this.hero) {
+      return this.hero.type.type;
+    } else {
+      return '';
+    }
   }
 
 }

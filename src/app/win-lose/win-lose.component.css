@@ -1,0 +1,67 @@
+main {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+}
+
+h1 {
+  text-align: center;
+}
+
+.ending{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  background-color: rgba(0, 0, 0, 0.7);
+  color: aliceblue;
+  border-radius: 10px;
+  border: 1px solid aliceblue;
+
+  padding: 5px;
+  margin: 0 10px;
+}
+
+.message, button {
+  margin: 10px 0;
+}
+
+button {
+  border-radius: 5px;
+  border: 1px solid aliceblue;
+  /* width: 10%; */
+  padding: 5px;
+  background-color: red;
+  color: inherit;
+  font-family: inherit;
+}
+
+.victory {
+  background-image: url("../../assets/images/backgrounds/Brainiac.jpg");
+}
+
+.defeat {
+  background-image: url("../../assets/images/backgrounds/argocity_by_vladmrk_dbli6c9-pre.jpg");
+}
+
+@media only screen and (min-width: 768px) {
+  main {
+    align-items: center;
+  }
+
+  .ending {
+    width: 70%;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .ending {
+    width: 50%;
+  }
+}

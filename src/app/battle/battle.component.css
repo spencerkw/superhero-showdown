@@ -1,8 +1,5 @@
 main {
-  background-image: linear-gradient(rgba(26, 50, 62, 0.8), rgba(26, 50, 62, 0.8)), url("../../assets/images/Background-Gotham.jpg");
-  /* opacity: 0.8; */
-  /* background-color: rgba(26, 50, 62, 0.8); */
-  /* background-blend-mode: saturation; */
+  background-image: linear-gradient(rgba(26, 50, 62, 0.8), rgba(26, 50, 62, 0.8));
   width: 100vw;
   height: 100vh;
   margin: 0px;
@@ -11,12 +8,14 @@ main {
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  background-repeat: no-repeat, no-repeat;
+  background-size: cover, cover;
+  background-attachment: fixed, fixed;
+  background-position: center, center;
 }
 
 .table {
   border: 1px solid black;
-  /* margin: 10px;
-  padding: 10px; */
   width: 95vw;
   height: 90vh;
   text-align: center;
@@ -26,7 +25,7 @@ main {
   flex-direction: column;
   justify-content: space-between;
   background-color:rgb(32, 33, 35, 0.73);
-  border-radius: 1%;
+  border-radius: 10px;
 }
 
 .battle-area {
@@ -56,27 +55,109 @@ main {
 }
 
 .damage-number {
-  font-size: 20px;
+  font-family: "Badaboom", sans-serif;
+  font-size: 24px;
   color: red;
   text-shadow: 1px 1px 2px black;
 }
 
-.computer-deck {
-  width: 50px;
-  height: 100px;
-  border: 1px solid black;
-  border-radius: 5px;
-  padding: 10px;
-  margin: 15px 0 15px 0;
-  display: flex;
-  flex-direction: column;
-  background-color: #3F5678;
+.setOfCards {
+  height: 110px;
+  width: 55px;
+  padding: 5px;
+  margin: 0 0 15px 0;
+  position: relative;
 }
 
-/* .computer-card {
-  width: 100px;
-height: 200px;
-} */
+.card {
+  height: 110px;
+  width: 55px;
+  margin: 15px 0 15px 0;
+  
+  border-radius: 5px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transform-origin: 25% bottom;
+          transform-origin: 25% bottom;
+  transition: -webkit-transform .2s;
+  transition: transform .2s;
+  transition: transform .2s, -webkit-transform .2s;
+}
+
+.cover {
+  width: 85%;
+  height: 85%;
+  padding: 10px;
+  border: 1px solid black;
+  background: #3F5678;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+.setOfCards:hover .cover {
+  display: none;
+}
+
+.setOfCards:hover .card:nth-child(1) {
+  -webkit-transform: rotate(-40deg);
+          transform: rotate(-40deg);
+}
+
+.setOfCards .card:hover:nth-child(1) {
+  -webkit-transform: rotate(-40deg) translateY(-25px);
+          transform: rotate(-40deg) translateY(-25px);
+}
+
+.setOfCards:hover .card:nth-child(2) {
+  -webkit-transform: rotate(-20deg);
+          transform: rotate(-20deg);
+}
+
+.setOfCards .card:hover:nth-child(2) {
+  -webkit-transform: rotate(-20deg) translateY(-25px);
+          transform: rotate(-20deg) translateY(-25px);
+}
+
+.setOfCards:hover .card:nth-child(3) {
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+}
+
+.setOfCards .card:hover:nth-child(3) {
+  -webkit-transform: rotate(0deg) translateY(-25px);
+          transform: rotate(0deg) translateY(-25px);
+}
+
+.setOfCards:hover .card:nth-child(4) {
+  -webkit-transform: rotate(20deg);
+          transform: rotate(20deg);
+}
+
+.setOfCards .card:hover:nth-child(4) {
+  -webkit-transform: rotate(20deg) translateY(-25px);
+          transform: rotate(20deg) translateY(-25px);
+}
+
+.setOfCards:hover .card:nth-child(5) {
+  -webkit-transform: rotate(40deg);
+          transform: rotate(40deg);
+}
+
+.setOfCards .card:hover:nth-child(5) {
+  -webkit-transform: rotate(40deg) translateY(-25px);
+          transform: rotate(40deg) translateY(-25px);
+}
+
+.empty {
+  opacity: 0;
+}
+
+.health-bar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 10px;
+}
 
 .computer-image {
   width:90%;
@@ -102,21 +183,46 @@ height: 200px;
   transition: box-shadow 0.25s;
 }
 
+.gotham {
+  background-image: url("../../assets/images/backgrounds/Background-Gotham.jpg");
+}
+
+.futuristic {
+  background-image: url("../../assets/images/backgrounds/futuristic.jpg");
+}
+
+.metropolis {
+  background-image: url("../../assets/images/backgrounds/metropolis.jpg");
+}
+
+.asgard {
+  background-image: url("../../assets/images/backgrounds/Asgard.png");
+}
+
+.triskelion {
+  background-image: url("../../assets/images/backgrounds/Triskelion.png");
+}
+
+.fortress {
+  background-image: url("../../assets/images/backgrounds/The-Fortress-of-Solitude.jpg");
+}
+
+.tower {
+  background-image: url("../../assets/images/backgrounds/Avengers_Tower_AoU.png");
+}
+
+.atlantis {
+  background-image: url("../../assets/images/backgrounds/Aquaman-atlantis-movie.jpg");
+}
+
 .selectable {
   cursor: pointer;
+  box-shadow: 0 0 5px 3px gold;
 }
 
 .selectable:hover {
   box-shadow: 0 0 15px 5px gold;
 }
-
-/* .computer-card {
-  margin-right: 200px;
-}
-
-.user-card {
-  margin-left: 200px;
-} */
 
 @media only screen and (min-width: 768px) {
   .user-deck {

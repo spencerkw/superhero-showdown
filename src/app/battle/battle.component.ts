@@ -162,6 +162,13 @@ import { HealthComponent } from '../health/health.component';
           style({ transform: 'translateY(-25%)', opacity: 0 })
         ]))
       ])
+    ]),
+    trigger('AdvantageDamageDealt', [
+      transition('* => true', [
+        animate(`${AnimationDurations.hitEffect}ms`, keyframes([
+          style({ transform: 'scale(2)' })
+        ]))
+      ])
     ])
   ]
 })
@@ -173,28 +180,17 @@ export class BattleComponent implements OnInit {
   playerInputNeeded: boolean = false;
   lastActionDelay: number = 0;
 
-  playAudio(){
-    let audio = new Audio();
-    audio.src = "../../assets/sounds/punch.mp3";
-    audio.load();
-    audio.play();
-  }
+  images: any = ["gotham", "metropolis",
+    "futuristic", "atlantis", "fortress", "triskelion", "tower", "asgard"
+  ];
 
-  fightAudio(){
-    let audio = new Audio();
-    audio.src = "../../assets/sounds/StreetFighter.mp3";
-    audio.load();
-    audio.play();
-  }
-
-  
-
-  @Input() health: HealthComponent;
+  currentBackground: string = "";
 
   constructor(private shodown: ShodownService, private router: Router) { }
 
   ngOnInit() {
     this.fightAudio();
+    this.currentBackground = this.randomBackground();
     this.playerHeroes = this.shodown.getPlayerHeroes();
     this.computerHeroes = this.shodown.getComputerHeroes();
 
@@ -231,7 +227,9 @@ export class BattleComponent implements OnInit {
             this.playerInputNeeded = true;
           }
           this.lastActionDelay = AnimationDurations.playCard;
-          delay -= 1000; //reduces the lag time for the player to be able to click
+          if (this.playerHeroes.length > 0) {
+            delay -= 1000; //reduces the lag time for the player to be able to click
+          }
           break;
         case BattleStates.CPU_CHOOSE:
           functionToRun = this.shodown.pickComputerHero;
@@ -279,6 +277,20 @@ export class BattleComponent implements OnInit {
     //   this.gameOver();
     // }
   }
+  
+  playAudio(){
+    let audio = new Audio();
+    audio.src = "../../assets/sounds/punch.mp3";
+    audio.load();
+    audio.play();
+  }
+
+  fightAudio(){
+    let audio = new Audio();
+    audio.src = "../../assets/sounds/StreetFighter.mp3";
+    audio.load();
+    audio.play();
+  }
 
   choosePlayerCard(index: number): void {
     this.playerInputNeeded = false;
@@ -310,10 +322,10 @@ export class BattleComponent implements OnInit {
   currentHitEffect(): string {
     return this.shodown.getCurrentHitEffect();
   }
-
-  // currentHitSound(): string {
-  //   return this.shodown.getCurrentHitSound();
-  // }
+  
+  computerHealth(): number {
+    return this.shodown.getComputerHealth();
+  }
 
   currentAttackTarget(): string {
     if (this.shodown.getCurrentAttack()) {
@@ -326,4 +338,28 @@ export class BattleComponent implements OnInit {
     
     return 'none';
   }
+
+  currentPlayerHasAdvantage(): boolean {
+    return ((this.shodown.getIsPlayerTurn() && this.computerHasAdvantage()) || (!this.shodown.getIsPlayerTurn() && this.playerHasAdvantage()));
+  }
+
+  randomBackground() {
+    // return "Hello";
+   return this.images[this.shodown.random(0, this.images.length-1)];
+  }
+
+  computerHasAdvantage(): boolean {
+    if (!this.shodown.getCurrentComputerHero() || !this.shodown.getCurrentPlayerHero()) {
+      return false;
+    }
+    return (this.shodown.getCurrentComputerHero().type.type === this.shodown.getCurrentPlayerHero().type.weak_against) || this.shodown.getCurrentComputerHero().type.type === 'all';
+  }
+
+  playerHasAdvantage(): boolean {
+    if (!this.shodown.getCurrentComputerHero() || !this.shodown.getCurrentPlayerHero()) {
+      return false;
+    }
+    return (this.shodown.getCurrentPlayerHero().type.type === this.shodown.getCurrentComputerHero().type.weak_against) || this.shodown.getCurrentPlayerHero().type.type === 'all';
+  }
+
 }
