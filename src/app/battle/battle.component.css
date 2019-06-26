@@ -92,6 +92,12 @@ main {
   border: 1px solid black;
   background: #3F5678;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  color: #CCCCCC;
+}
+.cpu-deck-name {
+  margin: 2px 0 0 0;
+  font-size: 10px;
+  text-align: center;
 }
 
 .setOfCards:hover .cover {

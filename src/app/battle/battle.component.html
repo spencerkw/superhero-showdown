@@ -12,11 +12,11 @@
       <card class="card computer-deck" [hero]="computerHeroes[4]" [cardSize]="'small'">
       </card>
       <div class="card cover">
-        <img class="computer-image" src="../../assets/images/icons/star1.png" alt="">
-        <p>CPU Deck</p>
+        <img class="computer-image" src="../../assets/images/icons/Icon_all.png" alt="">
+        <p class="cpu-deck-name">Team Brainiac</p>
       </div>
     </div>
-    <health class="health-bar" [name]="'CPU'" [health]="computerHealth()"></health>
+    <health class="health-bar" [name]="'Brainiac'" [health]="computerHealth()"></health>
     <div class="battle-area">
       <card class="computer-card"
       *ngIf="currentComputerHero()"
