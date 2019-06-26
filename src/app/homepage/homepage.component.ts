@@ -9,6 +9,9 @@ import { Router } from '@angular/router';
 })
 export class HomepageComponent implements OnInit {
 
+  backstoryFormShowing: boolean = false;
+
+
   constructor(private shodown: ShodownService, private router: Router) { }
 
   ngOnInit() {
@@ -20,6 +23,10 @@ export class HomepageComponent implements OnInit {
       this.shodown.setUsername(name);
       this.router.navigate(["hero-select"]);
     }
+  }
+
+  toggleForm(): void {
+    this.backstoryFormShowing = !this.backstoryFormShowing;
   }
 
 }
