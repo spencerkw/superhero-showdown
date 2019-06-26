@@ -24,9 +24,9 @@ export class WinLoseComponent implements OnInit {
 
   message(): string {
     if (this.victory) {
-      return `${this.shodown.getUsername()} was victorious!`;
+      return `${this.shodown.getUsername()} has helped our heroes defeat Braniac!`;
     } else {
-      return `${this.shodown.getUsername()} was defeated.`;
+      return `${this.shodown.getUsername()} was defeated. Brainiac reigns victorious!`;
     }
   }
 
