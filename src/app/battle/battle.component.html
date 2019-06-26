@@ -11,7 +11,7 @@
       *ngIf="currentComputerHero()"
       [hero]="currentComputerHero()"
       [cardSize]="'large'"
-      [hasAdvantage]="currentPlayerHero() && currentComputerHero().type.type === currentPlayerHero().type.weak_against"
+      [hasAdvantage]="computerHasAdvantage()"
       [@PlayComputerCard] 
       [@ComputerDeath]="currentComputerHero().currentHealth <= 0 ? currentAttackAnimation() : null"
       [@ComputerAttack]="(currentAttack() && currentAttack().attacker === currentComputerHero()) ? currentAttackAnimation() : 'none'">
@@ -21,7 +21,7 @@
       *ngIf="currentPlayerHero()"
       [hero]="currentPlayerHero()"
       [cardSize]="'large'" 
-      [hasAdvantage]="currentComputerHero() && currentPlayerHero().type.type === currentComputerHero().type.weak_against"
+      [hasAdvantage]="playerHasAdvantage()"
       [@PlayUserCard]
       [@UserDeath]="currentPlayerHero().currentHealth <= 0 ? currentAttackAnimation() : null"
       [@UserAttack]="(currentAttack() && currentAttack().attacker === currentPlayerHero()) ? currentAttackAnimation() : 'none'"></card>

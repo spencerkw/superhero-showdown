@@ -321,4 +321,18 @@ export class BattleComponent implements OnInit {
    return this.images[this.shodown.random(0, this.images.length-1)];
   }
 
+  computerHasAdvantage(): boolean {
+    if (!this.shodown.getCurrentComputerHero() || !this.shodown.getCurrentPlayerHero()) {
+      return false;
+    }
+    return (this.shodown.getCurrentComputerHero().type.type === this.shodown.getCurrentPlayerHero().type.weak_against) || this.shodown.getCurrentComputerHero().type.type === 'all';
+  }
+
+  playerHasAdvantage(): boolean {
+    if (!this.shodown.getCurrentComputerHero() || !this.shodown.getCurrentPlayerHero()) {
+      return false;
+    }
+    return (this.shodown.getCurrentPlayerHero().type.type === this.shodown.getCurrentComputerHero().type.weak_against) || this.shodown.getCurrentPlayerHero().type.type === 'all';
+  }
+
 }
