@@ -161,6 +161,13 @@ import { AnimationDurations } from '../animation-durations';
           style({ transform: 'translateY(-25%)', opacity: 0 })
         ]))
       ])
+    ]),
+    trigger('AdvantageDamageDealt', [
+      transition('* => true', [
+        animate(`${AnimationDurations.hitEffect}ms`, keyframes([
+          style({ transform: 'scale(2)' })
+        ]))
+      ])
     ])
   ]
 })
@@ -314,6 +321,10 @@ export class BattleComponent implements OnInit {
     }
     
     return 'none';
+  }
+
+  currentPlayerHasAdvantage(): boolean {
+    return ((this.shodown.getIsPlayerTurn() && this.computerHasAdvantage()) || (!this.shodown.getIsPlayerTurn() && this.playerHasAdvantage()));
   }
 
   randomBackground() {
