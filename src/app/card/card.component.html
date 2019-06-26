@@ -1,4 +1,4 @@
-<div class="card" [ngClass]="cardSize" [ngStyle]="{ 'opacity': hero ? 1 : 0 }">
+<div class="card" [ngClass]="cardSize" [ngStyle]="{ 'display': hero ? 'flex' : 'none' }">
   
   <img class="hero-image" *ngIf="hero" src="../../assets/images/cards/cards-200-180-{{ hero.hero.split(' ').join('-') }}.png" alt="">
   <p class="title" *ngIf="hero">{{(cardSize === 'small' && hero.short_name) ? hero.short_name : hero.hero}}</p>
