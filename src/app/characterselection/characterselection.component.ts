@@ -50,6 +50,7 @@ export class CharacterSelectionComponent implements OnInit, OnDestroy {
   playAudio(): any {
     this.audio.src = "../../assets/sounds/x-mentheme.mp3";
     this.audio.load();
+    this.audio.volume = 0.2;
     this.audio.play();
   }
 

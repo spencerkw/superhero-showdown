@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, OnDestroy } from "@angular/core";
 import { Hero } from "../hero";
 import { ShodownService } from "../shodownservice.service";
 import { BattleStates } from "../battle-states.enum";
@@ -173,7 +173,7 @@ import { HealthComponent } from '../health/health.component';
   ]
 })
 
-export class BattleComponent implements OnInit {
+export class BattleComponent implements OnInit, OnDestroy {
   playerHeroes: Hero[];
   computerHeroes: Hero[];
 
@@ -184,6 +184,7 @@ export class BattleComponent implements OnInit {
     "futuristic", "atlantis", "fortress", "triskelion", "tower", "asgard"
   ];
 
+  backgroundMusic: HTMLAudioElement;
   punchSound: HTMLAudioElement;
   fightSound: HTMLAudioElement;
 
@@ -192,10 +193,6 @@ export class BattleComponent implements OnInit {
   constructor(private shodown: ShodownService, private router: Router) { }
 
   ngOnInit() {
-    this.prepareAudio();
-
-    this.fightAudio();
-    this.currentBackground = this.randomBackground();
     this.playerHeroes = this.shodown.getPlayerHeroes();
     this.computerHeroes = this.shodown.getComputerHeroes();
 
@@ -203,6 +200,12 @@ export class BattleComponent implements OnInit {
       this.router.navigate(["home"]);
       return;
     }
+
+    this.prepareAudio();
+    this.fightAudio();
+    this.playBackgroundMusic();
+
+    this.currentBackground = this.randomBackground();
 
     //temp just to test
     this.shodown.pickFirstPlayer();
@@ -217,6 +220,10 @@ export class BattleComponent implements OnInit {
 
     // let winner = this.playerHeroes.length > 0 ? this.shodown.getUsername() : "the computer";
     // console.log(`The winner is ${winner}`);
+  }
+
+  ngOnDestroy() {
+    this.backgroundMusic.pause();
   }
 
   battleLoop(): void {
@@ -291,6 +298,14 @@ export class BattleComponent implements OnInit {
     this.fightSound = new Audio();
     this.fightSound.src = "../../assets/sounds/StreetFighter.mp3";
     this.fightSound.load();
+
+    this.backgroundMusic = new Audio();
+    this.backgroundMusic.src = "../../assets/sounds/The-Avengers-Theme-Song.mp3";
+    this.backgroundMusic.load();
+  }
+
+  playBackgroundMusic() {
+    this.backgroundMusic.play();
   }
   
   punchAudio() { 
