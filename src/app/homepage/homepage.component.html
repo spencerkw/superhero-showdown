@@ -7,9 +7,27 @@
     </picture>
   </div>
 
-  <form #nameForm="ngForm" (ngSubmit)="submitName(nameForm.value.name)">
+  <form class="form" #nameForm="ngForm" (ngSubmit)="submitName(nameForm.value.name)">
     <label for="">Enter your name:</label>
     <input type="text" placeholder="name" name="name" ngModel>
     <button>Start</button>
   </form>
+<div>
+  <button (click)="toggleForm()">BackStory</button>
+</div>
+<div>
+  <form (click)="toggleForm()" *ngIf="backstoryFormShowing">
+    <p>
+      We find our heroes exhausted from saving the universe from certain destruction. Our Marvel heroes, fresh from
+      defeating Thanos from altering reality, decide to attend an interdimensional bar to unwind before they go back
+      to their homes. Upon arriving, they find the place a little crowded filled with other heroes who are unfamiliar.
+      After banishing Darkseid to the Phantom Zone, our DC heroes decided to take a load off in the bar. Unbeknowst
+      to our heroes, their battles have left their minds vulnerable. Brainiac has been tracking them and, sensing this,
+      decides to inact his plan. Using powerful telepathy, he controls the heroes and pits them against each other with
+      hopes of the Marvel heroes wiping out their DC counterparts. Will our heroes be able to overcome Braniac's power or 
+      will Braniac reign victorious? You will have to play to find out!
+    </p>
+  </form>
+</div>
+
 </main>

@@ -33,7 +33,7 @@ picture {
   margin: 9px 0;
 }
 
-form {
+.form {
     display: flex;
     flex-direction: column;
     width: 40%;
@@ -44,6 +44,19 @@ form {
     align-items: center;
     border-radius: 10px;
     max-width: inherit;
+    bottom: 15px;
+    left: 1px;
+}
+
+form {
+  position: absolute;
+  bottom: 200px;
+  color: floralwhite;
+  background-color: rgba(10, 10, 10, 0.7);
+  border-radius: 7px;
+  padding: 5px;
+  width: 51%;
+  /* left: 300px; */
 }
 
 input {
