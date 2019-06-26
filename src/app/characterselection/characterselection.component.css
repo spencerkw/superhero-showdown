@@ -10,6 +10,7 @@ main {
   background-attachment: fixed, fixed;
   background-position: center, center;
   /* background-color: transparent; */
+  /* margin: 0 0 0 -5px; */
 }
 
 .selected-heroes, .hero-list {
@@ -201,7 +202,7 @@ button {
 
 } */
 
-.strength:hover, .agility:hover, .mental:hover, .mechanical:hover, .elemental:hover {
+.strength:hover, .agility:hover, .mental:hover, .mechanical:hover, .elemental:hover, .all:hover {
   color: white;
 }
 
@@ -223,6 +224,10 @@ button {
 
 .elemental:hover {
   background-color: #c75724;
+}
+
+.all:hover {
+  background-color: dodgerblue;
 }
 
 @media only screen and (min-width: 768px) {

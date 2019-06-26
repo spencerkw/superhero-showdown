@@ -16,8 +16,6 @@ main {
 
 .table {
   border: 1px solid black;
-  /* margin: 10px;
-  padding: 10px; */
   width: 95vw;
   height: 90vh;
   text-align: center;
@@ -62,16 +60,95 @@ main {
   text-shadow: 1px 1px 2px black;
 }
 
-.computer-deck {
-  width: 50px;
-  height: 100px;
-  border: 1px solid black;
-  border-radius: 5px;
-  padding: 10px;
+.setOfCards {
+  height: 110px;
+  width: 55px;
+  padding: 5px;
+  margin: 0 0 15px 0;
+  position: relative;
+}
+
+.card {
+  height: 110px;
+  width: 55px;
   margin: 15px 0 15px 0;
-  display: flex;
-  flex-direction: column;
-  background-color: #3F5678;
+  
+  border-radius: 5px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transform-origin: 25% bottom;
+          transform-origin: 25% bottom;
+  transition: -webkit-transform .2s;
+  transition: transform .2s;
+  transition: transform .2s, -webkit-transform .2s;
+}
+
+.cover {
+  width: 85%;
+  height: 85%;
+  padding: 10px;
+  border: 1px solid black;
+  background: #3F5678;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+.setOfCards:hover .cover {
+  display: none;
+}
+
+.setOfCards:hover .card:nth-child(1) {
+  -webkit-transform: rotate(-40deg);
+          transform: rotate(-40deg);
+}
+
+.setOfCards .card:hover:nth-child(1) {
+  -webkit-transform: rotate(-40deg) translateY(-25px);
+          transform: rotate(-40deg) translateY(-25px);
+}
+
+.setOfCards:hover .card:nth-child(2) {
+  -webkit-transform: rotate(-20deg);
+          transform: rotate(-20deg);
+}
+
+.setOfCards .card:hover:nth-child(2) {
+  -webkit-transform: rotate(-20deg) translateY(-25px);
+          transform: rotate(-20deg) translateY(-25px);
+}
+
+.setOfCards:hover .card:nth-child(3) {
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+}
+
+.setOfCards .card:hover:nth-child(3) {
+  -webkit-transform: rotate(0deg) translateY(-25px);
+          transform: rotate(0deg) translateY(-25px);
+}
+
+.setOfCards:hover .card:nth-child(4) {
+  -webkit-transform: rotate(20deg);
+          transform: rotate(20deg);
+}
+
+.setOfCards .card:hover:nth-child(4) {
+  -webkit-transform: rotate(20deg) translateY(-25px);
+          transform: rotate(20deg) translateY(-25px);
+}
+
+.setOfCards:hover .card:nth-child(5) {
+  -webkit-transform: rotate(40deg);
+          transform: rotate(40deg);
+}
+
+.setOfCards .card:hover:nth-child(5) {
+  -webkit-transform: rotate(40deg) translateY(-25px);
+          transform: rotate(40deg) translateY(-25px);
+}
+
+.empty {
+  opacity: 0;
 }
 
 .health-bar {
@@ -80,11 +157,6 @@ main {
   right: 0;
   border-radius: 10px;
 }
-
-/* .computer-card {
-  width: 100px;
-height: 200px;
-} */
 
 .computer-image {
   width:90%;
@@ -134,10 +206,6 @@ height: 200px;
   background-image: url("../../assets/images/backgrounds/The-Fortress-of-Solitude.jpg");
 }
 
-.wakanda {
-  background-image: url("../../assets/images/backgrounds/wakanda.jpg");
-}
-
 .tower {
   background-image: url("../../assets/images/backgrounds/Avengers_Tower_AoU.png");
 }
@@ -148,6 +216,7 @@ height: 200px;
 
 .selectable {
   cursor: pointer;
+  box-shadow: 0 0 5px 3px gold;
 }
 
 .selectable:hover {
