@@ -223,7 +223,9 @@ export class BattleComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.backgroundMusic.pause();
+    if (this.backgroundMusic) {
+      this.backgroundMusic.pause();
+    }
   }
 
   battleLoop(): void {
