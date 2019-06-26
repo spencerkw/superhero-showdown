@@ -16,8 +16,6 @@ main {
 
 .table {
   border: 1px solid black;
-  /* margin: 10px;
-  padding: 10px; */
   width: 95vw;
   height: 90vh;
   text-align: center;
@@ -62,18 +60,6 @@ main {
   text-shadow: 1px 1px 2px black;
 }
 
-.computer-deck {
-  /* width: 50px;
-  height: 100px;
-  border: 1px solid black;
-  border-radius: 5px;
-  padding: 10px;
-  margin: 15px 0 15px 0;
-  display: flex;
-  flex-direction: column;
-  background-color: #3F5678; */
-}
-
 .setOfCards {
   height: 110px;
   width: 55px;
@@ -83,11 +69,8 @@ main {
 }
 
 .card {
-  /* height: inherit;
-  width: inherit; */
   height: 110px;
   width: 55px;
-  
   margin: 15px 0 15px 0;
   background: #3F5678;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
@@ -106,7 +89,6 @@ main {
   width: 90%;
   height: 90%;
   padding: 10px;
-  /* position: relative; */
   border: 1px solid black;
 }
 
@@ -175,11 +157,6 @@ main {
   border-radius: 10px;
 }
 
-/* .computer-card {
-  width: 100px;
-height: 200px;
-} */
-
 .computer-image {
   width:90%;
   height: 50%;
@@ -227,10 +204,6 @@ height: 200px;
 .fortress {
   background-image: url("../../assets/images/backgrounds/The-Fortress-of-Solitude.jpg");
 }
-
-/* .wakanda {
-  background-image: url("../../assets/images/backgrounds/wakanda.jpg");
-} */
 
 .tower {
   background-image: url("../../assets/images/backgrounds/Avengers_Tower_AoU.png");
