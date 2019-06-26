@@ -10,10 +10,10 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   getHeroes() {
-    return this.http.get("http://localhost:5000/api/heroes", { responseType: "json"});
+    return this.http.get("/api/heroes", { responseType: "json"});
   }
 
   getTypes() {
-    return this.http.get("http://localhost:5000/api/attack-types", { responseType: "json"});
+    return this.http.get("/api/attack-types", { responseType: "json"});
   }
 }
