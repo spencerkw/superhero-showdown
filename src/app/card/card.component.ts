@@ -10,6 +10,7 @@ export class CardComponent implements OnInit {
 
   @Input() hero: Hero;
   @Input() cardSize: string;
+  @Input() hasAdvantage: boolean = false;
 
   constructor() { }
 
