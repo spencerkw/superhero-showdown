@@ -131,7 +131,7 @@ picture {
   margin: 9px 0 7px 0;
 }
 
-form {
+.info-container {
   position: absolute;
   border: 1px solid black;
   border-radius: 5px;
