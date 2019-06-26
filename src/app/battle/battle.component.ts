@@ -184,11 +184,16 @@ export class BattleComponent implements OnInit {
     "futuristic", "atlantis", "fortress", "triskelion", "tower", "asgard"
   ];
 
+  punchSound: HTMLAudioElement;
+  fightSound: HTMLAudioElement;
+
   currentBackground: string = "";
 
   constructor(private shodown: ShodownService, private router: Router) { }
 
   ngOnInit() {
+    this.prepareAudio();
+
     this.fightAudio();
     this.currentBackground = this.randomBackground();
     this.playerHeroes = this.shodown.getPlayerHeroes();
@@ -277,19 +282,28 @@ export class BattleComponent implements OnInit {
     //   this.gameOver();
     // }
   }
+
+  prepareAudio() {
+    this.punchSound = new Audio();
+    this.punchSound.src = "../../assets/sounds/punch.mp3";
+    this.punchSound.load();
+
+    this.fightSound = new Audio();
+    this.fightSound.src = "../../assets/sounds/StreetFighter.mp3";
+    this.fightSound.load();
+  }
   
-  playAudio(){
-    let audio = new Audio();
-    audio.src = "../../assets/sounds/punch.mp3";
-    audio.load();
-    audio.play();
+  punchAudio() { 
+    if (!this.shodown.getCurrentPlayerHero() || !this.shodown.getCurrentComputerHero()) {
+      return;
+    }
+    this.punchSound.pause();
+    this.punchSound.currentTime = 0;
+    this.punchSound.play();
   }
 
   fightAudio(){
-    let audio = new Audio();
-    audio.src = "../../assets/sounds/StreetFighter.mp3";
-    audio.load();
-    audio.play();
+    this.fightSound.play();
   }
 
   choosePlayerCard(index: number): void {
