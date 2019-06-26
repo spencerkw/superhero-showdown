@@ -57,7 +57,8 @@ main {
 }
 
 .damage-number {
-  font-size: 20px;
+  font-family: "Badaboom", sans-serif;
+  font-size: 24px;
   color: red;
   text-shadow: 1px 1px 2px black;
 }
