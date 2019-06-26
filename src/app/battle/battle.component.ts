@@ -161,6 +161,13 @@ import { AnimationDurations } from '../animation-durations';
           style({ transform: 'translateY(-25%)', opacity: 0 })
         ]))
       ])
+    ]),
+    trigger('AdvantageDamageDealt', [
+      transition('* => true', [
+        animate(`${AnimationDurations.hitEffect}ms`, keyframes([
+          style({ transform: 'scale(2)' })
+        ]))
+      ])
     ])
   ]
 })
@@ -316,9 +323,27 @@ export class BattleComponent implements OnInit {
     return 'none';
   }
 
+  currentPlayerHasAdvantage(): boolean {
+    return ((this.shodown.getIsPlayerTurn() && this.computerHasAdvantage()) || (!this.shodown.getIsPlayerTurn() && this.playerHasAdvantage()));
+  }
+
   randomBackground() {
     // return "Hello";
    return this.images[this.shodown.random(0, this.images.length-1)];
+  }
+
+  computerHasAdvantage(): boolean {
+    if (!this.shodown.getCurrentComputerHero() || !this.shodown.getCurrentPlayerHero()) {
+      return false;
+    }
+    return (this.shodown.getCurrentComputerHero().type.type === this.shodown.getCurrentPlayerHero().type.weak_against) || this.shodown.getCurrentComputerHero().type.type === 'all';
+  }
+
+  playerHasAdvantage(): boolean {
+    if (!this.shodown.getCurrentComputerHero() || !this.shodown.getCurrentPlayerHero()) {
+      return false;
+    }
+    return (this.shodown.getCurrentPlayerHero().type.type === this.shodown.getCurrentComputerHero().type.weak_against) || this.shodown.getCurrentPlayerHero().type.type === 'all';
   }
 
 }
