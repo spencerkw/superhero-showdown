@@ -239,7 +239,7 @@ button {
     width: 80%;
   }
 
-  form {
+  .info-container {
     position: absolute;
     border: 1px solid black;
     border-radius: 5px;
@@ -251,6 +251,7 @@ button {
     z-index: 1;
     background-color: rgba(0, 0, 0, 0.7);
     color: aliceblue;
+    cursor: pointer;
   }
 
   .form-section {
@@ -299,7 +300,7 @@ button {
     width: 70%;
   }
 
-  form {
+  .info-container {
     width: 65%;
     top: 35%;
   }

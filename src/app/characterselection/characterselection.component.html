@@ -10,10 +10,9 @@
   <button class="info-btn" (click)="toggleForm()">Info</button>
   <button class="fight-btn" *ngIf="allHeroesPicked()" (click)="submitSelection()">Fight</button>
   </div>
-  <form (click)="toggleForm()" *ngIf="infoFormShowing">
+  <div class="info-container" (click)="toggleForm()" *ngIf="infoFormShowing">
     <p class="logic-story">While the heroes are very strong, they do experience weaknesses based on attack-type.
-      When heroes are up against their weakness, the attack's damage is multipled by 1.5. Below is a breakdown of the
-      of attack-type weakness.</p>
+      When heroes are up against their weakness, the attack's damage is multipled by 1.5. Below is a breakdown of the attack-type weaknesses.</p>
     <div class="form-section">
       <ul>
         <li>Strength is weak against Agility</li>
@@ -24,7 +23,7 @@
       </ul>
       <img class="logic-img" src="../../assets/images/logic/circle3.png" alt="">
     </div>
-  </form>
+  </div>
   <div class="selected-heroes">
     <div class="selected-heroes-nav">
       <p class="label-heroes">Your Heroes ({{selectedHeroes.length}} of {{maxHeroCount}})</p>
