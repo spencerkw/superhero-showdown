@@ -17,4 +17,12 @@ export class CardComponent implements OnInit {
   ngOnInit() {
   }
 
+  heroType() {
+    if (this.hero) {
+      return this.hero.type.type;
+    } else {
+      return '';
+    }
+  }
+
 }
